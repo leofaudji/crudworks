@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solusi Bisnis Terpadu | Company Profile</title>
+    <link rel="icon" href="css/favicon.png" type="image/png">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wa: {
+                            light: '#3b82f6', // Modern Blue (Blue 500)
+                            dark: '#1e3a8a',  // Deep Blue (Blue 900)
+                            teal: '#2563eb'   // Vibrant Blue (Blue 600)
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Modern Grid Background */
+        .bg-grid-pattern { background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 24px 24px; }
+        
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.95); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+        .animate-fade-out { animation: fadeOut 0.3s ease-in forwards; }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-150%); }
+            100% { transform: translateX(150%); }
+        }
+        .animate-shimmer { animation: shimmer 2.5s infinite; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased bg-grid-pattern">
+
+    <!-- Navbar -->
+    <nav class="fixed top-4 left-4 right-4 z-50 bg-transparent border border-transparent shadow-none rounded-2xl transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Section -->
+                <div class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+                    <img src="css/logo.png" alt="Logo" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-2">
+                        <a href="#home" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Beranda</a>
+                        <a href="#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Produk</a>
+                        <a href="#about" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Tentang Kami</a>
+                        <a href="#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-300">
+                            Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 rounded-b-2xl shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Beranda</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Produk</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Tentang Kami</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-wa-teal hover:bg-wa-dark transition text-center mt-4">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-slate-50 to-white">
+        <!-- Decorative Blobs -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-indigo-200 rounded-full blur-3xl opacity-30"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Slider Wrapper -->
+            <div id="hero-slider" class="flex transition-transform duration-700 ease-in-out">
+                
+                <!-- Slide 1 -->
+                <div class="w-full flex-shrink-0 lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                <!-- Text Content -->
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-blue-100 bg-blue-50 text-blue-600 text-xs font-semibold tracking-wide uppercase mb-6">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-ping"></span>
+                        Solusi #1 Untuk UMKM
+                    </div>
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
+                        Kelola Bisnis Jadi <br class="hidden lg:block">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-wa-teal to-wa-light">Lebih Mudah & Cepat</span>
+                    </h1>
+                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
+                        Tinggalkan cara lama. Beralih ke platform digital terintegrasi untuk pembukuan, kasir, dan manajemen karyawan dalam satu aplikasi.
+                    </p>
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-wa-teal to-wa-light hover:shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-1 text-center">
+                                Mulai Sekarang
+                            </a>
+                            <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
+                                <i class="fa-regular fa-circle-play"></i> Demo Gratis
+                            </a>
+                        </div>
+                        <p class="mt-4 text-xs text-gray-400 font-medium">
+                            <i class="fa-solid fa-check text-green-500 mr-1"></i> 14 Hari Trial Gratis
+                            <span class="mx-2">•</span>
+                            <i class="fa-solid fa-check text-green-500 mr-1"></i> Tanpa Kartu Kredit
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visual Content -->
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                        <!-- Main Image/Card -->
+                        <div class="relative block w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 z-10">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Analytics" class="w-full h-64 object-cover opacity-90 hover:scale-105 transition duration-700">
+                            <div class="p-6 bg-white">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Total Pendapatan</p>
+                                        <h3 class="text-2xl font-bold text-gray-900">Rp 128.500.000</h3>
+                                    </div>
+                                    <div class="p-2 bg-green-100 rounded-lg text-green-600">
+                                        <i class="fa-solid fa-arrow-trend-up"></i> +12%
+                                    </div>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-2.5 mb-1">
+                                    <div class="bg-wa-teal h-2.5 rounded-full" style="width: 70%"></div>
+                                </div>
+                                <p class="text-xs text-gray-400 text-right">Target Bulan Ini</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Icon 1 -->
+                        <div class="absolute -top-12 -right-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce" style="animation-duration: 3s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-500">
+                                    <i class="fa-solid fa-users-gear"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Karyawan</p>
+                                    <p class="text-sm font-bold text-gray-900">Active</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Icon 2 -->
+                        <div class="absolute -bottom-8 -left-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce" style="animation-duration: 4s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-500">
+                                    <i class="fa-solid fa-shop"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Outlet</p>
+                                    <p class="text-sm font-bold text-gray-900">12 Cabang</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Decorative Elements behind -->
+                         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-blue-100 to-teal-50 rounded-full blur-3xl -z-10 opacity-60"></div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="w-full flex-shrink-0 lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                    <!-- Text Content -->
+                    <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-emerald-100 bg-emerald-50 text-emerald-600 text-xs font-semibold tracking-wide uppercase mb-6">
+                            <span class="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-ping"></span>
+                            HR & Payroll Otomatis
+                        </div>
+                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
+                            Kelola Karyawan <br class="hidden lg:block">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500">Tanpa Sakit Kepala</span>
+                        </h1>
+                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
+                            Hitung gaji, pajak, dan BPJS secara otomatis. Pantau absensi dan cuti karyawan dalam satu dashboard yang terintegrasi.
+                        </p>
+                        <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-emerald-600 to-teal-500 hover:shadow-lg hover:shadow-emerald-500/30 transition transform hover:-translate-y-1 text-center">
+                                    Coba Gratis
+                                </a>
+                                <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-circle-play"></i> Lihat Fitur
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Content -->
+                    <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                        <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                            <div class="relative block w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 z-10">
+                                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="HR Dashboard" class="w-full h-64 object-cover opacity-90 hover:scale-105 transition duration-700">
+                                <div class="p-6 bg-white">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-500">Total Payroll</p>
+                                            <h3 class="text-2xl font-bold text-gray-900">Rp 450.000.000</h3>
+                                        </div>
+                                        <div class="p-2 bg-emerald-100 rounded-lg text-emerald-600">
+                                            <i class="fa-solid fa-check"></i> Paid
+                                        </div>
+                                    </div>
+                                    <div class="flex -space-x-2 overflow-hidden">
+                                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt=""/>
+                                        <div class="h-8 w-8 rounded-full ring-2 ring-white bg-gray-100 flex items-center justify-center text-xs font-medium text-gray-500">+15</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Floating Icon -->
+                            <div class="absolute -top-8 -left-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce" style="animation-duration: 3.5s;">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-500">
+                                        <i class="fa-solid fa-heart-pulse"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Kesehatan</p>
+                                        <p class="text-sm font-bold text-gray-900">BPJS Ready</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="w-full flex-shrink-0 lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                    <!-- Text Content -->
+                    <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-amber-100 bg-amber-50 text-amber-600 text-xs font-semibold tracking-wide uppercase mb-6">
+                            <span class="w-2 h-2 bg-amber-500 rounded-full mr-2 animate-ping"></span>
+                            Keuangan Terkendali
+                        </div>
+                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
+                            Laporan Keuangan <br class="hidden lg:block">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500">Akurat & Real-time</span>
+                        </h1>
+                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
+                            Pantau arus kas, laba rugi, dan neraca kapan saja. Buat keputusan bisnis strategis berdasarkan data yang valid.
+                        </p>
+                        <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-amber-600 to-orange-500 hover:shadow-lg hover:shadow-amber-500/30 transition transform hover:-translate-y-1 text-center">
+                                    Konsultasi
+                                </a>
+                                <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-file-lines"></i> Lihat Laporan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Content -->
+                    <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                        <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                            <div class="relative block w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 z-10">
+                                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Finance Dashboard" class="w-full h-64 object-cover opacity-90 hover:scale-105 transition duration-700">
+                                <div class="p-6 bg-white">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-500">Net Profit</p>
+                                            <h3 class="text-2xl font-bold text-gray-900">Rp 85.200.000</h3>
+                                        </div>
+                                        <div class="p-2 bg-amber-100 rounded-lg text-amber-600">
+                                            <i class="fa-solid fa-chart-line"></i> +24%
+                                        </div>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-2.5 mb-1">
+                                        <div class="bg-amber-500 h-2.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                    <p class="text-xs text-gray-400 text-right">YTD Growth</p>
+                                </div>
+                            </div>
+                            <!-- Floating Icon -->
+                            <div class="absolute -bottom-6 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce" style="animation-duration: 4.5s;">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
+                                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Invoice</p>
+                                        <p class="text-sm font-bold text-gray-900">Auto-Send</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="w-full flex-shrink-0 lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                    <!-- Text Content -->
+                    <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-purple-100 bg-purple-50 text-purple-600 text-xs font-semibold tracking-wide uppercase mb-6">
+                            <span class="w-2 h-2 bg-purple-500 rounded-full mr-2 animate-ping"></span>
+                            Custom Development
+                        </div>
+                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
+                            Software Sesuai <br class="hidden lg:block">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Kebutuhan Unik Anda</span>
+                        </h1>
+                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
+                            Tidak semua bisnis cocok dengan solusi instan. Kami rancang sistem yang mengikuti alur kerja spesifik perusahaan Anda.
+                        </p>
+                        <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:shadow-lg hover:shadow-purple-500/30 transition transform hover:-translate-y-1 text-center">
+                                    Diskusi Project
+                                </a>
+                                <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-code"></i> Lihat Portfolio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Content -->
+                    <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                        <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                            <div class="relative block w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 z-10">
+                                <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Custom Development" class="w-full h-64 object-cover opacity-90 hover:scale-105 transition duration-700">
+                                <div class="p-6 bg-white">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-500">Project Status</p>
+                                            <h3 class="text-2xl font-bold text-gray-900">On Track</h3>
+                                        </div>
+                                        <div class="p-2 bg-purple-100 rounded-lg text-purple-600">
+                                            <i class="fa-solid fa-rocket"></i> 95%
+                                        </div>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-2.5 mb-1">
+                                        <div class="bg-purple-500 h-2.5 rounded-full" style="width: 95%"></div>
+                                    </div>
+                                    <p class="text-xs text-gray-400 text-right">Deployment Ready</p>
+                                </div>
+                            </div>
+                            <!-- Floating Icon -->
+                            <div class="absolute -top-6 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 animate-bounce" style="animation-duration: 5s;">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-500">
+                                        <i class="fa-solid fa-laptop-code"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Tech Stack</p>
+                                        <p class="text-sm font-bold text-gray-900">Modern</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Slider Controls (Dots) -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-3 pb-8" id="hero-dots">
+                <button class="w-3 h-3 rounded-full bg-blue-600 transition-all duration-300" data-slide="0"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all duration-300" data-slide="1"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all duration-300" data-slide="2"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all duration-300" data-slide="3"></button>
+            </div>
+
+            <!-- Slider Controls (Arrows) -->
+            <button id="prev-slide" class="absolute top-1/2 left-0 md:-left-4 transform -translate-y-1/2 bg-white/30 hover:bg-white text-slate-700 hover:text-blue-600 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 z-20 focus:outline-none group">
+                <i class="fa-solid fa-chevron-left text-xl group-hover:scale-110 transition-transform"></i>
+            </button>
+            <button id="next-slide" class="absolute top-1/2 right-0 md:-right-4 transform -translate-y-1/2 bg-white/30 hover:bg-white text-slate-700 hover:text-blue-600 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 z-20 focus:outline-none group">
+                <i class="fa-solid fa-chevron-right text-xl group-hover:scale-110 transition-transform"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-overlay filter blur-[100px] opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-72 h-72 bg-indigo-600 rounded-full mix-blend-overlay filter blur-[100px] opacity-20 animate-pulse"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+                <!-- Stat 1 -->
+                <div class="text-center group">
+                    <div class="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-blue-500/10 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300 ring-1 ring-blue-500/20 group-hover:ring-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.15)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]">
+                        <i class="fa-solid fa-users text-2xl"></i>
+                    </div>
+                    <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
+                        <span class="counter" data-target="15000">0</span><span class="text-blue-500 ml-1">+</span>
+                    </div>
+                    <p class="text-blue-200 font-medium text-sm uppercase tracking-widest">Pengguna Aktif</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="text-center group">
+                    <div class="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 ring-1 ring-emerald-500/20 group-hover:ring-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.15)] group-hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]">
+                        <i class="fa-solid fa-building text-2xl"></i>
+                    </div>
+                    <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
+                        <span class="counter" data-target="500">0</span><span class="text-emerald-500 ml-1">+</span>
+                    </div>
+                    <p class="text-emerald-200 font-medium text-sm uppercase tracking-widest">Perusahaan</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="text-center group">
+                    <div class="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-amber-500/10 text-amber-400 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 ring-1 ring-amber-500/20 group-hover:ring-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.15)] group-hover:shadow-[0_0_30px_rgba(245,158,11,0.4)]">
+                        <i class="fa-solid fa-face-smile text-2xl"></i>
+                    </div>
+                    <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
+                        <span class="counter" data-target="99">0</span><span class="text-amber-500 ml-1">%</span>
+                    </div>
+                    <p class="text-amber-200 font-medium text-sm uppercase tracking-widest">Kepuasan Client</p>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="text-center group">
+                    <div class="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-rose-500/10 text-rose-400 group-hover:bg-rose-500 group-hover:text-white transition-all duration-300 ring-1 ring-rose-500/20 group-hover:ring-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.15)] group-hover:shadow-[0_0_30px_rgba(244,63,94,0.4)]">
+                        <i class="fa-solid fa-headset text-2xl"></i>
+                    </div>
+                    <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
+                        <span class="counter" data-target="24">0</span><span class="text-rose-500 ml-1">/7</span>
+                    </div>
+                    <p class="text-rose-200 font-medium text-sm uppercase tracking-widest">Layanan Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Dynamic Content) -->
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-base text-wa-teal font-semibold tracking-wide uppercase">Solusi Kami</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Apa yang kami tawarkan?
+                </p>
+            </div>
+
+            <!-- Filter Categories -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-wa-teal text-white shadow-lg shadow-blue-500/30" data-filter="all">Semua</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="finance">Keuangan</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="hr">HR</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="operational">Operasional</button>
+            </div>
+
+            <!-- Container untuk data dari API -->
+            <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skeleton Loading State -->
+                <div class="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm animate-pulse h-full">
+                    <div class="flex justify-between mb-6">
+                        <div class="w-16 h-16 bg-slate-200 rounded-2xl"></div>
+                        <div class="w-20 h-6 bg-slate-200 rounded-full"></div>
+                    </div>
+                    <div class="h-8 bg-slate-200 rounded w-3/4 mb-4"></div>
+                    <div class="h-6 bg-slate-200 rounded w-1/2 mb-6"></div>
+                    <div class="space-y-3 mb-8">
+                        <div class="h-4 bg-slate-200 rounded w-full"></div>
+                        <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 space-y-4">
+                        <div class="h-4 bg-slate-200 rounded w-full"></div>
+                        <div class="h-4 bg-slate-200 rounded w-full"></div>
+                        <div class="h-4 bg-slate-200 rounded w-2/3"></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm animate-pulse h-full">
+                    <!-- Skeleton Content Same as above -->
+                    <div class="flex justify-between mb-6"><div class="w-16 h-16 bg-slate-200 rounded-2xl"></div><div class="w-20 h-6 bg-slate-200 rounded-full"></div></div>
+                    <div class="h-8 bg-slate-200 rounded w-3/4 mb-4"></div><div class="h-6 bg-slate-200 rounded w-1/2 mb-6"></div>
+                    <div class="space-y-3 mb-8"><div class="h-4 bg-slate-200 rounded w-full"></div><div class="h-4 bg-slate-200 rounded w-5/6"></div></div>
+                    <div class="pt-6 border-t border-slate-100 space-y-4"><div class="h-4 bg-slate-200 rounded w-full"></div><div class="h-4 bg-slate-200 rounded w-full"></div></div>
+                </div>
+                <div class="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm animate-pulse h-full">
+                    <!-- Skeleton Content Same as above -->
+                    <div class="flex justify-between mb-6"><div class="w-16 h-16 bg-slate-200 rounded-2xl"></div><div class="w-20 h-6 bg-slate-200 rounded-full"></div></div>
+                    <div class="h-8 bg-slate-200 rounded w-3/4 mb-4"></div><div class="h-6 bg-slate-200 rounded w-1/2 mb-6"></div>
+                    <div class="space-y-3 mb-8"><div class="h-4 bg-slate-200 rounded w-full"></div><div class="h-4 bg-slate-200 rounded w-5/6"></div></div>
+                    <div class="pt-6 border-t border-slate-100 space-y-4"><div class="h-4 bg-slate-200 rounded w-full"></div><div class="h-4 bg-slate-200 rounded w-full"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features/Keunggulan Section -->
+    <section class="py-20 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-base text-wa-teal font-semibold tracking-wide uppercase">Kenapa Memilih Kami?</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Keunggulan Platform CRUDWorks
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+                    <!-- Feature Item -->
+                    <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
+                        <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold leading-8 text-gray-900">Performa Cepat</h3>
+                        <p class="mt-2 text-base leading-7 text-gray-600">Akses data instan dengan infrastruktur cloud modern untuk produktivitas maksimal.</p>
+                    </div>
+                    <!-- Feature Item -->
+                    <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
+                        <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-xl font-bold leading-8 text-gray-900">Keamanan Terjamin</h3>
+                        <p class="mt-2 text-base leading-7 text-gray-600">Data aman dengan enkripsi tingkat bank dan backup otomatis harian.</p>
+                    </div>
+                    <!-- Feature Item -->
+                    <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
+                        <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-violet-100 text-violet-600">
+                            <i class="fa-solid fa-sync"></i>
+                        </div>
+                        <h3 class="text-xl font-bold leading-8 text-gray-900">Integrasi Penuh</h3>
+                        <p class="mt-2 text-base leading-7 text-gray-600">Satu sistem untuk semua, minimalkan kesalahan dan hemat waktu operasional.</p>
+                    </div>
+                    <!-- Feature Item -->
+                    <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
+                        <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-rose-100 text-rose-600">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h3 class="text-xl font-bold leading-8 text-gray-900">Support Prioritas</h3>
+                        <p class="mt-2 text-base leading-7 text-gray-600">Bantuan teknis 24/7 untuk memastikan bisnis Anda berjalan lancar tanpa henti.</p>
+                    </div>
+                    <!-- Feature Item -->
+                    <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
+                        <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <h3 class="text-xl font-bold leading-8 text-gray-900">Analitik Cerdas</h3>
+                        <p class="mt-2 text-base leading-7 text-gray-600">Ambil keputusan strategis lebih cepat berdasarkan data real-time.</p>
+                    </div>
+                    <!-- Feature Item -->
+                    <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
+                        <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-cyan-100 text-cyan-600">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h3 class="text-xl font-bold leading-8 text-gray-900">Akses Multi-Platform</h3>
+                        <p class="mt-2 text-base leading-7 text-gray-600">Pantau bisnis dari mana saja melalui aplikasi mobile dan web.</p>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0 relative">
+                    <div class="relative rounded-2xl shadow-xl overflow-hidden group aspect-video lg:aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tim CRUDWorks" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-wa-dark/80 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8">
+                            <p class="text-white text-xl font-bold italic">"Kami membangun jembatan antara potensi bisnis dan teknologi masa depan."</p>
+                            <div class="mt-4 flex items-center gap-3">
+                                <div class="h-1 w-12 bg-wa-light rounded-full"></div>
+                                <p class="text-blue-100 text-sm font-medium">Board of Directors CRUDWorks</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-100 rounded-full blur-3xl -z-10 opacity-70"></div>
+                    <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-indigo-100 rounded-full blur-3xl -z-10 opacity-70"></div>
+                </div>
+                
+                <div>
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-wa-teal text-xs font-bold tracking-wide uppercase mb-4">
+                        <span class="w-2 h-2 bg-wa-teal rounded-full mr-2"></span> Tentang Kami
+                    </div>
+                    <h2 class="text-3xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-6">
+                        Lebih Dari Sekadar <span class="text-wa-teal">Software House</span>
+                    </h2>
+                    <p class="text-lg text-gray-500 mb-8 leading-relaxed text-justify">
+                        CRUDWorks lahir dari keyakinan bahwa teknologi canggih seharusnya mudah diakses oleh semua skala bisnis. Sejak 2020, kami telah membantu lebih dari 500 perusahaan bertransformasi digital. Kami memadukan <strong>desain intuitif</strong>, <strong>keamanan tingkat bank</strong>, dan <strong>analitik cerdas</strong> untuk memberdayakan operasional Anda sehari-hari.
+                        <br><br>
+                        Tim kami terdiri dari insinyur perangkat lunak, desainer produk, dan analis bisnis yang berdedikasi untuk menciptakan ekosistem digital yang tidak hanya efisien, tetapi juga menyenangkan untuk digunakan. Kami percaya bahwa software yang baik adalah software yang tidak terasa rumit, namun mampu menyelesaikan masalah kompleks di latar belakang.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <!-- Item 1 -->
+                        <div class="flex group">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                                    <i class="fa-solid fa-earth-asia text-2xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Visi Global</h4>
+                                <p class="mt-1 text-gray-500 text-sm leading-relaxed text-justify">
+                                    Membawa standar teknologi internasional ke pasar lokal untuk daya saing global.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="flex group">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-amber-100 text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                                    <i class="fa-solid fa-lightbulb text-2xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 group-hover:text-amber-600 transition-colors">Inovasi Tanpa Henti</h4>
+                                <p class="mt-1 text-gray-500 text-sm leading-relaxed text-justify">
+                                    Riset berkelanjutan dalam AI dan Machine Learning untuk fitur yang semakin pintar.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="flex group">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-emerald-100 text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                                    <i class="fa-solid fa-users-viewfinder text-2xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">Fokus Pengguna</h4>
+                                <p class="mt-1 text-gray-500 text-sm leading-relaxed text-justify">
+                                    Desain yang berpusat pada manusia (Human-Centered Design) untuk kemudahan penggunaan maksimal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unified Support Section (FAQ & Contact) -->
+    <section class="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+        <!-- Decorative Background -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-60">
+             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl -z-10"></div>
+             <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-50 rounded-full blur-3xl -z-10"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-wide uppercase mb-4">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span> Support Center
+                </div>
+                <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Pusat Bantuan & Kontak
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Kami di sini untuk membantu. Temukan jawaban di FAQ atau hubungi kami langsung.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                
+                <!-- FAQ Column -->
+                <div id="faq" class="scroll-mt-28">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-circle-question text-blue-600"></i> Pertanyaan Umum
+                    </h3>
+                    
+                    <!-- FAQ Tabs -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-blue-600 text-white transition-all shadow-sm" data-target="all">Semua</button>
+                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="general">Umum</button>
+                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="technical">Teknis</button>
+                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="billing">Pembayaran</button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Item 1 -->
+                        <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="billing">
+                            <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah ada biaya langganan bulanan?</span>
+                                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
+                            </button>
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                                <p>Ya, kami menawarkan model berlangganan SaaS (Software as a Service) yang fleksibel. Anda dapat memilih tagihan bulanan atau tahunan (hemat hingga 20%). Harga disesuaikan dengan paket fitur yang Anda butuhkan.</p>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="technical">
+                            <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah data perusahaan saya aman?</span>
+                                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
+                            </button>
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                                <p>Keamanan adalah prioritas utama kami. Kami menggunakan enkripsi SSL 256-bit standar perbankan untuk semua transmisi data. Server kami dilindungi firewall berlapis dan backup otomatis.</p>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="general">
+                            <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah tersedia layanan uji coba gratis?</span>
+                                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
+                            </button>
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                                <p>Tentu saja! Anda dapat mencoba seluruh fitur CRUDWorks secara gratis selama 14 hari tanpa komitmen apapun. Tidak perlu kartu kredit untuk mendaftar.</p>
+                            </div>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="technical">
+                            <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Kendala teknis?</span>
+                                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
+                            </button>
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                                <p>Tim support kami yang berdedikasi tersedia 24/7 untuk membantu Anda melalui Live Chat, email, atau telepon.</p>
+                            </div>
+                        </div>
+                        <!-- Item 5 -->
+                        <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="technical">
+                            <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah bisa integrasi dengan software lain?</span>
+                                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
+                            </button>
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                                <p>Ya, CRUDWorks memiliki API terbuka (Open API) yang memungkinkan integrasi mudah dengan berbagai software pihak ketiga seperti CRM, E-commerce, dan sistem perbankan perusahaan Anda.</p>
+                            </div>
+                        </div>
+                        <!-- Item 6 -->
+                        <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="billing">
+                            <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Bagaimana jika saya ingin berhenti berlangganan?</span>
+                                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
+                            </button>
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                                <p>Anda dapat membatalkan langganan kapan saja melalui dashboard akun Anda. Tidak ada kontrak jangka panjang yang mengikat, dan Anda tetap dapat mengekspor seluruh data Anda sebelum akun ditutup.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Column -->
+                <div id="contact" class="scroll-mt-28">
+                    <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+                        <div class="p-8 sm:p-10">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-3">
+                                <i class="fa-solid fa-envelope-open-text text-blue-600"></i> Kirim Pesan
+                            </h3>
+                            <p class="text-gray-500 mb-8">Isi formulir di bawah ini untuk terhubung dengan tim kami.</p>
+
+                            <form id="contact-form" class="space-y-5">
+                                <div>
+                                    <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
+                                    <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Bisnis</label>
+                                    <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400" placeholder="john@company.com">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Pesan</label>
+                                    <textarea name="message" id="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400 resize-none" placeholder="Ceritakan kebutuhan Anda..."></textarea>
+                                </div>
+
+                                <button type="submit" id="submit-btn" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                                    <span>Kirim Pesan</span>
+                                    <i class="fa-solid fa-paper-plane text-sm"></i>
+                                </button>
+                                <p id="form-status" class="text-center text-sm mt-2 hidden"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-slate-800 pt-16 pb-8 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="mb-6">
+                        <img src="css/logo.png" alt="Logo" class="h-10 w-auto">
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 text-justify">
+                        Platform solusi bisnis terpadu untuk membantu perusahaan Anda tumbuh lebih cepat, efisien, dan terukur di era digital.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-slate-900">Tautan Cepat</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Beranda</a></li>
+                        <li><a href="#services" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Produk & Layanan</a></li>
+                        <li><a href="#about" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Tentang Kami</a></li>
+                        <li><a href="#faq" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Bantuan (FAQ)</a></li>
+                        <li><a href="#contact" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-slate-900">Hubungi Kami</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-slate-600 text-sm">
+                            <i class="fa-solid fa-location-dot mt-1 text-blue-600"></i>
+                            <span>Jl. Jendral Sudirman No. Kav 52-53, SCBD, Jakarta Selatan 12190</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-600 text-sm">
+                            <i class="fa-solid fa-envelope text-blue-600"></i>
+                            <span>hello@crudworks.id</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-600 text-sm">
+                            <i class="fa-solid fa-phone text-blue-600"></i>
+                            <span>+62 21 5555 8888</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm text-center md:text-left">&copy; 2023 CRUDWorks Indonesia. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-slate-500">
+                    <a href="#" class="hover:text-blue-600 transition-all duration-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-blue-600 transition-all duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service Detail Modal -->
+    <div id="service-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75 backdrop-blur-sm" aria-hidden="true" id="modal-overlay"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div class="inline-block w-full overflow-hidden text-left align-bottom transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:align-middle sm:max-w-lg">
+                <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto bg-blue-100 rounded-full sm:mx-0 sm:h-10 sm:w-10" id="modal-icon-container">
+                            <!-- Icon injected here -->
+                        </div>
+                        <div class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Service Title</h3>
+                            <div class="mt-2">
+                                <!-- Price injected via JS here -->
+                                <div class="text-sm text-gray-500 text-left" id="modal-description">Description goes here.</div>
+                                <div id="modal-features" class="mt-4">
+                                    <!-- Features list injected here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-wa-teal hover:bg-wa-dark focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" id="modal-close-btn">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logic JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>

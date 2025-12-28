@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Layanan | CRUDWorks</title>
+    <meta name="description" content="Detail layanan dan solusi bisnis dari CRUDWorks.">
+    <link rel="icon" href="css/favicon.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Fix Relative Paths untuk Pretty URL (detail/id)
+        // Menentukan base URL agar aset (css/img) tetap terbaca dari root
+        let base = window.location.origin + window.location.pathname;
+        if (base.indexOf('/produk/') !== -1) {
+            base = base.substring(0, base.indexOf('/produk/') + 1);
+            document.write('<base href="' + base + '">');
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wa: { light: '#3b82f6', dark: '#1e3a8a', teal: '#2563eb' }
+                    },
+                    fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes shimmer {
+            0% { transform: translateX(-150%); }
+            100% { transform: translateX(150%); }
+        }
+        .animate-shimmer { animation: shimmer 2.5s infinite; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Navbar Sederhana -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="css/logo.png" alt="Logo" class="h-10 w-auto">
+                </a>
+                <a href="index.html#services" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+                    <i class="fa-solid fa-arrow-left"></i> Kembali ke Produk
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
+        <!-- Loading State -->
+        <div id="loading" class="text-center py-20">
+            <i class="fa-solid fa-circle-notch fa-spin text-4xl text-blue-600 mb-4"></i>
+            <p class="text-slate-500">Memuat detail layanan...</p>
+        </div>
+
+        <!-- Detail Container -->
+        <div id="detail-content" class="hidden animate-fade-in-up">
+            <!-- Header Section -->
+            <div id="detail-header" class="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-slate-100 mb-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                    <div id="detail-icon" class="w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0 shadow-sm">
+                        <!-- Icon injected via JS -->
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span id="detail-category" class="px-4 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider"></span>
+                            <span id="detail-price" class="px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 text-sm font-bold"></span>
+                        </div>
+                        <h1 id="detail-title" class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight"></h1>
+                        <div id="detail-desc" class="text-base md:text-lg text-slate-600 leading-relaxed space-y-6 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Features Column -->
+                <div class="lg:col-span-2 bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-900 mb-8 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600"><i class="fa-solid fa-star text-sm"></i></div>
+                        Fitur & Keunggulan
+                    </h3>
+                    <div id="detail-features" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Features injected via JS -->
+                    </div>
+                </div>
+                
+                <!-- CTA Column -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-[2rem] p-8 shadow-lg shadow-blue-900/5 border border-slate-100 sticky top-24">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Tertarik dengan solusi ini?</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">Diskusikan kebutuhan spesifik bisnis Anda dengan tim ahli kami.</p>
+                        
+                        <a href="index.html#contact" class="block w-full py-4 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-center hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transition-all duration-300 mb-4">
+                            Hubungi Kami Sekarang
+                        </a>
+                        <a href="#" target="_blank" id="wa-button" class="block w-full py-4 px-6 rounded-xl border border-slate-200 text-slate-700 font-bold text-center hover:bg-slate-50 transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i> Beli via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products Section -->
+        <div id="related-section" class="mt-20 hidden border-t border-slate-200 pt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8">Produk Terkait</h2>
+            <div id="related-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Related items injected here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+            &copy; 2023 CRUDWorks Indonesia. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Coba ambil ID dari Query String (?id=...)
+            let id = new URLSearchParams(window.location.search).get('id');
+            
+            // Jika tidak ada, coba ambil dari Path URL (detail/...)
+            if (!id) {
+                const pathSegments = window.location.pathname.split('/');
+                id = pathSegments[pathSegments.length - 1]; // Ambil segmen terakhir
+            }
+            
+            if(!id) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                // Fetch data dari API yang sama
+                const response = await fetch('api/index.php?endpoint=services');
+                const services = await response.json();
+                
+                // Cari service berdasarkan ID (pastikan tipe data cocok)
+                const service = services.find(s => s.id == id);
+
+                if(service) {
+                    // Update SEO Meta Tags
+                    document.title = `${service.title} - CRUDWorks`;
+                    document.querySelector('meta[name="description"]').setAttribute("content", service.description);
+
+                    // Render Content
+                    document.getElementById('detail-icon').innerHTML = `<i class="fa-solid fa-${service.icon} text-4xl"></i>`;
+                    document.getElementById('detail-category').innerText = service.category;
+                    
+                    // Render Price with Discount Logic
+                    const priceEl = document.getElementById('detail-price');
+                    if (service.discount_price) {
+                        // Hitung Persentase
+                        const parseVal = (str) => {
+                            let num = parseInt(str.replace(/[^0-9]/g, '')) || 0;
+                            if (str.toLowerCase().includes('rb')) num *= 1000;
+                            return num;
+                        };
+                        const original = parseVal(service.price);
+                        const discounted = parseVal(service.discount_price);
+                        let percentTag = '';
+                        
+                        if (original > 0 && discounted > 0 && original > discounted) {
+                            const percent = Math.round(((original - discounted) / original) * 100);
+                            percentTag = `<span class="ml-2 bg-red-100 text-red-600 px-2 py-0.5 rounded text-[10px] font-extrabold uppercase">Hemat ${percent}%</span>`;
+                        }
+
+                        priceEl.innerHTML = `<span class="line-through opacity-60 mr-2 text-xs text-slate-500">${service.price}</span>${service.discount_price}${percentTag}`;
+                        priceEl.className = "px-4 py-1.5 rounded-full bg-red-50 text-red-600 border border-red-100 text-sm font-bold flex items-center";
+                    } else {
+                        priceEl.innerText = service.price || 'Hubungi Kami';
+                        priceEl.className = "px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 text-sm font-bold";
+                    }
+
+                    document.getElementById('detail-title').innerText = service.title;
+                    document.getElementById('detail-desc').innerHTML = service.detailed_description || service.description;
+
+                    // Render Badge
+                    if (service.badge) {
+                        const badgeEl = document.createElement('div');
+                        
+                        // Logika warna dinamis berdasarkan teks badge
+                        let colorClass = 'from-amber-500 to-orange-600'; // Default (Orange - Best Seller)
+                        const badgeText = service.badge.toLowerCase();
+
+                        if (badgeText === 'new') {
+                            colorClass = 'from-blue-500 to-indigo-600'; // Biru - New
+                        } else if (badgeText === 'promo') {
+                            colorClass = 'from-rose-500 to-pink-600'; // Merah/Pink - Promo
+                        }
+
+                        badgeEl.className = `absolute top-6 right-6 bg-gradient-to-r ${colorClass} text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-xl shadow-gray-200/50 z-20 tracking-wider uppercase overflow-hidden`;
+                        badgeEl.innerHTML = `
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
+                            <span class="relative z-10 flex items-center gap-2">
+                                ${badgeText === 'best seller' ? '<i class="fa-solid fa-crown"></i>' : ''}
+                                ${badgeText === 'new' ? '<i class="fa-solid fa-star"></i>' : ''}
+                                ${badgeText === 'promo' ? '<i class="fa-solid fa-percent"></i>' : ''}
+                                ${service.badge}
+                            </span>
+                        `;
+                        document.getElementById('detail-header').appendChild(badgeEl);
+                    }
+                    
+                    // Update WhatsApp Button dengan Pesan Template
+                    const waBtn = document.getElementById('wa-button');
+                    if (waBtn) {
+                        const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Bisnis Anda
+                        const message = `Halo Admin, saya tertarik untuk membeli/berlangganan produk *${service.title}*. Mohon info lebih lanjut.`;
+                        waBtn.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                    }
+
+                    if (service.features) {
+                        const features = JSON.parse(service.features);
+                        document.getElementById('detail-features').innerHTML = features.map(f => `
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
+                                <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                                <span class="text-slate-700 text-sm font-medium leading-relaxed">${f}</span>
+                            </div>
+                        `).join('');
+                    }
+
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('detail-content').classList.remove('hidden');
+
+                    // Logic for Related Products
+                    const relatedServices = services.filter(s => s.category === service.category && s.id != service.id);
+                    
+                    if (relatedServices.length > 0) {
+                        const relatedContainer = document.getElementById('related-container');
+                        document.getElementById('related-section').classList.remove('hidden');
+                        
+                        relatedServices.forEach(related => {
+                            const card = document.createElement('div');
+                            card.className = 'bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full group';
+                            card.innerHTML = `
+                                <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-${related.icon} text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">${related.title}</h3>
+                                <p class="text-slate-500 text-sm line-clamp-2 mb-4 flex-1">${related.description}</p>
+                                <div class="text-blue-600 text-sm font-bold mt-auto flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></div>
+                            `;
+                            card.addEventListener('click', () => window.location.href = `produk/${related.id}`);
+                            relatedContainer.appendChild(card);
+                        });
+                    }
+                } else {
+                    document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold">Layanan tidak ditemukan.</p><a href="index.html" class="text-blue-600 underline mt-4 block">Kembali ke Beranda</a>';
+                }
+            } catch (error) {
+                console.error(error);
+                document.getElementById('loading').innerHTML = '<p class="text-red-500">Gagal memuat data.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
