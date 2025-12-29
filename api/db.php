@@ -1,13 +1,11 @@
 <?php
-$host = 'localhost';
-$db   = 'web_crudworks';
-$user = 'root'; // Sesuaikan dengan user database Anda
-$pass = '';     // Sesuaikan dengan password database Anda
+require_once 'config.php';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+    $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
+    // Jangan tampilkan detail error di produksi
     die(json_encode(['error' => 'Database connection failed']));
 }
 ?>

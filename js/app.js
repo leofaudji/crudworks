@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadServices() {
         const container = document.getElementById('services-container');
+        if (!container) return; // Mencegah error di halaman lain (misal: tentang.html)
         
         try {
             const response = await fetch(`${API_URL}?endpoint=services`);
@@ -123,12 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
                         ${service.title}
                     </h1>
-                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
+                    <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-loose text-justify">
                         ${service.description}
                     </p>
                     <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <a href="produk/${service.id}" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-1 text-center">
+                            <a href="produk/${service.slug || service.id}" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-1 text-center">
                                 Lihat Detail
                             </a>
                             <a href="#contact" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
@@ -177,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     featuresList = `<div class="mt-6 space-y-3 pt-6 border-t border-slate-100">`;
                     previewFeatures.forEach(feature => {
                         featuresList += `
-                            <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <div class="flex items-start gap-3 text-base text-slate-600">
                                 <div class="mt-1 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 text-blue-600">
                                     <i class="fa-solid fa-check text-[10px]"></i>
                                 </div>
@@ -188,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (features.length > 3) {
                         featuresList += `
-                            <div class="flex items-center gap-2 text-xs font-medium text-blue-600 mt-3 pl-8">
+                            <div class="flex items-center gap-2 text-sm font-medium text-blue-600 mt-3 pl-8">
                                 <i class="fa-solid fa-plus"></i>
                                 <span>${features.length - 3} fitur lainnya</span>
                             </div>
@@ -280,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${priceHtml}
                     
                     <!-- Description -->
-                    <p class="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                    <p class="text-slate-600 text-base leading-relaxed mb-4 line-clamp-3">
                         ${service.description}
                     </p>
 
@@ -289,48 +290,71 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${featuresList}
                         
                         <!-- CTA Button -->
-                        <div class="mt-8 w-full py-3 rounded-xl border border-slate-200 text-slate-600 font-bold text-sm text-center group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300">
+                        <div class="mt-8 w-full py-3 rounded-xl border border-slate-200 text-slate-600 font-bold text-lg text-center group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300">
                             Lihat Detail
                         </div>
                     </div>
                 </div>
             `;
             card.addEventListener('click', () => {
-                window.location.href = `produk/${service.id}`;
+                window.location.href = `produk/${service.slug || service.id}`;
             });
             container.appendChild(card);
         });
     }
 
-    // Logic Filter Buttons
+    // --- LOGIC FILTER & SEARCH (Unified) ---
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    const filterAndRender = () => {
+        // 1. Filter Data (Category + Search)
+        const filtered = allServicesData.filter(item => {
+            const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
+            const matchesSearch = item.title.toLowerCase().includes(searchQuery) || 
+                                  item.description.toLowerCase().includes(searchQuery);
+            return matchesCategory && matchesSearch;
+        });
+
+        // 2. Animation Out
+        const container = document.getElementById('services-container');
+        Array.from(container.children).forEach(child => {
+            child.classList.remove('animate-fade-in-up');
+            child.classList.add('animate-fade-out');
+        });
+
+        // 3. Render New Data (Wait for animation)
+        setTimeout(() => {
+            renderServices(filtered);
+        }, 300);
+    };
+
+    // Search Input Listener
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        let debounceTimer;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                searchQuery = e.target.value.toLowerCase().trim();
+                filterAndRender();
+            }, 300); // Debounce 300ms agar tidak render setiap keystroke
+        });
+    }
+
+    // Filter Buttons Listener
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Reset style tombol
+            // UI Update (Active State)
             filterBtns.forEach(b => {
                 b.className = 'filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300';
             });
-            
-            // Set style aktif
             btn.className = 'filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-wa-teal text-white shadow-lg shadow-blue-500/30';
 
-            const filterValue = btn.getAttribute('data-filter');
-            
-            // Animasi Fade Out sebelum render ulang
-            const container = document.getElementById('services-container');
-            Array.from(container.children).forEach(child => {
-                child.classList.remove('animate-fade-in-up');
-                child.classList.add('animate-fade-out');
-            });
-
-            setTimeout(() => {
-                if (filterValue === 'all') {
-                    renderServices(allServicesData);
-                } else {
-                    const filtered = allServicesData.filter(item => item.category === filterValue);
-                    renderServices(filtered);
-                }
-            }, 300); // Tunggu 300ms sesuai durasi animasi fadeOut
+            // Update State & Render
+            activeCategory = btn.getAttribute('data-filter');
+            filterAndRender();
         });
     });
 
@@ -785,4 +809,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const featuresSection = document.querySelector('.feature-item')?.closest('section');
     if (featuresSection) featureObserver.observe(featuresSection);
+
+    // 10. Back to Top Button Logic
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
+            } else {
+                backToTopBtn.classList.add('translate-y-20', 'opacity-0');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });

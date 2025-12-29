@@ -1,5 +1,20 @@
 RewriteEngine On
 
+# Mengarahkan error 404 ke halaman kustom
+ErrorDocument 404 /404.html
+
 # Rewrite produk/ID menjadi produk.html?id=ID
 # Menangani format: domain.com/crudworks/produk/2
-RewriteRule ^produk/([0-9]+)/?$ produk.html?id=$1 [L,QSA]
+RewriteRule ^produk/([a-zA-Z0-9-]+)/?$ produk.html?slug=$1 [L,QSA]
+
+# Menghilangkan ekstensi .php (Pretty URL)
+# Jika request bukan folder dan file.php tersedia, rewrite ke file.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Menghilangkan ekstensi .html (Pretty URL)
+# Jika request bukan folder dan file.html tersedia, rewrite ke file.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]

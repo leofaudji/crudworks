@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami | CRUDWorks</title>
+    <link rel="icon" href="css/favicon.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Tentang Kami | CRUDWorks">
+    <meta property="og:description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
+    <meta property="og:url" content="https://www.crudworks.com/tentang">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wa: { light: '#3b82f6', dark: '#1e3a8a', teal: '#2563eb' }
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-grid-pattern { background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 24px 24px; }
+        .animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased bg-grid-pattern">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+                    <img src="css/logo.png" alt="Logo" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                </a>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-2">
+                        <a href="index.html" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Beranda</a>
+                        <a href="index.html#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Produk</a>
+                        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50 transition-all">Tentang Kami</a>
+                        <a href="index.html#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all">Hubungi Kami</a>
+                    </div>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">Beranda</a>
+                <a href="index.html#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">Produk</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 bg-blue-50">Tentang Kami</a>
+                <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[120px] opacity-20 -mr-20 -mt-20"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600 rounded-full blur-[100px] opacity-20 -ml-20 -mb-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold tracking-wide uppercase mb-6 border border-blue-500/30">
+                Mengenal CRUDWorks
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+                Mitra Transformasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Digital Anda</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-loose">
+                Berawal dari UMKM untuk UMKM. Berbekal pengalaman lebih dari 15 tahun di industri, kami hadir sebagai mitra teknologi yang mengerti perjuangan Anda merintis bisnis dari nol.
+            </p>
+        </div>
+    </section>
+
+    <!-- History / Timeline Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Perjalanan Kami</h2>
+                <p class="text-slate-500 mt-4 text-lg leading-relaxed">Dari ide sederhana menjadi solusi yang dipercaya bisnis.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-slate-200 hidden md:block"></div>
+
+                <div class="space-y-12">
+                    <!-- Timeline Item 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-5/12 text-center md:text-right order-2 md:order-1 animate-fade-in-up">
+                            <h3 class="text-2xl font-bold text-slate-900"><span class="counter" data-target="2020">0</span>: Awal Mula</h3>
+                            <p class="text-slate-500 mt-2 text-base leading-relaxed">CRUDWorks lahir dari semangat sederhana untuk membantu sesama rekan UMKM yang kesulitan mengelola administrasi manual.</p>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10 hidden md:flex items-center justify-center order-1 md:order-2"></div>
+                        <div class="md:w-5/12 order-3"></div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-5/12 order-3 md:order-1"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-emerald-500 rounded-full border-4 border-white shadow-lg z-10 hidden md:flex items-center justify-center order-1 md:order-2"></div>
+                        <div class="md:w-5/12 text-center md:text-left order-2 md:order-3 animate-fade-in-up">
+                            <h3 class="text-2xl font-bold text-slate-900"><span class="counter" data-target="2021">0</span>: Membangun Pondasi</h3>
+                            <p class="text-slate-500 mt-2 text-base leading-relaxed">Mulai dipercaya oleh puluhan UMKM lokal. Kami belajar langsung dari masukan pelanggan untuk menyempurnakan fitur.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-5/12 text-center md:text-right order-2 md:order-1 animate-fade-in-up">
+                            <h3 class="text-2xl font-bold text-slate-900"><span class="counter" data-target="2022">0</span>: Tumbuh Bersama</h3>
+                            <p class="text-slate-500 mt-2 text-base leading-relaxed">Tanpa investor besar, kami tumbuh secara organik. Kualitas layanan kami mulai dikenal luas dari mulut ke mulut antar komunitas bisnis.</p>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-amber-500 rounded-full border-4 border-white shadow-lg z-10 hidden md:flex items-center justify-center order-1 md:order-2"></div>
+                        <div class="md:w-5/12 order-3"></div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-5/12 order-3 md:order-1"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-purple-600 rounded-full border-4 border-white shadow-lg z-10 hidden md:flex items-center justify-center order-1 md:order-2"></div>
+                        <div class="md:w-5/12 text-center md:text-left order-2 md:order-3 animate-fade-in-up">
+                            <h3 class="text-2xl font-bold text-slate-900"><span class="counter" data-target="2023">0</span>: Go Digital</h3>
+                            <p class="text-slate-500 mt-2 text-base leading-relaxed">Memperluas jangkauan melalui kanal digital. Kini kami siap melayani kebutuhan UMKM di seluruh pelosok negeri dengan sepenuh hati.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Tim Di Balik Layar</h2>
+                <p class="text-slate-500 mt-4 text-lg leading-relaxed">Para ahli yang berdedikasi untuk kesuksesan bisnis Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Member 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 text-center group border border-slate-100">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-blue-50 group-hover:ring-blue-200 transition-all">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="CEO" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Andi Pratama</h3>
+                    <p class="text-blue-600 font-medium text-sm mb-4">Chief Executive Officer</p>
+                    <div class="flex justify-center gap-4 text-slate-400">
+                        <a href="#" class="hover:text-blue-600 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 text-center group border border-slate-100">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-emerald-50 group-hover:ring-emerald-200 transition-all">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="CTO" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Siti Aminah</h3>
+                    <p class="text-emerald-600 font-medium text-sm mb-4">Chief Technology Officer</p>
+                    <div class="flex justify-center gap-4 text-slate-400">
+                        <a href="#" class="hover:text-blue-600 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="hover:text-gray-800 transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 text-center group border border-slate-100">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-amber-50 group-hover:ring-amber-200 transition-all">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Product" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Budi Santoso</h3>
+                    <p class="text-amber-600 font-medium text-sm mb-4">Head of Product</p>
+                    <div class="flex justify-center gap-4 text-slate-400">
+                        <a href="#" class="hover:text-blue-600 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="hover:text-pink-600 transition-colors"><i class="fa-brands fa-dribbble text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 text-center group border border-slate-100">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-rose-50 group-hover:ring-rose-200 transition-all">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Marketing" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Diana Putri</h3>
+                    <p class="text-rose-600 font-medium text-sm mb-4">VP of Marketing</p>
+                    <div class="flex justify-center gap-4 text-slate-400">
+                        <a href="#" class="hover:text-blue-600 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="hover:text-rose-500 transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Sama dengan index.html) -->
+    <footer class="bg-white text-slate-800 pt-16 pb-8 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+                <div class="lg:col-span-2">
+                    <div class="mb-6"><img src="css/logo.png" alt="Logo" class="h-10 w-auto"></div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-sm">Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-slate-900">Tautan Cepat</h3>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Beranda</a></li>
+                        <li><a href="index.html#services" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Produk & Layanan</a></li>
+                        <li><a href="#" class="text-blue-600 font-bold transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Tentang Kami</a></li>
+                        <li><a href="karir" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Karir</a></li>
+                        <li><a href="index.html#contact" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-slate-900">Hubungi Kami</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-slate-600 text-sm"><div class="w-5 flex justify-center text-blue-600 mt-0.5"><i class="fa-solid fa-location-dot"></i></div><span>Perum Puri Nirwana Pandanwangi 21 Malang 65124</span></li>
+                        <li class="flex items-center gap-3 text-slate-600 text-sm"><div class="w-5 flex justify-center text-blue-600"><i class="fa-solid fa-envelope"></i></div><span>info@crudworks.com</span></li>
+                        <li class="flex items-center gap-3 text-slate-600 text-sm"><div class="w-5 flex justify-center text-blue-600"><i class="fa-solid fa-phone"></i></div><span>087759651803</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-8 text-center"><p class="text-slate-500 text-sm">&copy; <script>document.write(new Date().getFullYear())</script> CRUDWorks Karya Anak Indonesia. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6287759651803?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20layanan%20CRUDWorks" target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-xl z-50 hover:bg-[#20bd5a] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group focus:outline-none ring-4 ring-white/30">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-white text-gray-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat Kami</span>
+    </a>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

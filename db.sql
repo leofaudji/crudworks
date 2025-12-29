@@ -3,6 +3,7 @@ USE web_crudworks;
 CREATE TABLE services (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
+    slug VARCHAR(255) NOT NULL UNIQUE,
     category VARCHAR(50) NOT NULL,
     description TEXT NOT NULL,
     detailed_description TEXT,
@@ -10,7 +11,8 @@ CREATE TABLE services (
     price VARCHAR(50),
     discount_price VARCHAR(50) DEFAULT NULL,
     features TEXT,
-    badge VARCHAR(50) DEFAULT NULL
+    badge VARCHAR(50) DEFAULT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE messages (
@@ -21,11 +23,26 @@ CREATE TABLE messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE careers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    status ENUM('Open', 'Closed') DEFAULT 'Open',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO careers (title, location, type) VALUES
+('Full Stack Developer (PHP/Laravel)', 'Malang / Remote', 'Full Time'),
+('Digital Marketing Specialist', 'Malang', 'Full Time'),
+('Sales Executive (B2B)', 'Remote (Jabodetabek)', 'Contract');
+
 TRUNCATE TABLE services;
 
-INSERT INTO services (title, category, description, detailed_description, icon, price, discount_price, features, badge) VALUES
+INSERT INTO services (title, slug, category, description, detailed_description, icon, price, discount_price, features, badge) VALUES
 (
     'Laporan Keuangan', 
+    'laporan-keuangan',
     'finance', 
     'Otomatisasi pembukuan, neraca, dan laporan laba rugi yang akurat sesuai standar akuntansi.', 
     '<p>Mengelola keuangan bisnis tidak pernah semudah ini. <strong>Laporan Keuangan CRUDWorks</strong> menghadirkan solusi pembukuan cerdas yang mengotomatisasi proses akuntansi manual yang memakan waktu.</p><p>Dengan fitur rekonsiliasi bank otomatis, Anda dapat memangkas waktu penutupan buku hingga 50%. Dapatkan wawasan mendalam melalui dashboard analitik yang menyajikan tren pendapatan, biaya operasional, dan profitabilitas secara visual dan <em>real-time</em>.</p><ul class="list-disc pl-5 space-y-2"><li><strong>Akurasi Tinggi:</strong> Minimalkan human error dalam perhitungan neraca dan laba rugi.</li><li><strong>Kepatuhan Pajak:</strong> Laporan yang siap untuk pelaporan pajak sesuai regulasi terbaru.</li><li><strong>Akses Multi-User:</strong> Berikan akses spesifik untuk akuntan, manajer, dan pemilik bisnis.</li></ul>', 
@@ -37,6 +54,7 @@ INSERT INTO services (title, category, description, detailed_description, icon, 
 ),
 (
     'Aplikasi Retail', 
+    'aplikasi-retail',
     'operational', 
     'Kelola stok inventaris, penjualan kasir (POS), dan pelanggan toko retail dalam satu platform.', 
     '<p>Tingkatkan efisiensi operasional toko Anda dengan <strong>Aplikasi Retail Terpadu</strong>. Dirancang khusus untuk bisnis ritel modern yang membutuhkan kecepatan dan ketepatan.</p><p>Sistem Point of Sales (POS) kami tidak hanya mencatat transaksi, tetapi juga terhubung langsung dengan inventaris gudang. Saat kasir memindai barang, stok otomatis berkurang secara real-time, mencegah selisih stok yang merugikan.</p><p>Fitur unggulan meliputi:</p><ul class="list-disc pl-5 space-y-2"><li><strong>Manajemen Multi-Cabang:</strong> Pantau performa seluruh outlet dari satu dashboard pusat.</li><li><strong>Analisa Terlaris:</strong> Ketahui produk mana yang paling laku (fast moving) dan yang menumpuk di gudang.</li><li><strong>Promosi Fleksibel:</strong> Atur diskon, bundling, atau flash sale dengan mudah.</li></ul>', 
@@ -48,6 +66,7 @@ INSERT INTO services (title, category, description, detailed_description, icon, 
 ),
 (
     'Sistem HR & Payroll', 
+    'sistem-hr-payroll',
     'hr', 
     'Manajemen data karyawan, absensi online, dan perhitungan gaji otomatis yang terintegrasi.', 
     '<p>Transformasikan departemen HR Anda dari administrasi manual menjadi mitra strategis bisnis. <strong>Sistem HR & Payroll</strong> kami menangani kerumitan perhitungan gaji, pajak (PPh 21), dan BPJS secara otomatis.</p><p>Dilengkapi dengan aplikasi mobile untuk karyawan (Employee Self-Service), tim Anda dapat melakukan absensi berbasis GPS, mengajukan cuti, dan mengunduh slip gaji langsung dari smartphone mereka.</p><p>Manfaat utama:</p><ul class="list-disc pl-5 space-y-2"><li><strong>Hemat Waktu:</strong> Proses payroll ratusan karyawan selesai dalam hitungan menit.</li><li><strong>Transparansi:</strong> Karyawan dapat melihat rincian gaji dan potongan dengan jelas.</li><li><strong>Database Terpusat:</strong> Simpan dokumen karyawan, kontrak, dan riwayat karir dengan aman.</li></ul>', 
@@ -59,6 +78,7 @@ INSERT INTO services (title, category, description, detailed_description, icon, 
 ),
 (
     'Manajemen Koperasi', 
+    'manajemen-koperasi',
     'finance', 
     'Solusi digital untuk simpan pinjam, keanggotaan, dan sisa hasil usaha (SHU) koperasi.', 
     '<p>Modernisasi koperasi Anda untuk menarik generasi baru anggota. Platform <strong>Manajemen Koperasi Digital</strong> kami membawa transparansi dan kemudahan akses yang selama ini menjadi tantangan koperasi konvensional.</p><p>Anggota dapat memantau saldo simpanan dan sisa pinjaman mereka secara real-time melalui aplikasi. Pengurus dapat mengelola pembagian Sisa Hasil Usaha (SHU) dengan rumus yang adil dan transparan sesuai AD/ART.</p>', 
@@ -70,6 +90,7 @@ INSERT INTO services (title, category, description, detailed_description, icon, 
 ),
 (
     'Aplikasi Membership', 
+    'aplikasi-membership',
     'operational', 
     'Bangun loyalitas pelanggan dengan sistem membership digital. Kelola poin, tier member, dan promo khusus secara otomatis.', 
     '<p>Ubah pembeli satu kali menjadi pelanggan setia seumur hidup. <strong>Aplikasi Membership</strong> membantu Anda membangun hubungan personal dengan pelanggan melalui program loyalitas berbasis data.</p><p>Kumpulkan data perilaku belanja pelanggan dan gunakan untuk mengirimkan penawaran yang sangat relevan. Sistem poin dan tiering (Silver, Gold, Platinum) memicu gamifikasi yang mendorong pelanggan untuk berbelanja lebih sering.</p>', 
@@ -81,6 +102,7 @@ INSERT INTO services (title, category, description, detailed_description, icon, 
 ),
 (
     'Custom By Requirement', 
+    'custom-by-requirement',
     'operational', 
     'Solusi software tailor-made yang dirancang khusus mengikuti alur bisnis unik perusahaan Anda. Fleksibel dan scalable.', 
     '<p>Setiap bisnis memiliki keunikan tersendiri, dan terkadang solusi "siap pakai" tidak cukup. Layanan <strong>Custom Software Development</strong> kami hadir untuk menerjemahkan proses bisnis spesifik Anda menjadi solusi digital yang presisi.</p><p>Kami menggunakan pendekatan <em>Agile Development</em> yang melibatkan Anda dalam setiap tahap, memastikan hasil akhir benar-benar sesuai ekspektasi dan kebutuhan operasional Anda.</p>', 

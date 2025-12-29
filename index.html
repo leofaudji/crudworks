@@ -3,12 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solusi Bisnis Terpadu | Company Profile</title>
+    <title>Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.</title>
+    <meta name="description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
     <link rel="icon" href="css/favicon.png" type="image/png">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
+    <meta property="og:description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
+    <meta property="og:url" content="https://www.crudworks.com/">
+    <meta property="og:type" content="website">
+    <meta name="google-site-verification" content="N1SsfabTCBFapjYbbf9PtA7HhQVHoIz0VpLoPiMsdDQ" />
+
     <!-- Font Awesome untuk Ikon -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CRUDWorks Karya Anak Indonesia",
+      "url": "https://www.crudworks.com",
+      "logo": "https://www.crudworks.com/css/logo.png",
+      "description": "Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Perum Puri Nirwana Pandanwangi 21",
+        "addressLocality": "Malang",
+        "postalCode": "65124",
+        "addressCountry": "ID"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "087759651803",
+        "contactType": "customer service",
+        "email": "info@crudworks.com"
+      }
+    }
+    </script>
     
     <script>
         tailwind.config = {
@@ -22,7 +58,7 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     }
                 }
             }
@@ -54,6 +90,12 @@
             100% { transform: translateX(150%); }
         }
         .animate-shimmer { animation: shimmer 2.5s infinite; }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+        .animate-marquee { animation: marquee 30s linear infinite; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased bg-grid-pattern">
@@ -72,7 +114,7 @@
                     <div class="ml-10 flex items-center space-x-2">
                         <a href="#home" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Beranda</a>
                         <a href="#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Produk</a>
-                        <a href="#about" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Tentang Kami</a>
+                        <a href="tentang" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Tentang Kami</a>
                         <a href="#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-300">
                             Hubungi Kami
                         </a>
@@ -93,7 +135,7 @@
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Beranda</a>
                 <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Produk</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Tentang Kami</a>
+                <a href="tentang" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Tentang Kami</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-wa-teal hover:bg-wa-dark transition text-center mt-4">Hubungi Kami</a>
             </div>
         </div>
@@ -115,14 +157,14 @@
                 <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
                     <div class="inline-flex items-center px-3 py-1 rounded-full border border-blue-100 bg-blue-50 text-blue-600 text-xs font-semibold tracking-wide uppercase mb-6">
                         <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-ping"></span>
-                        Solusi #1 Untuk UMKM
+                        Platform SaaS #1 Untuk UMKM
                     </div>
                     <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
                         Kelola Bisnis Jadi <br class="hidden lg:block">
                         <span class="bg-clip-text text-transparent bg-gradient-to-r from-wa-teal to-wa-light">Lebih Mudah & Cepat</span>
                     </h1>
-                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
-                        Tinggalkan cara lama. Beralih ke platform digital terintegrasi untuk pembukuan, kasir, dan manajemen karyawan dalam satu aplikasi.
+                    <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
+                        Tinggalkan cara lama. Beralih ke layanan SaaS (Software as a Service) terintegrasi untuk pembukuan, kasir, dan manajemen karyawan dalam satu aplikasi berbasis cloud.
                     </p>
                     <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -208,7 +250,7 @@
                             Kelola Karyawan <br class="hidden lg:block">
                             <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500">Tanpa Sakit Kepala</span>
                         </h1>
-                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
+                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
                             Hitung gaji, pajak, dan BPJS secara otomatis. Pantau absensi dan cuti karyawan dalam satu dashboard yang terintegrasi.
                         </p>
                         <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
@@ -274,7 +316,7 @@
                             Laporan Keuangan <br class="hidden lg:block">
                             <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500">Akurat & Real-time</span>
                         </h1>
-                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
+                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
                             Pantau arus kas, laba rugi, dan neraca kapan saja. Buat keputusan bisnis strategis berdasarkan data yang valid.
                         </p>
                         <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
@@ -338,7 +380,7 @@
                             Software Sesuai <br class="hidden lg:block">
                             <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Kebutuhan Unik Anda</span>
                         </h1>
-                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 text-justify">
+                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
                             Tidak semua bisnis cocok dengan solusi instan. Kami rancang sistem yang mengikuti alur kerja spesifik perusahaan Anda.
                         </p>
                         <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
@@ -410,6 +452,34 @@
         </div>
     </section>
 
+    <!-- Tech Stack Marquee (New Feature) -->
+    <div class="py-10 bg-white border-b border-slate-100 overflow-hidden">
+        <p class="text-center text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Powered by Modern Technology</p>
+        <div class="relative flex overflow-x-hidden group">
+            <div class="animate-marquee whitespace-nowrap flex gap-16 items-center min-w-full px-8">
+                <!-- Original Set -->
+                <i class="fa-brands fa-php text-4xl text-slate-300 hover:text-[#777BB4] transition-colors duration-300 cursor-pointer" title="PHP"></i>
+                <i class="fa-brands fa-laravel text-4xl text-slate-300 hover:text-[#FF2D20] transition-colors duration-300 cursor-pointer" title="Laravel"></i>
+                <i class="fa-brands fa-js text-4xl text-slate-300 hover:text-[#F7DF1E] transition-colors duration-300 cursor-pointer" title="JavaScript"></i>
+                <i class="fa-brands fa-react text-4xl text-slate-300 hover:text-[#61DAFB] transition-colors duration-300 cursor-pointer" title="React"></i>
+                <i class="fa-brands fa-vuejs text-4xl text-slate-300 hover:text-[#4FC08D] transition-colors duration-300 cursor-pointer" title="Vue.js"></i>
+                <i class="fa-brands fa-docker text-4xl text-slate-300 hover:text-[#2496ED] transition-colors duration-300 cursor-pointer" title="Docker"></i>
+                <i class="fa-brands fa-aws text-4xl text-slate-300 hover:text-[#FF9900] transition-colors duration-300 cursor-pointer" title="AWS"></i>
+                <i class="fa-brands fa-google text-4xl text-slate-300 hover:text-[#4285F4] transition-colors duration-300 cursor-pointer" title="Google Cloud"></i>
+                
+                <!-- Duplicate Set for Seamless Loop -->
+                <i class="fa-brands fa-php text-4xl text-slate-300 hover:text-[#777BB4] transition-colors duration-300 cursor-pointer" title="PHP"></i>
+                <i class="fa-brands fa-laravel text-4xl text-slate-300 hover:text-[#FF2D20] transition-colors duration-300 cursor-pointer" title="Laravel"></i>
+                <i class="fa-brands fa-js text-4xl text-slate-300 hover:text-[#F7DF1E] transition-colors duration-300 cursor-pointer" title="JavaScript"></i>
+                <i class="fa-brands fa-react text-4xl text-slate-300 hover:text-[#61DAFB] transition-colors duration-300 cursor-pointer" title="React"></i>
+                <i class="fa-brands fa-vuejs text-4xl text-slate-300 hover:text-[#4FC08D] transition-colors duration-300 cursor-pointer" title="Vue.js"></i>
+                <i class="fa-brands fa-docker text-4xl text-slate-300 hover:text-[#2496ED] transition-colors duration-300 cursor-pointer" title="Docker"></i>
+                <i class="fa-brands fa-aws text-4xl text-slate-300 hover:text-[#FF9900] transition-colors duration-300 cursor-pointer" title="AWS"></i>
+                <i class="fa-brands fa-google text-4xl text-slate-300 hover:text-[#4285F4] transition-colors duration-300 cursor-pointer" title="Google Cloud"></i>
+            </div>
+        </div>
+    </div>
+
     <!-- Statistics Section -->
     <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 relative overflow-hidden">
         <!-- Background Elements -->
@@ -426,7 +496,7 @@
                         <i class="fa-solid fa-users text-2xl"></i>
                     </div>
                     <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
-                        <span class="counter" data-target="15000">0</span><span class="text-blue-500 ml-1">+</span>
+                        <span class="counter" data-target="150">0</span><span class="text-blue-500 ml-1">+</span>
                     </div>
                     <p class="text-blue-200 font-medium text-sm uppercase tracking-widest">Pengguna Aktif</p>
                 </div>
@@ -437,7 +507,7 @@
                         <i class="fa-solid fa-building text-2xl"></i>
                     </div>
                     <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
-                        <span class="counter" data-target="500">0</span><span class="text-emerald-500 ml-1">+</span>
+                        <span class="counter" data-target="15">0</span><span class="text-emerald-500 ml-1">+</span>
                     </div>
                     <p class="text-emerald-200 font-medium text-sm uppercase tracking-widest">Perusahaan</p>
                 </div>
@@ -475,6 +545,14 @@
                 <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                     Apa yang kami tawarkan?
                 </p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="max-w-lg mx-auto mb-10 relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
+                </div>
+                <input type="text" id="search-input" class="block w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-full leading-5 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 shadow-sm hover:shadow-md transition-all duration-300" placeholder="Cari layanan atau produk...">
             </div>
 
             <!-- Filter Categories -->
@@ -540,48 +618,48 @@
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                             <i class="fa-solid fa-bolt"></i>
                         </div>
-                        <h3 class="text-xl font-bold leading-8 text-gray-900">Performa Cepat</h3>
-                        <p class="mt-2 text-base leading-7 text-gray-600">Akses data instan dengan infrastruktur cloud modern untuk produktivitas maksimal.</p>
+                        <h3 class="text-xl font-bold text-slate-900">Performa Cepat</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Akses data instan dengan infrastruktur cloud modern untuk produktivitas maksimal.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
-                        <h3 class="text-xl font-bold leading-8 text-gray-900">Keamanan Terjamin</h3>
-                        <p class="mt-2 text-base leading-7 text-gray-600">Data aman dengan enkripsi tingkat bank dan backup otomatis harian.</p>
+                        <h3 class="text-xl font-bold text-slate-900">Keamanan Terjamin</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Data aman dengan enkripsi tingkat bank dan backup otomatis harian.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-violet-100 text-violet-600">
                             <i class="fa-solid fa-sync"></i>
                         </div>
-                        <h3 class="text-xl font-bold leading-8 text-gray-900">Integrasi Penuh</h3>
-                        <p class="mt-2 text-base leading-7 text-gray-600">Satu sistem untuk semua, minimalkan kesalahan dan hemat waktu operasional.</p>
+                        <h3 class="text-xl font-bold text-slate-900">Integrasi Penuh</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Satu sistem untuk semua, minimalkan kesalahan dan hemat waktu operasional.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-rose-100 text-rose-600">
                             <i class="fa-solid fa-headset"></i>
                         </div>
-                        <h3 class="text-xl font-bold leading-8 text-gray-900">Support Prioritas</h3>
-                        <p class="mt-2 text-base leading-7 text-gray-600">Bantuan teknis 24/7 untuk memastikan bisnis Anda berjalan lancar tanpa henti.</p>
+                        <h3 class="text-xl font-bold text-slate-900">Support Prioritas</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Bantuan teknis 24/7 untuk memastikan bisnis Anda berjalan lancar tanpa henti.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600">
                             <i class="fa-solid fa-chart-pie"></i>
                         </div>
-                        <h3 class="text-xl font-bold leading-8 text-gray-900">Analitik Cerdas</h3>
-                        <p class="mt-2 text-base leading-7 text-gray-600">Ambil keputusan strategis lebih cepat berdasarkan data real-time.</p>
+                        <h3 class="text-xl font-bold text-slate-900">Analitik Cerdas</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Ambil keputusan strategis lebih cepat berdasarkan data real-time.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-cyan-100 text-cyan-600">
                             <i class="fa-solid fa-mobile-screen-button"></i>
                         </div>
-                        <h3 class="text-xl font-bold leading-8 text-gray-900">Akses Multi-Platform</h3>
-                        <p class="mt-2 text-base leading-7 text-gray-600">Pantau bisnis dari mana saja melalui aplikasi mobile dan web.</p>
+                        <h3 class="text-xl font-bold text-slate-900">Akses Multi-Platform</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Pantau bisnis dari mana saja melalui aplikasi mobile dan web.</p>
                     </div>
                         </div>
                     </div>
@@ -591,84 +669,95 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white overflow-hidden">
+    <section id="about" class="py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                <div class="mb-12 lg:mb-0 relative">
-                    <div class="relative rounded-2xl shadow-xl overflow-hidden group aspect-video lg:aspect-[4/5]">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tim CRUDWorks" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-wa-dark/80 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-8">
-                            <p class="text-white text-xl font-bold italic">"Kami membangun jembatan antara potensi bisnis dan teknologi masa depan."</p>
-                            <div class="mt-4 flex items-center gap-3">
-                                <div class="h-1 w-12 bg-wa-light rounded-full"></div>
-                                <p class="text-blue-100 text-sm font-medium">Board of Directors CRUDWorks</p>
-                            </div>
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 lg:items-start">
+                
+                <!-- Left Column: Text Content -->
+                <div class="lg:col-span-7">
+                    <div class="text-left">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-wa-teal text-xs font-bold tracking-wide uppercase mb-4">
+                            <span class="w-2 h-2 bg-wa-teal rounded-full mr-2"></span> Tentang Kami
+                        </div>
+                    <h2 class="text-3xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-6">
+                            Lebih Dari Sekadar <span class="text-wa-teal">Software House</span>
+                        </h2>
+                    <div class="text-lg text-slate-600 mb-12 leading-relaxed space-y-6">
+                            <p>
+                            CRUDWorks lahir dari semangat gotong royong sesama pelaku UMKM. Berbekal pengalaman lebih dari 15 tahun di industri, kami memahami betapa menantangnya mengelola bisnis dengan sumber daya terbatas. Sejak 2020, kami merintis usaha ini dari nol, tumbuh secara organik tanpa pendanaan besar, namun dengan tekad kuat untuk menghadirkan solusi teknologi yang terjangkau.
+                            </p>
+                            <p>
+                            Kami percaya bahwa kepercayaan pelanggan adalah modal terbesar kami. Melalui rekomendasi dari mulut ke mulut dan jangkauan digital, kami terus berinovasi untuk menjawab kebutuhan nyata di lapangan.
+                            </p>
                         </div>
                     </div>
-                    <!-- Decorative Element -->
-                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-100 rounded-full blur-3xl -z-10 opacity-70"></div>
-                    <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-indigo-100 rounded-full blur-3xl -z-10 opacity-70"></div>
-                </div>
-                
-                <div>
-                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-wa-teal text-xs font-bold tracking-wide uppercase mb-4">
-                        <span class="w-2 h-2 bg-wa-teal rounded-full mr-2"></span> Tentang Kami
-                    </div>
-                    <h2 class="text-3xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-6">
-                        Lebih Dari Sekadar <span class="text-wa-teal">Software House</span>
-                    </h2>
-                    <p class="text-lg text-gray-500 mb-8 leading-relaxed text-justify">
-                        CRUDWorks lahir dari keyakinan bahwa teknologi canggih seharusnya mudah diakses oleh semua skala bisnis. Sejak 2020, kami telah membantu lebih dari 500 perusahaan bertransformasi digital. Kami memadukan <strong>desain intuitif</strong>, <strong>keamanan tingkat bank</strong>, dan <strong>analitik cerdas</strong> untuk memberdayakan operasional Anda sehari-hari.
-                        <br><br>
-                        Tim kami terdiri dari insinyur perangkat lunak, desainer produk, dan analis bisnis yang berdedikasi untuk menciptakan ekosistem digital yang tidak hanya efisien, tetapi juga menyenangkan untuk digunakan. Kami percaya bahwa software yang baik adalah software yang tidak terasa rumit, namun mampu menyelesaikan masalah kompleks di latar belakang.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <!-- Item 1 -->
-                        <div class="flex group">
-                            <div class="flex-shrink-0 mr-4">
-                                <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
+
+                    <!-- Core Values Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Value 1 -->
+                        <div class="group p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 hover:border-blue-200 transition-all duration-300">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                                     <i class="fa-solid fa-earth-asia text-2xl"></i>
                                 </div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Visi Global</h4>
-                                <p class="mt-1 text-gray-500 text-sm leading-relaxed text-justify">
-                                    Membawa standar teknologi internasional ke pasar lokal untuk daya saing global.
-                                </p>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Semangat Lokal</h4>
+                                    <p class="text-base text-slate-500 leading-relaxed">
+                                    Solusi yang dirancang khusus untuk karakteristik dan kebutuhan unik pasar Indonesia.
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <!-- Item 2 -->
-                        <div class="flex group">
-                            <div class="flex-shrink-0 mr-4">
-                                <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-amber-100 text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <!-- Value 2 -->
+                        <div class="group p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-amber-900/5 hover:border-amber-200 transition-all duration-300">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
                                     <i class="fa-solid fa-lightbulb text-2xl"></i>
                                 </div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-gray-900 group-hover:text-amber-600 transition-colors">Inovasi Tanpa Henti</h4>
-                                <p class="mt-1 text-gray-500 text-sm leading-relaxed text-justify">
-                                    Riset berkelanjutan dalam AI dan Machine Learning untuk fitur yang semakin pintar.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div class="flex group">
-                            <div class="flex-shrink-0 mr-4">
-                                <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-emerald-100 text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-sm">
-                                    <i class="fa-solid fa-users-viewfinder text-2xl"></i>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">Tumbuh Bersama</h4>
+                                    <p class="text-base text-slate-500 leading-relaxed">
+                                    Kami mendengarkan setiap masukan Anda. Fitur kami berkembang seiring pertumbuhan bisnis Anda.
+                                    </p>
                                 </div>
                             </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">Fokus Pengguna</h4>
-                                <p class="mt-1 text-gray-500 text-sm leading-relaxed text-justify">
-                                    Desain yang berpusat pada manusia (Human-Centered Design) untuk kemudahan penggunaan maksimal.
-                                </p>
+                        </div>
+                        <!-- Value 3 -->
+                        <div class="group p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 hover:border-emerald-200 transition-all duration-300">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                                    <i class="fa-solid fa-users-viewfinder text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">Fokus Pengguna</h4>
+                                    <p class="text-base text-slate-500 leading-relaxed">
+                                    Desain yang berpusat pada manusia untuk kemudahan penggunaan maksimal.
+                                    </p>
+                                </div>
                             </div>
                         </div>
+                        <!-- Value 4 -->
+                        <div class="group p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-cyan-900/5 hover:border-cyan-200 transition-all duration-300">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
+                                    <i class="fa-solid fa-hand-holding-dollar text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">Harga Transparan</h4>
+                                    <p class="text-base text-slate-500 leading-relaxed">
+                                    Tidak ada biaya tersembunyi. Skema harga jujur yang masuk akal bagi arus kas UMKM.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Image -->
+                <div class="lg:col-span-5 mt-12 lg:mt-0 lg:sticky lg:top-28">
+                    <div class="relative rounded-3xl shadow-2xl overflow-hidden group aspect-[4/5] border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tim CRUDWorks" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
                     </div>
                 </div>
             </div>
@@ -719,7 +808,7 @@
                                 <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah ada biaya langganan bulanan?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
-                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
                                 <p>Ya, kami menawarkan model berlangganan SaaS (Software as a Service) yang fleksibel. Anda dapat memilih tagihan bulanan atau tahunan (hemat hingga 20%). Harga disesuaikan dengan paket fitur yang Anda butuhkan.</p>
                             </div>
                         </div>
@@ -729,7 +818,7 @@
                                 <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah data perusahaan saya aman?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
-                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
                                 <p>Keamanan adalah prioritas utama kami. Kami menggunakan enkripsi SSL 256-bit standar perbankan untuk semua transmisi data. Server kami dilindungi firewall berlapis dan backup otomatis.</p>
                             </div>
                         </div>
@@ -739,7 +828,7 @@
                                 <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah tersedia layanan uji coba gratis?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
-                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
                                 <p>Tentu saja! Anda dapat mencoba seluruh fitur CRUDWorks secara gratis selama 14 hari tanpa komitmen apapun. Tidak perlu kartu kredit untuk mendaftar.</p>
                             </div>
                         </div>
@@ -749,7 +838,7 @@
                                 <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Kendala teknis?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
-                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
                                 <p>Tim support kami yang berdedikasi tersedia 24/7 untuk membantu Anda melalui Live Chat, email, atau telepon.</p>
                             </div>
                         </div>
@@ -759,7 +848,7 @@
                                 <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah bisa integrasi dengan software lain?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
-                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
                                 <p>Ya, CRUDWorks memiliki API terbuka (Open API) yang memungkinkan integrasi mudah dengan berbagai software pihak ketiga seperti CRM, E-commerce, dan sistem perbankan perusahaan Anda.</p>
                             </div>
                         </div>
@@ -769,7 +858,7 @@
                                 <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Bagaimana jika saya ingin berhenti berlangganan?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
-                            <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 text-justify leading-relaxed border-t border-gray-50">
+                            <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
                                 <p>Anda dapat membatalkan langganan kapan saja melalui dashboard akun Anda. Tidak ada kontrak jangka panjang yang mengikat, dan Anda tetap dapat mengekspor seluruh data Anda sebelum akun ditutup.</p>
                             </div>
                         </div>
@@ -816,24 +905,25 @@
     <!-- Footer -->
     <footer class="bg-white text-slate-800 pt-16 pb-8 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
                 <!-- Company Info -->
-                <div>
+                <div class="lg:col-span-2">
                     <div class="mb-6">
                         <img src="css/logo.png" alt="Logo" class="h-10 w-auto">
                     </div>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6 text-justify">
-                        Platform solusi bisnis terpadu untuk membantu perusahaan Anda tumbuh lebih cepat, efisien, dan terukur di era digital.
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-sm">
+                        Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.
                     </p>
                 </div>
 
                 <!-- Quick Links -->
                 <div>
                     <h3 class="text-lg font-bold mb-6 text-slate-900">Tautan Cepat</h3>
-                    <ul class="space-y-3">
+                    <ul class="space-y-4">
                         <li><a href="#home" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Beranda</a></li>
                         <li><a href="#services" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Produk & Layanan</a></li>
-                        <li><a href="#about" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Tentang Kami</a></li>
+                        <li><a href="tentang" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Tentang Kami</a></li>
+                        <li><a href="karir" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Karir</a></li>
                         <li><a href="#faq" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Bantuan (FAQ)</a></li>
                         <li><a href="#contact" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Hubungi Kami</a></li>
                     </ul>
@@ -844,26 +934,32 @@
                     <h3 class="text-lg font-bold mb-6 text-slate-900">Hubungi Kami</h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3 text-slate-600 text-sm">
-                            <i class="fa-solid fa-location-dot mt-1 text-blue-600"></i>
-                            <span>Jl. Jendral Sudirman No. Kav 52-53, SCBD, Jakarta Selatan 12190</span>
+                            <div class="w-5 flex justify-center text-blue-600 mt-0.5">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <span>Perum Puri Nirwana Pandanwangi 21 Malang 65124</span>
                         </li>
                         <li class="flex items-center gap-3 text-slate-600 text-sm">
-                            <i class="fa-solid fa-envelope text-blue-600"></i>
-                            <span>hello@crudworks.id</span>
+                            <div class="w-5 flex justify-center text-blue-600">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <span>info@crudworks.com</span>
                         </li>
                         <li class="flex items-center gap-3 text-slate-600 text-sm">
-                            <i class="fa-solid fa-phone text-blue-600"></i>
-                            <span>+62 21 5555 8888</span>
+                            <div class="w-5 flex justify-center text-blue-600">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <span>087759651803</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-slate-500 text-sm text-center md:text-left">&copy; 2023 CRUDWorks Indonesia. All rights reserved.</p>
+                <p class="text-slate-500 text-sm text-center md:text-left">&copy; <script>document.write(new Date().getFullYear())</script> CRUDWorks Karya Anak Indonesia. All rights reserved.</p>
                 <div class="flex gap-6 text-sm text-slate-500">
-                    <a href="#" class="hover:text-blue-600 transition-all duration-300">Privacy Policy</a>
-                    <a href="#" class="hover:text-blue-600 transition-all duration-300">Terms of Service</a>
+                    <a href="privacy.html" class="hover:text-blue-600 transition-all duration-300">Privacy Policy</a>
+                    <a href="tos.html" class="hover:text-blue-600 transition-all duration-300">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -903,6 +999,17 @@
             </div>
         </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-24 right-8 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg translate-y-20 opacity-0 transition-all duration-300 z-40 hover:bg-blue-700 hover:-translate-y-1 focus:outline-none flex items-center justify-center group">
+        <i class="fa-solid fa-arrow-up group-hover:animate-bounce"></i>
+    </button>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6287759651803?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20layanan%20CRUDWorks" target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-xl z-50 hover:bg-[#20bd5a] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group focus:outline-none ring-4 ring-white/30">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-white text-gray-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat Kami</span>
+    </a>
 
     <!-- Logic JS -->
     <script src="js/app.js"></script>

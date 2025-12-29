@@ -30,6 +30,12 @@ if ($method === 'GET' && $endpoint === 'services') {
         echo json_encode(['status' => 'error', 'message' => 'Data tidak lengkap']);
     }
 
+} elseif ($method === 'GET' && $endpoint === 'careers') {
+    // Ambil data lowongan kerja yang statusnya 'Open'
+    $stmt = $pdo->prepare("SELECT * FROM careers WHERE status = 'Open' ORDER BY created_at DESC");
+    $stmt->execute();
+    echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+
 } else {
     http_response_code(404);
     echo json_encode(['message' => 'Endpoint not found']);

@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Layanan | CRUDWorks</title>
-    <meta name="description" content="Detail layanan dan solusi bisnis dari CRUDWorks.">
+    <meta name="description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
     <link rel="icon" href="css/favicon.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Detail Layanan | CRUDWorks">
+    <meta property="og:description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
+    <meta property="og:url" content="https://www.crudworks.com/produk">
+    <meta property="og:type" content="article">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         // Fix Relative Paths untuk Pretty URL (detail/id)
@@ -24,7 +32,7 @@
                     colors: {
                         wa: { light: '#3b82f6', dark: '#1e3a8a', teal: '#2563eb' }
                     },
-                    fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'] }
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
                 }
             }
         }
@@ -122,22 +130,29 @@
 
     <footer class="bg-white border-t border-slate-200 py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-            &copy; 2023 CRUDWorks Indonesia. All rights reserved.
+            &copy; <script>document.write(new Date().getFullYear())</script> CRUDWorks Karya Anak Indonesia. All rights reserved.
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6287759651803?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20layanan%20CRUDWorks" target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-xl z-50 hover:bg-[#20bd5a] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group focus:outline-none ring-4 ring-white/30">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-white text-gray-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat Kami</span>
+    </a>
+
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            // Coba ambil ID dari Query String (?id=...)
-            let id = new URLSearchParams(window.location.search).get('id');
+            // Coba ambil Slug/ID dari Query String
+            const params = new URLSearchParams(window.location.search);
+            let slug = params.get('slug') || params.get('id');
             
-            // Jika tidak ada, coba ambil dari Path URL (detail/...)
-            if (!id) {
+            // Jika tidak ada, coba ambil dari Path URL (produk/...)
+            if (!slug) {
                 const pathSegments = window.location.pathname.split('/');
-                id = pathSegments[pathSegments.length - 1]; // Ambil segmen terakhir
+                slug = pathSegments[pathSegments.length - 1]; // Ambil segmen terakhir
             }
             
-            if(!id) {
+            if(!slug) {
                 window.location.href = 'index.html';
                 return;
             }
@@ -147,13 +162,74 @@
                 const response = await fetch('api/index.php?endpoint=services');
                 const services = await response.json();
                 
-                // Cari service berdasarkan ID (pastikan tipe data cocok)
-                const service = services.find(s => s.id == id);
+                // Cari service berdasarkan Slug atau ID (untuk backward compatibility)
+                const service = services.find(s => s.slug === slug || s.id == slug);
 
                 if(service) {
+                    // Helper Parse Price (Dipindahkan ke atas agar bisa dipakai Schema & UI)
+                    const parseVal = (str) => {
+                        if(!str) return 0;
+                        let num = parseInt(str.replace(/[^0-9]/g, '')) || 0;
+                        if (str.toLowerCase().includes('rb')) num *= 1000;
+                        return num;
+                    };
+
                     // Update SEO Meta Tags
                     document.title = `${service.title} - CRUDWorks`;
                     document.querySelector('meta[name="description"]').setAttribute("content", service.description);
+                    
+                    // Update Open Graph Tags
+                    document.querySelector('meta[property="og:title"]').setAttribute("content", `${service.title} - CRUDWorks`);
+                    document.querySelector('meta[property="og:description"]').setAttribute("content", service.description);
+
+                    // Set Canonical URL Dinamis (SEO)
+                    let canonicalLink = document.querySelector('link[rel="canonical"]');
+                    if (!canonicalLink) {
+                        canonicalLink = document.createElement('link');
+                        canonicalLink.rel = 'canonical';
+                        document.head.appendChild(canonicalLink);
+                    }
+
+                    // Tentukan root path aplikasi untuk membentuk Pretty URL yang konsisten
+                    let appPath = window.location.pathname;
+                    if (appPath.includes('/produk/')) {
+                        appPath = appPath.substring(0, appPath.indexOf('/produk/'));
+                    } else if (appPath.includes('produk.html')) {
+                        appPath = appPath.substring(0, appPath.indexOf('produk.html'));
+                    }
+                    // Format URL: domain.com/path/produk/slug (Regex untuk hapus double slash)
+                    const finalUrl = `${window.location.origin}${appPath}/produk/${service.slug || service.id}`.replace(/([^:]\/)\/+/g, "$1");
+                    canonicalLink.href = finalUrl;
+
+                    // Update Open Graph URL
+                    document.querySelector('meta[property="og:url"]').setAttribute("content", finalUrl);
+
+                    // Schema Markup (JSON-LD) Product
+                    const schemaData = {
+                        "@context": "https://schema.org/",
+                        "@type": "Product",
+                        "name": service.title,
+                        "description": service.description,
+                        "sku": service.id,
+                        "image": "https://www.crudworks.com/css/logo.png", // Fallback image
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "CRUDWorks"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "url": finalUrl,
+                            "priceCurrency": "IDR",
+                            "price": service.discount_price ? parseVal(service.discount_price) : parseVal(service.price),
+                            "availability": "https://schema.org/InStock",
+                            "itemCondition": "https://schema.org/NewCondition"
+                        }
+                    };
+
+                    const script = document.createElement('script');
+                    script.type = 'application/ld+json';
+                    script.text = JSON.stringify(schemaData);
+                    document.head.appendChild(script);
 
                     // Render Content
                     document.getElementById('detail-icon').innerHTML = `<i class="fa-solid fa-${service.icon} text-4xl"></i>`;
@@ -163,11 +239,6 @@
                     const priceEl = document.getElementById('detail-price');
                     if (service.discount_price) {
                         // Hitung Persentase
-                        const parseVal = (str) => {
-                            let num = parseInt(str.replace(/[^0-9]/g, '')) || 0;
-                            if (str.toLowerCase().includes('rb')) num *= 1000;
-                            return num;
-                        };
                         const original = parseVal(service.price);
                         const discounted = parseVal(service.discount_price);
                         let percentTag = '';
@@ -217,7 +288,7 @@
                     // Update WhatsApp Button dengan Pesan Template
                     const waBtn = document.getElementById('wa-button');
                     if (waBtn) {
-                        const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Bisnis Anda
+                        const phoneNumber = '6287759651803'; // Ganti dengan nomor WhatsApp Bisnis Anda
                         const message = `Halo Admin, saya tertarik untuk membeli/berlangganan produk *${service.title}*. Mohon info lebih lanjut.`;
                         waBtn.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                     }
@@ -227,7 +298,7 @@
                         document.getElementById('detail-features').innerHTML = features.map(f => `
                             <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
                                 <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
-                                <span class="text-slate-700 text-sm font-medium leading-relaxed">${f}</span>
+                                <span class="text-slate-700 text-base font-medium leading-relaxed">${f}</span>
                             </div>
                         `).join('');
                     }
@@ -253,7 +324,7 @@
                                 <p class="text-slate-500 text-sm line-clamp-2 mb-4 flex-1">${related.description}</p>
                                 <div class="text-blue-600 text-sm font-bold mt-auto flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></div>
                             `;
-                            card.addEventListener('click', () => window.location.href = `produk/${related.id}`);
+                            card.addEventListener('click', () => window.location.href = `produk/${related.slug || related.id}`);
                             relatedContainer.appendChild(card);
                         });
                     }
