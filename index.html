@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.</title>
-    <meta name="description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
+    <title>Scale-Up Bisnis Tanpa Batas | CRUDWorks</title>
+    <meta name="description" content="Platform manajemen bisnis #1 untuk UMKM. Otomatisasi Keuangan, HR, dan Operasional dalam satu dashboard terintegrasi.">
     <link rel="icon" href="css/favicon.png" type="image/png">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
-    <meta property="og:description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
+    <meta property="og:title" content="Scale-Up Bisnis Tanpa Batas | CRUDWorks">
+    <meta property="og:description" content="Platform manajemen bisnis #1 untuk UMKM. Otomatisasi Keuangan, HR, dan Operasional dalam satu dashboard terintegrasi.">
     <meta property="og:url" content="https://www.crudworks.com/">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta name="google-site-verification" content="N1SsfabTCBFapjYbbf9PtA7HhQVHoIz0VpLoPiMsdDQ" />
 
     <!-- Font Awesome untuk Ikon -->
@@ -29,7 +30,7 @@
       "name": "CRUDWorks Karya Anak Indonesia",
       "url": "https://www.crudworks.com",
       "logo": "https://www.crudworks.com/css/logo.png",
-      "description": "Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.",
+      "description": "Platform manajemen bisnis #1 untuk UMKM. Otomatisasi Keuangan, HR, dan Operasional dalam satu dashboard terintegrasi.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Perum Puri Nirwana Pandanwangi 21",
@@ -96,9 +97,16 @@
             100% { transform: translateX(-50%); } 
         }
         .animate-marquee { animation: marquee 30s linear infinite; }
-    </style>
+
+        /* Cursor untuk Typewriter Effect */
+        .cursor-blink { border-right: 3px solid #f59e0b; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { border-color: transparent; } }
+    </style> 
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased bg-grid-pattern">
+
+    <!-- Reading Progress Bar -->
+    <div class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 z-[100] transition-all duration-100" id="reading-progress" style="width: 0%"></div>
 
     <!-- Navbar -->
     <nav class="fixed top-4 left-4 right-4 z-50 bg-transparent border border-transparent shadow-none rounded-2xl transition-all duration-300" id="navbar">
@@ -112,10 +120,17 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-2">
-                        <a href="#home" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Beranda</a>
-                        <a href="#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Produk</a>
-                        <a href="tentang" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">Tentang Kami</a>
-                        <a href="#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-300">
+                        <a href="#home" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300" data-i18n="nav_home">Beranda</a>
+                        <a href="#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300" data-i18n="nav_products">Produk</a>
+                        <a href="tentang" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300" data-i18n="nav_about">Tentang Kami</a>
+                        
+                        <!-- Language Switcher (Desktop) -->
+                        <button class="lang-switcher ml-2 flex items-center gap-2 px-3 py-2 rounded-full border border-gray-200 hover:bg-gray-50 transition-all">
+                            <img src="https://flagcdn.com/w20/id.png" alt="ID" class="w-5 h-auto rounded-sm">
+                            <span class="text-xs font-bold text-gray-600">ID</span>
+                        </button>
+
+                        <a href="#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-300" data-i18n="nav_contact">
                             Hubungi Kami
                         </a>
                     </div>
@@ -133,10 +148,15 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 rounded-b-2xl shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Beranda</a>
-                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Produk</a>
-                <a href="tentang" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Tentang Kami</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-wa-teal hover:bg-wa-dark transition text-center mt-4">Hubungi Kami</a>
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition" data-i18n="nav_home">Beranda</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition" data-i18n="nav_products">Produk</a>
+                <a href="tentang" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition" data-i18n="nav_about">Tentang Kami</a>
+                <!-- Language Switcher (Mobile) -->
+                <button class="lang-switcher w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50 transition flex items-center gap-3">
+                    <img src="https://flagcdn.com/w20/id.png" alt="ID" class="w-5 h-auto rounded-sm">
+                    <span>Ganti Bahasa (ID/EN)</span>
+                </button>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-wa-teal hover:bg-wa-dark transition text-center mt-4" data-i18n="nav_contact">Hubungi Kami</a>
             </div>
         </div>
     </nav>
@@ -157,22 +177,22 @@
                 <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
                     <div class="inline-flex items-center px-3 py-1 rounded-full border border-blue-100 bg-blue-50 text-blue-600 text-xs font-semibold tracking-wide uppercase mb-6">
                         <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-ping"></span>
-                        Platform SaaS #1 Untuk UMKM
+                        <span data-i18n="hero_badge">Platform SaaS #1 Untuk UMKM</span>
                     </div>
                     <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
-                        Kelola Bisnis Jadi <br class="hidden lg:block">
-                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-wa-teal to-wa-light">Lebih Mudah & Cepat</span>
+                        <span data-i18n="hero_title_1">Scale-Up Bisnis</span> <br class="hidden lg:block">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-yellow-500 cursor-blink" id="typewriter-text" data-i18n="hero_title_2">Tanpa Batas</span>
                     </h1>
-                    <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
-                        Tinggalkan cara lama. Beralih ke layanan SaaS (Software as a Service) terintegrasi untuk pembukuan, kasir, dan manajemen karyawan dalam satu aplikasi berbasis cloud.
+                    <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed" data-i18n="hero_desc">
+                        Satu platform pintar untuk mendigitalkan seluruh operasional. Tinggalkan cara manual, raih efisiensi maksimal dan pertumbuhan eksponensial dengan ekosistem cloud terintegrasi.
                     </p>
                     <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-wa-teal to-wa-light hover:shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-1 text-center">
+                            <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-wa-teal to-wa-light hover:shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-1 text-center" data-i18n="cta_start">
                                 Mulai Sekarang
                             </a>
                             <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
-                                <i class="fa-regular fa-circle-play"></i> Demo Gratis
+                                <i class="fa-regular fa-circle-play"></i> <span data-i18n="cta_demo">Demo Gratis</span>
                             </a>
                         </div>
                         <p class="mt-4 text-xs text-gray-400 font-medium">
@@ -242,24 +262,24 @@
                 <div class="w-full flex-shrink-0 lg:grid lg:grid-cols-12 lg:gap-8 items-center">
                     <!-- Text Content -->
                     <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-emerald-100 bg-emerald-50 text-emerald-600 text-xs font-semibold tracking-wide uppercase mb-6">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-emerald-100 bg-emerald-50 text-emerald-600 text-xs font-semibold tracking-wide uppercase mb-6" data-i18n="slider_hr_badge">
                             <span class="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-ping"></span>
                             HR & Payroll Otomatis
                         </div>
                         <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
-                            Kelola Karyawan <br class="hidden lg:block">
-                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500">Tanpa Sakit Kepala</span>
+                            <span data-i18n="slider_hr_title">Automasi HR & Payroll</span> <br class="hidden lg:block">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500" data-i18n="slider_hr_subtitle">Lebih Cerdas</span>
                         </h1>
-                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
-                            Hitung gaji, pajak, dan BPJS secara otomatis. Pantau absensi dan cuti karyawan dalam satu dashboard yang terintegrasi.
+                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed" data-i18n="slider_hr_desc">
+                            Ucapkan selamat tinggal pada lembur akhir bulan. Hitung gaji, pajak, BPJS, hingga pantau absensi karyawan selesai dalam hitungan detik secara akurat.
                         </p>
                         <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-emerald-600 to-teal-500 hover:shadow-lg hover:shadow-emerald-500/30 transition transform hover:-translate-y-1 text-center">
+                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-emerald-600 to-teal-500 hover:shadow-lg hover:shadow-emerald-500/30 transition transform hover:-translate-y-1 text-center" data-i18n="slider_hr_cta1">
                                     Coba Gratis
                                 </a>
-                                <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
-                                    <i class="fa-regular fa-circle-play"></i> Lihat Fitur
+                                <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2" >
+                                    <i class="fa-regular fa-circle-play"></i> <span data-i18n="slider_hr_cta2">Lihat Fitur</span>
                                 </a>
                             </div>
                         </div>
@@ -308,24 +328,24 @@
                 <div class="w-full flex-shrink-0 lg:grid lg:grid-cols-12 lg:gap-8 items-center">
                     <!-- Text Content -->
                     <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-amber-100 bg-amber-50 text-amber-600 text-xs font-semibold tracking-wide uppercase mb-6">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-amber-100 bg-amber-50 text-amber-600 text-xs font-semibold tracking-wide uppercase mb-6" data-i18n="slider_finance_badge">
                             <span class="w-2 h-2 bg-amber-500 rounded-full mr-2 animate-ping"></span>
                             Keuangan Terkendali
                         </div>
                         <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
-                            Laporan Keuangan <br class="hidden lg:block">
-                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500">Akurat & Real-time</span>
+                            <span data-i18n="slider_finance_title">Visibilitas Keuangan</span> <br class="hidden lg:block">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500" data-i18n="slider_finance_subtitle">360 Derajat</span>
                         </h1>
-                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
-                            Pantau arus kas, laba rugi, dan neraca kapan saja. Buat keputusan bisnis strategis berdasarkan data yang valid.
+                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed" data-i18n="slider_finance_desc">
+                            Kendali penuh atas setiap rupiah. Dapatkan laporan laba rugi, neraca, dan arus kas secara real-time untuk keputusan strategis yang lebih percaya diri.
                         </p>
                         <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-amber-600 to-orange-500 hover:shadow-lg hover:shadow-amber-500/30 transition transform hover:-translate-y-1 text-center">
+                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-amber-600 to-orange-500 hover:shadow-lg hover:shadow-amber-500/30 transition transform hover:-translate-y-1 text-center" data-i18n="slider_finance_cta1">
                                     Konsultasi
                                 </a>
                                 <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
-                                    <i class="fa-regular fa-file-lines"></i> Lihat Laporan
+                                    <i class="fa-regular fa-file-lines"></i> <span data-i18n="slider_finance_cta2">Lihat Laporan</span>
                                 </a>
                             </div>
                         </div>
@@ -372,24 +392,24 @@
                 <div class="w-full flex-shrink-0 lg:grid lg:grid-cols-12 lg:gap-8 items-center">
                     <!-- Text Content -->
                     <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-purple-100 bg-purple-50 text-purple-600 text-xs font-semibold tracking-wide uppercase mb-6">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full border border-purple-100 bg-purple-50 text-purple-600 text-xs font-semibold tracking-wide uppercase mb-6" data-i18n="slider_custom_badge">
                             <span class="w-2 h-2 bg-purple-500 rounded-full mr-2 animate-ping"></span>
                             Custom Development
                         </div>
                         <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6 leading-tight">
-                            Software Sesuai <br class="hidden lg:block">
-                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Kebutuhan Unik Anda</span>
+                            <span data-i18n="slider_custom_title">Solusi Digital</span> <br class="hidden lg:block">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500" data-i18n="slider_custom_subtitle">Tailor-Made</span>
                         </h1>
-                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
-                            Tidak semua bisnis cocok dengan solusi instan. Kami rancang sistem yang mengikuti alur kerja spesifik perusahaan Anda.
+                        <p class="mt-3 text-lg text-slate-600 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed" data-i18n="slider_custom_desc">
+                            Software yang dirancang khusus mengikuti ritme bisnis Anda, bukan sebaliknya. Fleksibilitas tinggi untuk menciptakan keunggulan kompetitif yang unik.
                         </p>
                         <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:shadow-lg hover:shadow-purple-500/30 transition transform hover:-translate-y-1 text-center">
+                                <a href="#contact" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:shadow-lg hover:shadow-purple-500/30 transition transform hover:-translate-y-1 text-center" data-i18n="slider_custom_cta1">
                                     Diskusi Project
                                 </a>
                                 <a href="#services" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-code"></i> Lihat Portfolio
+                                    <i class="fa-solid fa-code"></i> <span data-i18n="slider_custom_cta2">Lihat Portfolio</span>
                                 </a>
                             </div>
                         </div>
@@ -496,9 +516,9 @@
                         <i class="fa-solid fa-users text-2xl"></i>
                     </div>
                     <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
-                        <span class="counter" data-target="150">0</span><span class="text-blue-500 ml-1">+</span>
+                        <span class="counter" data-target="100">0</span><span class="text-blue-500 ml-1">+</span>
                     </div>
-                    <p class="text-blue-200 font-medium text-sm uppercase tracking-widest">Pengguna Aktif</p>
+                    <p class="text-blue-200 font-medium text-sm uppercase tracking-widest" data-i18n="stat_users">Pengguna Aktif</p>
                 </div>
 
                 <!-- Stat 2 -->
@@ -507,9 +527,9 @@
                         <i class="fa-solid fa-building text-2xl"></i>
                     </div>
                     <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
-                        <span class="counter" data-target="15">0</span><span class="text-emerald-500 ml-1">+</span>
+                        <span class="counter" data-target="10">0</span><span class="text-emerald-500 ml-1">+</span>
                     </div>
-                    <p class="text-emerald-200 font-medium text-sm uppercase tracking-widest">Perusahaan</p>
+                    <p class="text-emerald-200 font-medium text-sm uppercase tracking-widest" data-i18n="stat_companies">Perusahaan</p>
                 </div>
 
                 <!-- Stat 3 -->
@@ -520,7 +540,7 @@
                     <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
                         <span class="counter" data-target="99">0</span><span class="text-amber-500 ml-1">%</span>
                     </div>
-                    <p class="text-amber-200 font-medium text-sm uppercase tracking-widest">Kepuasan Client</p>
+                    <p class="text-amber-200 font-medium text-sm uppercase tracking-widest" data-i18n="stat_satisfaction">Kepuasan Client</p>
                 </div>
 
                 <!-- Stat 4 -->
@@ -531,7 +551,23 @@
                     <div class="text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight flex justify-center items-baseline">
                         <span class="counter" data-target="24">0</span><span class="text-rose-500 ml-1">/7</span>
                     </div>
-                    <p class="text-rose-200 font-medium text-sm uppercase tracking-widest">Layanan Support</p>
+                    <p class="text-rose-200 font-medium text-sm uppercase tracking-widest" data-i18n="stat_support">Layanan Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Logos Section -->
+    <section class="py-20 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <p class="text-sm font-bold text-slate-400 uppercase tracking-[0.2em]" data-i18n="client_trusted">Dipercaya oleh 10+ Bisnis Terdepan</p>
+            </div>
+            
+            <div id="clients-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Content will be loaded via JS -->
+                <div class="col-span-full flex justify-center py-8">
+                    <i class="fa-solid fa-circle-notch fa-spin text-slate-300 text-3xl"></i>
                 </div>
             </div>
         </div>
@@ -541,8 +577,8 @@
     <section id="services" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-base text-wa-teal font-semibold tracking-wide uppercase">Solusi Kami</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                <h2 class="text-base text-wa-teal font-semibold tracking-wide uppercase" data-i18n="services_subtitle">Solusi Kami</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-i18n="services_title">
                     Apa yang kami tawarkan?
                 </p>
             </div>
@@ -552,15 +588,15 @@
                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <i class="fa-solid fa-magnifying-glass text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
                 </div>
-                <input type="text" id="search-input" class="block w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-full leading-5 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 shadow-sm hover:shadow-md transition-all duration-300" placeholder="Cari layanan atau produk...">
+                <input type="text" id="search-input" class="block w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-full leading-5 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 shadow-sm hover:shadow-md transition-all duration-300" placeholder="Cari layanan atau produk..." data-i18n-placeholder="search_placeholder">
             </div>
 
             <!-- Filter Categories -->
             <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-wa-teal text-white shadow-lg shadow-blue-500/30" data-filter="all">Semua</button>
-                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="finance">Keuangan</button>
-                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="hr">HR</button>
-                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="operational">Operasional</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-wa-teal text-white shadow-lg shadow-blue-500/30" data-filter="all" data-i18n="filter_all">Semua</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="finance" data-i18n="filter_finance">Keuangan</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="hr" data-i18n="filter_hr">HR</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="operational" data-i18n="filter_ops">Operasional</button>
             </div>
 
             <!-- Container untuk data dari API -->
@@ -605,8 +641,8 @@
     <section class="py-20 bg-slate-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="text-center mb-16">
-                <h2 class="text-base text-wa-teal font-semibold tracking-wide uppercase">Kenapa Memilih Kami?</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                <h2 class="text-base text-wa-teal font-semibold tracking-wide uppercase" data-i18n="features_subtitle">Kenapa Memilih Kami?</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-i18n="features_title">
                     Keunggulan Platform CRUDWorks
                 </p>
             </div>
@@ -618,48 +654,48 @@
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                             <i class="fa-solid fa-bolt"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Performa Cepat</h3>
-                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Akses data instan dengan infrastruktur cloud modern untuk produktivitas maksimal.</p>
+                        <h3 class="text-xl font-bold text-slate-900" data-i18n="feature_1_title">Performa Cepat</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed" data-i18n="feature_1_desc">Akses data instan dengan infrastruktur cloud modern untuk produktivitas maksimal.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Keamanan Terjamin</h3>
-                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Data aman dengan enkripsi tingkat bank dan backup otomatis harian.</p>
+                        <h3 class="text-xl font-bold text-slate-900" data-i18n="feature_2_title">Keamanan Terjamin</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed" data-i18n="feature_2_desc">Data aman dengan enkripsi tingkat bank dan backup otomatis harian.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-violet-100 text-violet-600">
                             <i class="fa-solid fa-sync"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Integrasi Penuh</h3>
-                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Satu sistem untuk semua, minimalkan kesalahan dan hemat waktu operasional.</p>
+                        <h3 class="text-xl font-bold text-slate-900" data-i18n="feature_3_title">Integrasi Penuh</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed" data-i18n="feature_3_desc">Satu sistem untuk semua, minimalkan kesalahan dan hemat waktu operasional.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-rose-100 text-rose-600">
                             <i class="fa-solid fa-headset"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Support Prioritas</h3>
-                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Bantuan teknis 24/7 untuk memastikan bisnis Anda berjalan lancar tanpa henti.</p>
+                        <h3 class="text-xl font-bold text-slate-900" data-i18n="feature_4_title">Support Prioritas</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed" data-i18n="feature_4_desc">Bantuan teknis 24/7 untuk memastikan bisnis Anda berjalan lancar tanpa henti.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600">
                             <i class="fa-solid fa-chart-pie"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Analitik Cerdas</h3>
-                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Ambil keputusan strategis lebih cepat berdasarkan data real-time.</p>
+                        <h3 class="text-xl font-bold text-slate-900" data-i18n="feature_5_title">Analitik Cerdas</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed" data-i18n="feature_5_desc">Ambil keputusan strategis lebih cepat berdasarkan data real-time.</p>
                     </div>
                     <!-- Feature Item -->
                     <div class="feature-item relative pl-12 opacity-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-4 rounded-xl">
                         <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full bg-cyan-100 text-cyan-600">
                             <i class="fa-solid fa-mobile-screen-button"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Akses Multi-Platform</h3>
-                        <p class="mt-2 text-base text-slate-600 leading-relaxed">Pantau bisnis dari mana saja melalui aplikasi mobile dan web.</p>
+                        <h3 class="text-xl font-bold text-slate-900" data-i18n="feature_6_title">Akses Multi-Platform</h3>
+                        <p class="mt-2 text-base text-slate-600 leading-relaxed" data-i18n="feature_6_desc">Pantau bisnis dari mana saja melalui aplikasi mobile dan web.</p>
                     </div>
                         </div>
                     </div>
@@ -676,14 +712,14 @@
                 <!-- Left Column: Text Content -->
                 <div class="lg:col-span-7">
                     <div class="text-left">
-                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-wa-teal text-xs font-bold tracking-wide uppercase mb-4">
-                            <span class="w-2 h-2 bg-wa-teal rounded-full mr-2"></span> Tentang Kami
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-wa-teal text-xs font-bold tracking-wide uppercase mb-4" >
+                            <span class="w-2 h-2 bg-wa-teal rounded-full mr-2"></span> <span data-i18n="about_badge">Tentang Kami</span>
                         </div>
                     <h2 class="text-3xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-6">
-                            Lebih Dari Sekadar <span class="text-wa-teal">Software House</span>
+                            <span data-i18n="about_title_1">Lebih Dari Sekadar</span> <span class="text-wa-teal" data-i18n="about_title_2">Software House</span>
                         </h2>
                     <div class="text-lg text-slate-600 mb-12 leading-relaxed space-y-6">
-                            <p>
+                            <p data-i18n="about_desc_1">
                             CRUDWorks lahir dari semangat gotong royong sesama pelaku UMKM. Berbekal pengalaman lebih dari 15 tahun di industri, kami memahami betapa menantangnya mengelola bisnis dengan sumber daya terbatas. Sejak 2020, kami merintis usaha ini dari nol, tumbuh secara organik tanpa pendanaan besar, namun dengan tekad kuat untuk menghadirkan solusi teknologi yang terjangkau.
                             </p>
                             <p>
@@ -701,8 +737,8 @@
                                     <i class="fa-solid fa-earth-asia text-2xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Semangat Lokal</h4>
-                                    <p class="text-base text-slate-500 leading-relaxed">
+                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors" data-i18n="about_val_1_title">Semangat Lokal</h4>
+                                    <p class="text-base text-slate-500 leading-relaxed" data-i18n="about_val_1_desc">
                                     Solusi yang dirancang khusus untuk karakteristik dan kebutuhan unik pasar Indonesia.
                                     </p>
                                 </div>
@@ -715,8 +751,8 @@
                                     <i class="fa-solid fa-lightbulb text-2xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">Tumbuh Bersama</h4>
-                                    <p class="text-base text-slate-500 leading-relaxed">
+                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors" data-i18n="about_val_2_title">Tumbuh Bersama</h4>
+                                    <p class="text-base text-slate-500 leading-relaxed" data-i18n="about_val_2_desc">
                                     Kami mendengarkan setiap masukan Anda. Fitur kami berkembang seiring pertumbuhan bisnis Anda.
                                     </p>
                                 </div>
@@ -729,8 +765,8 @@
                                     <i class="fa-solid fa-users-viewfinder text-2xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">Fokus Pengguna</h4>
-                                    <p class="text-base text-slate-500 leading-relaxed">
+                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors" data-i18n="about_val_3_title">Fokus Pengguna</h4>
+                                    <p class="text-base text-slate-500 leading-relaxed" data-i18n="about_val_3_desc">
                                     Desain yang berpusat pada manusia untuk kemudahan penggunaan maksimal.
                                     </p>
                                 </div>
@@ -743,8 +779,8 @@
                                     <i class="fa-solid fa-hand-holding-dollar text-2xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">Harga Transparan</h4>
-                                    <p class="text-base text-slate-500 leading-relaxed">
+                                    <h4 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors" data-i18n="about_val_4_title">Harga Transparan</h4>
+                                    <p class="text-base text-slate-500 leading-relaxed" data-i18n="about_val_4_desc">
                                     Tidak ada biaya tersembunyi. Skema harga jujur yang masuk akal bagi arus kas UMKM.
                                     </p>
                                 </div>
@@ -774,13 +810,13 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-wide uppercase mb-4">
-                    <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span> Support Center
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-wide uppercase mb-4" >
+                    <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span> <span data-i18n="support_badge">Support Center</span>
                 </div>
-                <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-i18n="support_title">
                     Pusat Bantuan & Kontak
                 </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto" data-i18n="support_desc">
                     Kami di sini untuk membantu. Temukan jawaban di FAQ atau hubungi kami langsung.
                 </p>
             </div>
@@ -789,77 +825,77 @@
                 
                 <!-- FAQ Column -->
                 <div id="faq" class="scroll-mt-28">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3" data-i18n="faq_title">
                         <i class="fa-solid fa-circle-question text-blue-600"></i> Pertanyaan Umum
                     </h3>
                     
                     <!-- FAQ Tabs -->
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-blue-600 text-white transition-all shadow-sm" data-target="all">Semua</button>
-                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="general">Umum</button>
-                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="technical">Teknis</button>
-                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="billing">Pembayaran</button>
+                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-blue-600 text-white transition-all shadow-sm" data-target="all" data-i18n="faq_tab_all">Semua</button>
+                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="general" data-i18n="faq_tab_general">Umum</button>
+                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="technical" data-i18n="faq_tab_technical">Teknis</button>
+                        <button class="faq-tab px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition-all" data-target="billing" data-i18n="faq_tab_billing">Pembayaran</button>
                     </div>
 
                     <div class="space-y-4">
                         <!-- Item 1 -->
                         <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="billing">
                             <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
-                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah ada biaya langganan bulanan?</span>
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors" data-i18n="faq_q1">Apakah ada biaya langganan bulanan?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
                             <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
-                                <p>Ya, kami menawarkan model berlangganan SaaS (Software as a Service) yang fleksibel. Anda dapat memilih tagihan bulanan atau tahunan (hemat hingga 20%). Harga disesuaikan dengan paket fitur yang Anda butuhkan.</p>
+                                <p data-i18n="faq_a1">Ya, kami menawarkan model berlangganan SaaS (Software as a Service) yang fleksibel. Anda dapat memilih tagihan bulanan atau tahunan (hemat hingga 20%). Harga disesuaikan dengan paket fitur yang Anda butuhkan.</p>
                             </div>
                         </div>
                         <!-- Item 2 -->
                         <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="technical">
                             <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
-                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah data perusahaan saya aman?</span>
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors" data-i18n="faq_q2">Apakah data perusahaan saya aman?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
                             <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
-                                <p>Keamanan adalah prioritas utama kami. Kami menggunakan enkripsi SSL 256-bit standar perbankan untuk semua transmisi data. Server kami dilindungi firewall berlapis dan backup otomatis.</p>
+                                <p data-i18n="faq_a2">Keamanan adalah prioritas utama kami. Kami menggunakan enkripsi SSL 256-bit standar perbankan untuk semua transmisi data. Server kami dilindungi firewall berlapis dan backup otomatis.</p>
                             </div>
                         </div>
                         <!-- Item 3 -->
                         <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="general">
                             <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
-                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah tersedia layanan uji coba gratis?</span>
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors" data-i18n="faq_q3">Apakah tersedia layanan uji coba gratis?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
                             <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
-                                <p>Tentu saja! Anda dapat mencoba seluruh fitur CRUDWorks secara gratis selama 14 hari tanpa komitmen apapun. Tidak perlu kartu kredit untuk mendaftar.</p>
+                                <p data-i18n="faq_a3">Tentu saja! Anda dapat mencoba seluruh fitur CRUDWorks secara gratis selama 14 hari tanpa komitmen apapun. Tidak perlu kartu kredit untuk mendaftar.</p>
                             </div>
                         </div>
                         <!-- Item 4 -->
                         <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="technical">
                             <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
-                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Kendala teknis?</span>
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors" data-i18n="faq_q4">Kendala teknis?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
                             <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
-                                <p>Tim support kami yang berdedikasi tersedia 24/7 untuk membantu Anda melalui Live Chat, email, atau telepon.</p>
+                                <p data-i18n="faq_a4">Tim support kami yang berdedikasi tersedia 24/7 untuk membantu Anda melalui Live Chat, email, atau telepon.</p>
                             </div>
                         </div>
                         <!-- Item 5 -->
                         <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="technical">
                             <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
-                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Apakah bisa integrasi dengan software lain?</span>
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors" data-i18n="faq_q5">Apakah bisa integrasi dengan software lain?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
                             <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
-                                <p>Ya, CRUDWorks memiliki API terbuka (Open API) yang memungkinkan integrasi mudah dengan berbagai software pihak ketiga seperti CRM, E-commerce, dan sistem perbankan perusahaan Anda.</p>
+                                <p data-i18n="faq_a5">Ya, CRUDWorks memiliki API terbuka (Open API) yang memungkinkan integrasi mudah dengan berbagai software pihak ketiga seperti CRM, E-commerce, dan sistem perbankan perusahaan Anda.</p>
                             </div>
                         </div>
                         <!-- Item 6 -->
                         <div class="faq-item group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="billing">
                             <button class="faq-btn w-full px-6 py-5 text-left focus:outline-none flex items-center gap-4">
-                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors">Bagaimana jika saya ingin berhenti berlangganan?</span>
+                                <span class="font-bold text-gray-900 text-lg flex-1 group-hover:text-blue-600 transition-colors" data-i18n="faq_q6">Bagaimana jika saya ingin berhenti berlangganan?</span>
                                 <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 group-hover:text-blue-600"></i>
                             </button>
                             <div class="faq-content hidden px-6 pb-6 pt-2 text-base text-gray-600 leading-loose border-t border-gray-50">
-                                <p>Anda dapat membatalkan langganan kapan saja melalui dashboard akun Anda. Tidak ada kontrak jangka panjang yang mengikat, dan Anda tetap dapat mengekspor seluruh data Anda sebelum akun ditutup.</p>
+                                <p data-i18n="faq_a6">Anda dapat membatalkan langganan kapan saja melalui dashboard akun Anda. Tidak ada kontrak jangka panjang yang mengikat, dan Anda tetap dapat mengekspor seluruh data Anda sebelum akun ditutup.</p>
                             </div>
                         </div>
                     </div>
@@ -869,27 +905,27 @@
                 <div id="contact" class="scroll-mt-28">
                     <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                         <div class="p-8 sm:p-10">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-3">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-3" data-i18n="contact_title">
                                 <i class="fa-solid fa-envelope-open-text text-blue-600"></i> Kirim Pesan
                             </h3>
-                            <p class="text-gray-500 mb-8">Isi formulir di bawah ini untuk terhubung dengan tim kami.</p>
+                            <p class="text-gray-500 mb-8" data-i18n="contact_desc">Isi formulir di bawah ini untuk terhubung dengan tim kami.</p>
 
                             <form id="contact-form" class="space-y-5">
                                 <div>
-                                    <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
-                                    <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400" placeholder="John Doe">
+                                    <label for="name" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_name">Nama Lengkap</label>
+                                    <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400" placeholder="John Doe" data-i18n-placeholder="form_name">
                                 </div>
                                 <div>
-                                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Bisnis</label>
-                                    <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400" placeholder="john@company.com">
+                                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_email">Email Bisnis</label>
+                                    <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400" placeholder="john@company.com" data-i18n-placeholder="form_email">
                                 </div>
                                 <div>
-                                    <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Pesan</label>
-                                    <textarea name="message" id="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400 resize-none" placeholder="Ceritakan kebutuhan Anda..."></textarea>
+                                    <label for="message" class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="form_message">Pesan</label>
+                                    <textarea name="message" id="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-800 placeholder-gray-400 resize-none" placeholder="Ceritakan kebutuhan Anda..." data-i18n-placeholder="form_message"></textarea>
                                 </div>
 
                                 <button type="submit" id="submit-btn" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
-                                    <span>Kirim Pesan</span>
+                                    <span data-i18n="form_btn">Kirim Pesan</span>
                                     <i class="fa-solid fa-paper-plane text-sm"></i>
                                 </button>
                                 <p id="form-status" class="text-center text-sm mt-2 hidden"></p>
@@ -905,33 +941,33 @@
     <!-- Footer -->
     <footer class="bg-white text-slate-800 pt-16 pb-8 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
                 <!-- Company Info -->
                 <div class="lg:col-span-2">
                     <div class="mb-6">
                         <img src="css/logo.png" alt="Logo" class="h-10 w-auto">
                     </div>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-sm">
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-sm" data-i18n="footer_desc">
                         Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.
                     </p>
                 </div>
 
                 <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-bold mb-6 text-slate-900">Tautan Cepat</h3>
-                    <ul class="space-y-4">
-                        <li><a href="#home" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Beranda</a></li>
-                        <li><a href="#services" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Produk & Layanan</a></li>
-                        <li><a href="tentang" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Tentang Kami</a></li>
-                        <li><a href="karir" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Karir</a></li>
-                        <li><a href="#faq" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Bantuan (FAQ)</a></li>
-                        <li><a href="#contact" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> Hubungi Kami</a></li>
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-bold mb-6 text-slate-900" data-i18n="footer_quick_links">Tautan Cepat</h3>
+                    <ul class="grid grid-cols-2 gap-4">
+                        <li><a href="#home" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_home">Beranda</span></a></li>
+                        <li><a href="#services" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_products">Produk & Layanan</span></a></li>
+                        <li><a href="tentang" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_about">Tentang Kami</span></a></li>
+                        <li><a href="karir" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_career">Karir</span></a></li>
+                        <li><a href="#faq" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_faq">Bantuan (FAQ)</span></a></li>
+                        <li class="col-span-2"><a href="#contact" class="text-slate-600 hover:text-blue-600 transition-all duration-300 text-sm flex items-center gap-2 hover:translate-x-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_contact">Hubungi Kami</span></a></li>
                     </ul>
                 </div>
 
                 <!-- Contact Info -->
-                <div>
-                    <h3 class="text-lg font-bold mb-6 text-slate-900">Hubungi Kami</h3>
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-bold mb-6 text-slate-900" data-i18n="footer_contact_title">Hubungi Kami</h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3 text-slate-600 text-sm">
                             <div class="w-5 flex justify-center text-blue-600 mt-0.5">
@@ -1013,5 +1049,34 @@
 
     <!-- Logic JS -->
     <script src="js/app.js"></script>
+    <script>
+        // Load Clients from API
+        const loadClients = async () => {
+            const container = document.getElementById('clients-grid');
+            if (!container) return;
+
+            try {
+                const response = await fetch('api/clients');
+                const clients = await response.json();
+                
+                if (clients.length > 0) {
+                    container.innerHTML = clients.map(client => `
+                        <div class="h-28 flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 group cursor-pointer p-4">
+                            <img src="${client.url}" alt="${client.name}" class="h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<div class="col-span-full text-center text-slate-400 text-sm">Belum ada logo client.</div>';
+                }
+            } catch (error) {
+                console.error('Gagal memuat client:', error);
+                container.innerHTML = '<div class="col-span-full text-center text-red-400 text-sm">Gagal memuat data client.</div>';
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadClients();
+        });
+    </script>
 </body>
 </html>

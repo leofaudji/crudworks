@@ -45,10 +45,17 @@
                 
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-2">
-                        <a href="index.html" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Beranda</a>
-                        <a href="index.html#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Produk</a>
-                        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50 transition-all">Tentang Kami</a>
-                        <a href="index.html#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all">Hubungi Kami</a>
+                        <a href="index.html" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all" data-i18n="nav_home">Beranda</a>
+                        <a href="index.html#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all" data-i18n="nav_products">Produk</a>
+                        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50 transition-all" data-i18n="nav_about">Tentang Kami</a>
+                        
+                        <!-- Language Switcher (Desktop) -->
+                        <button class="lang-switcher ml-2 flex items-center gap-2 px-3 py-2 rounded-full border border-gray-200 hover:bg-gray-50 transition-all">
+                            <img src="https://flagcdn.com/w20/id.png" alt="ID" class="w-5 h-auto rounded-sm">
+                            <span class="text-xs font-bold text-gray-600">ID</span>
+                        </button>
+
+                        <a href="index.html#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all" data-i18n="nav_contact">Hubungi Kami</a>
                     </div>
                 </div>
 
@@ -62,10 +69,15 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">Beranda</a>
-                <a href="index.html#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">Produk</a>
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 bg-blue-50">Tentang Kami</a>
-                <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50">Hubungi Kami</a>
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_home">Beranda</a>
+                <a href="index.html#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_products">Produk</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 bg-blue-50" data-i18n="nav_about">Tentang Kami</a>
+                <!-- Language Switcher (Mobile) -->
+                <button class="lang-switcher w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50 transition flex items-center gap-3">
+                    <img src="https://flagcdn.com/w20/id.png" alt="ID" class="w-5 h-auto rounded-sm">
+                    <span>Ganti Bahasa (ID/EN)</span>
+                </button>
+                <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_contact">Hubungi Kami</a>
             </div>
         </div>
     </nav>
@@ -76,15 +88,122 @@
         <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600 rounded-full blur-[100px] opacity-20 -ml-20 -mb-20"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold tracking-wide uppercase mb-6 border border-blue-500/30">
-                Mengenal CRUDWorks
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold tracking-wide uppercase mb-6 border border-blue-500/30" >
+                <span data-i18n="about_hero_badge">Mengenal CRUDWorks</span>
             </div>
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-                Mitra Transformasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Digital Anda</span>
+                <span data-i18n="about_hero_title">Mitra Transformasi</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400" data-i18n="about_hero_title_highlight">Digital Anda</span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-loose">
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-loose" data-i18n="about_hero_desc">
                 Berawal dari UMKM untuk UMKM. Berbekal pengalaman lebih dari 15 tahun di industri, kami hadir sebagai mitra teknologi yang mengerti perjuangan Anda merintis bisnis dari nol.
             </p>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="py-20 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Vision Card -->
+                <div class="group relative overflow-hidden rounded-[2.5rem] bg-slate-50 p-10 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/10 border border-slate-100">
+                    <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-100/50 transition-all duration-500 group-hover:scale-150"></div>
+                    <div class="relative z-10">
+                        <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-3xl text-blue-600 shadow-sm shadow-blue-900/5 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h2 class="mb-4 text-3xl font-extrabold text-slate-900" data-i18n="vision_title">Visi Kami</h2>
+                        <p class="text-lg leading-relaxed text-slate-600" data-i18n="vision_desc">
+                            Menjadi katalisator utama dalam transformasi digital UMKM Indonesia, menciptakan ekosistem bisnis yang efisien, modern, dan berdaya saing global melalui teknologi yang inklusif.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mission Card -->
+                <div class="group relative overflow-hidden rounded-[2.5rem] bg-slate-900 p-10 text-white transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/20">
+                    <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 transition-all duration-500 group-hover:scale-150"></div>
+                    <div class="absolute bottom-0 left-0 h-full w-full bg-gradient-to-tr from-blue-600/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                    <div class="relative z-10">
+                        <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl text-blue-400 backdrop-blur-sm transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h2 class="mb-4 text-3xl font-extrabold" data-i18n="mission_title">Misi Kami</h2>
+                        <ul class="space-y-4 text-lg text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-400">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                                <span data-i18n="mission_item_1">Menyediakan solusi teknologi yang terjangkau dan mudah digunakan.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-400">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                                <span data-i18n="mission_item_2">Mengedukasi pelaku bisnis tentang pentingnya digitalisasi.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-400">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                                <span data-i18n="mission_item_3">Memberikan layanan pendukung yang responsif dan solutif.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="py-24 bg-slate-50 relative overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl" data-i18n="values_title">Nilai-Nilai Utama</h2>
+                <p class="text-slate-500 mt-4 text-lg leading-relaxed" data-i18n="values_desc">Prinsip yang menjadi landasan setiap langkah kami.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Value 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100 text-center hover:-translate-y-2">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 group-hover:rotate-12 shadow-sm">
+                        <i class="fa-solid fa-shield-heart text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="value_1_title">Integritas</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="value_1_desc">Kami menjunjung tinggi kejujuran dan transparansi dalam setiap interaksi bisnis.</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100 text-center hover:-translate-y-2">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 group-hover:rotate-12 shadow-sm">
+                        <i class="fa-solid fa-lightbulb text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="value_2_title">Inovasi</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="value_2_desc">Terus beradaptasi dan menciptakan solusi baru yang relevan dengan perkembangan zaman.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100 text-center hover:-translate-y-2">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500 group-hover:rotate-12 shadow-sm">
+                        <i class="fa-solid fa-users-gear text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="value_3_title">Kolaborasi</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="value_3_desc">Percaya pada kekuatan kerja sama tim dan kemitraan strategis untuk hasil terbaik.</p>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100 text-center hover:-translate-y-2">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all duration-500 group-hover:rotate-12 shadow-sm">
+                        <i class="fa-solid fa-heart text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="value_4_title">Fokus Pelanggan</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="value_4_desc">Kepuasan dan kesuksesan pelanggan adalah ukuran utama keberhasilan kami.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -92,8 +211,8 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Perjalanan Kami</h2>
-                <p class="text-slate-500 mt-4 text-lg leading-relaxed">Dari ide sederhana menjadi solusi yang dipercaya bisnis.</p>
+                <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl" data-i18n="history_title">Perjalanan Kami</h2>
+                <p class="text-slate-500 mt-4 text-lg leading-relaxed" data-i18n="history_desc">Dari ide sederhana menjadi solusi yang dipercaya bisnis.</p>
             </div>
 
             <div class="relative">
@@ -104,8 +223,8 @@
                     <!-- Timeline Item 1 -->
                     <div class="relative flex flex-col md:flex-row items-center justify-between">
                         <div class="md:w-5/12 text-center md:text-right order-2 md:order-1 animate-fade-in-up">
-                            <h3 class="text-2xl font-bold text-slate-900"><span class="counter" data-target="2020">0</span>: Awal Mula</h3>
-                            <p class="text-slate-500 mt-2 text-base leading-relaxed">CRUDWorks lahir dari semangat sederhana untuk membantu sesama rekan UMKM yang kesulitan mengelola administrasi manual.</p>
+                            <h3 class="text-2xl font-bold text-slate-900" data-i18n="history_1_title">2020: Awal Mula</h3>
+                            <p class="text-slate-500 mt-2 text-base leading-relaxed" data-i18n="history_1_desc">CRUDWorks lahir dari semangat sederhana untuk membantu sesama rekan UMKM yang kesulitan mengelola administrasi manual.</p>
                         </div>
                         <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10 hidden md:flex items-center justify-center order-1 md:order-2"></div>
                         <div class="md:w-5/12 order-3"></div>
@@ -116,16 +235,16 @@
                         <div class="md:w-5/12 order-3 md:order-1"></div>
                         <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-emerald-500 rounded-full border-4 border-white shadow-lg z-10 hidden md:flex items-center justify-center order-1 md:order-2"></div>
                         <div class="md:w-5/12 text-center md:text-left order-2 md:order-3 animate-fade-in-up">
-                            <h3 class="text-2xl font-bold text-slate-900"><span class="counter" data-target="2021">0</span>: Membangun Pondasi</h3>
-                            <p class="text-slate-500 mt-2 text-base leading-relaxed">Mulai dipercaya oleh puluhan UMKM lokal. Kami belajar langsung dari masukan pelanggan untuk menyempurnakan fitur.</p>
+                            <h3 class="text-2xl font-bold text-slate-900" data-i18n="history_2_title">2021: Membangun Pondasi</h3>
+                            <p class="text-slate-500 mt-2 text-base leading-relaxed" data-i18n="history_2_desc">Mulai dipercaya oleh puluhan UMKM lokal. Kami belajar langsung dari masukan pelanggan untuk menyempurnakan fitur.</p>
                         </div>
                     </div>
 
                     <!-- Timeline Item 3 -->
                     <div class="relative flex flex-col md:flex-row items-center justify-between">
                         <div class="md:w-5/12 text-center md:text-right order-2 md:order-1 animate-fade-in-up">
-                            <h3 class="text-2xl font-bold text-slate-900"><span class="counter" data-target="2022">0</span>: Tumbuh Bersama</h3>
-                            <p class="text-slate-500 mt-2 text-base leading-relaxed">Tanpa investor besar, kami tumbuh secara organik. Kualitas layanan kami mulai dikenal luas dari mulut ke mulut antar komunitas bisnis.</p>
+                            <h3 class="text-2xl font-bold text-slate-900" data-i18n="history_3_title">2022: Tumbuh Bersama</h3>
+                            <p class="text-slate-500 mt-2 text-base leading-relaxed" data-i18n="history_3_desc">Tanpa investor besar, kami tumbuh secara organik. Kualitas layanan kami mulai dikenal luas dari mulut ke mulut antar komunitas bisnis.</p>
                         </div>
                         <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-amber-500 rounded-full border-4 border-white shadow-lg z-10 hidden md:flex items-center justify-center order-1 md:order-2"></div>
                         <div class="md:w-5/12 order-3"></div>
@@ -136,8 +255,8 @@
                         <div class="md:w-5/12 order-3 md:order-1"></div>
                         <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-purple-600 rounded-full border-4 border-white shadow-lg z-10 hidden md:flex items-center justify-center order-1 md:order-2"></div>
                         <div class="md:w-5/12 text-center md:text-left order-2 md:order-3 animate-fade-in-up">
-                            <h3 class="text-2xl font-bold text-slate-900"><span class="counter" data-target="2023">0</span>: Go Digital</h3>
-                            <p class="text-slate-500 mt-2 text-base leading-relaxed">Memperluas jangkauan melalui kanal digital. Kini kami siap melayani kebutuhan UMKM di seluruh pelosok negeri dengan sepenuh hati.</p>
+                            <h3 class="text-2xl font-bold text-slate-900" data-i18n="history_4_title">2023: Go Digital</h3>
+                            <p class="text-slate-500 mt-2 text-base leading-relaxed" data-i18n="history_4_desc">Memperluas jangkauan melalui kanal digital. Kini kami siap melayani kebutuhan UMKM di seluruh pelosok negeri dengan sepenuh hati.</p>
                         </div>
                     </div>
                 </div>
@@ -149,8 +268,8 @@
     <section class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Tim Di Balik Layar</h2>
-                <p class="text-slate-500 mt-4 text-lg leading-relaxed">Para ahli yang berdedikasi untuk kesuksesan bisnis Anda.</p>
+                <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl" data-i18n="team_title">Tim Di Balik Layar</h2>
+                <p class="text-slate-500 mt-4 text-lg leading-relaxed" data-i18n="team_desc">Para ahli yang berdedikasi untuk kesuksesan bisnis Anda.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -212,23 +331,23 @@
     <!-- Footer (Sama dengan index.html) -->
     <footer class="bg-white text-slate-800 pt-16 pb-8 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
                 <div class="lg:col-span-2">
                     <div class="mb-6"><img src="css/logo.png" alt="Logo" class="h-10 w-auto"></div>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-sm">Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-sm" data-i18n="footer_desc">Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.</p>
                 </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-6 text-slate-900">Tautan Cepat</h3>
-                    <ul class="space-y-4">
-                        <li><a href="index.html" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Beranda</a></li>
-                        <li><a href="index.html#services" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Produk & Layanan</a></li>
-                        <li><a href="#" class="text-blue-600 font-bold transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Tentang Kami</a></li>
-                        <li><a href="karir" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Karir</a></li>
-                        <li><a href="index.html#contact" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Hubungi Kami</a></li>
+                <div class="lg:col-span-2"> 
+                    <h3 class="text-lg font-bold mb-6 text-slate-900" data-i18n="footer_quick_links">Tautan Cepat</h3>
+                    <ul class="grid grid-cols-2 gap-4">
+                        <li><a href="index.html" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_home">Beranda</span></a></li>
+                        <li><a href="index.html#services" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_products">Produk & Layanan</span></a></li>
+                        <li><a href="#" class="text-blue-600 font-bold transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_about">Tentang Kami</span></a></li>
+                        <li><a href="karir" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_career">Karir</span></a></li>
+                        <li class="col-span-2"><a href="index.html#contact" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_contact">Hubungi Kami</span></a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-6 text-slate-900">Hubungi Kami</h3>
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-bold mb-6 text-slate-900" data-i18n="footer_contact_title">Hubungi Kami</h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3 text-slate-600 text-sm"><div class="w-5 flex justify-center text-blue-600 mt-0.5"><i class="fa-solid fa-location-dot"></i></div><span>Perum Puri Nirwana Pandanwangi 21 Malang 65124</span></li>
                         <li class="flex items-center gap-3 text-slate-600 text-sm"><div class="w-5 flex justify-center text-blue-600"><i class="fa-solid fa-envelope"></i></div><span>info@crudworks.com</span></li>

@@ -141,28 +141,11 @@ $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
     <!-- Navbar -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-3">
-                    <div class="bg-blue-600 text-white p-1.5 rounded-lg"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                    <span class="font-bold text-xl tracking-tight">Admin Panel</span>
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="careers" class="text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition">
-                        <i class="fa-solid fa-briefcase"></i> Kelola Karir
-                    </a>
-                    <a href="messages" class="text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition">
-                        <i class="fa-solid fa-envelope"></i> Pesan Masuk
-                    </a>
-                    <a href="../index.html" target="_blank" class="text-sm text-slate-500 hover:text-blue-600 flex items-center gap-2">
-                        Lihat Website <i class="fa-solid fa-external-link-alt"></i>
-                    </a>
-                    <a href="index?action=logout" class="text-sm font-medium text-red-600 hover:text-red-700 border border-red-200 px-3 py-1.5 rounded-lg hover:bg-red-50 transition">Logout</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <?php 
+    $pageTitle = 'Admin Panel';
+    $pageIcon = 'screwdriver-wrench';
+    require_once 'header.php'; 
+    ?>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         

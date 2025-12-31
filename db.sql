@@ -112,3 +112,16 @@ INSERT INTO services (title, slug, category, description, detailed_description, 
     '["Analisis Bisnis Mendalam", "Desain UI/UX Custom", "Pengembangan Full Stack", "Integrasi API Pihak Ketiga", "Garansi & Maintenance"]',
     NULL
 );
+
+CREATE TABLE IF NOT EXISTS `blogs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `excerpt` text NOT NULL,
+  `content` longtext NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper: Generate HTML untuk Slide Dinamis
     function generateSlideHtml(service) {
+        const lang = localStorage.getItem('crudworks_lang') || 'id';
+        const t = translations[lang] || translations.id;
+
         // Mapping gambar berdasarkan kategori (bisa disesuaikan)
         const images = {
             'finance': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -94,12 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (original > 0 && discounted > 0 && original > discounted) {
                 const percent = Math.round(((original - discounted) / original) * 100);
-                percentHtml = `<span class="ml-2 px-2 py-0.5 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wide">Hemat ${percent}%</span>`;
+                percentHtml = `<span class="ml-2 px-2 py-0.5 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wide">${t.slider_save} ${percent}%</span>`;
             }
 
             priceDisplayHtml = `
                 <div>
-                    <p class="text-sm font-medium text-gray-500">Penawaran Spesial</p>
+                    <p class="text-sm font-medium text-gray-500">${t.slider_offer}</p>
                     <div class="flex flex-wrap items-baseline gap-x-2">
                         <span class="text-sm text-gray-400 line-through">${service.price}</span>
                         <h3 class="text-2xl font-bold text-red-600">${service.discount_price}</h3>
@@ -109,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             priceDisplayHtml = `
                 <div>
-                    <p class="text-sm font-medium text-gray-500">Harga Terbaik</p>
+                    <p class="text-sm font-medium text-gray-500">${t.slider_best_price}</p>
                     <h3 class="text-2xl font-bold text-gray-900">${service.price || 'Hubungi Kami'}</h3>
                 </div>`;
         }
@@ -130,10 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                             <a href="produk/${service.slug || service.id}" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-1 text-center">
-                                Lihat Detail
+                                ${t.slider_view_details}
                             </a>
                             <a href="#contact" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-whatsapp"></i> Tanya Admin
+                                <i class="fa-brands fa-whatsapp"></i> ${t.slider_ask_admin}
                             </a>
                         </div>
                     </div>
@@ -148,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <div class="p-2 bg-blue-50 rounded-lg text-blue-600"><i class="fa-solid fa-tag"></i></div>
                                 </div>
                                 <div class="w-full bg-gray-100 rounded-full h-2.5 mb-1"><div class="bg-blue-500 h-2.5 rounded-full" style="width: 100%"></div></div>
-                                <p class="text-xs text-gray-400 text-right">Tersedia Sekarang</p>
+                                <p class="text-xs text-gray-400 text-right">${t.slider_available_now}</p>
                             </div>
                         </div>
                     </div>
@@ -829,4 +832,137 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 11. Reading Progress Bar Logic
+    const progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    }
+
+    // 12. Typewriter Effect Logic
+    const typeWriterElement = document.getElementById('typewriter-text');
+    if (typeWriterElement) {
+        const words = ["Lebih Mudah & Cepat", "Lebih Efisien", "Lebih Profitable", "Terintegrasi"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typeWriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; // Lebih cepat saat menghapus
+            } else {
+                typeWriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100; // Normal saat mengetik
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Jeda setelah selesai mengetik kata
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500; // Jeda sebelum mengetik kata baru
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Mulai efek ketik
+        type();
+    }
+
+    // 13. Language Switcher Logic
+    let translations = {};
+
+    async function loadTranslations() {
+        try {
+            const response = await fetch('lang/translations.json');
+            if (!response.ok) throw new Error('Gagal memuat file bahasa');
+            translations = await response.json();
+            
+            // Set bahasa setelah data dimuat
+            const savedLang = localStorage.getItem('crudworks_lang') || 'id';
+            setLanguage(savedLang);
+        } catch (error) {
+            console.error('Error loading translations:', error);
+        }
+    }
+
+    function setLanguage(lang) {
+        if (!translations[lang]) return;
+
+        localStorage.setItem('crudworks_lang', lang);
+        document.documentElement.lang = lang;
+        
+        // Update Text
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                el.innerText = translations[lang][key];
+            }
+        });
+
+        // Update Placeholders (Input & Textarea)
+        const inputs = document.querySelectorAll('[data-i18n-placeholder]');
+        inputs.forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (translations[lang][key]) {
+                el.placeholder = translations[lang][key];
+            }
+        });
+
+        // --- Re-render Hero Slider Dinamis ---
+        const heroSlider = document.getElementById('hero-slider');
+        if (heroSlider && allServicesData.length > 0) {
+            // Hapus slide dinamis yang sudah ada (semua setelah 4 slide statis)
+            const staticSlidesCount = 4;
+            const dynamicSlides = Array.from(heroSlider.children).slice(staticSlidesCount);
+            dynamicSlides.forEach(slide => slide.remove());
+
+            // Buat ulang slide dinamis dengan bahasa yang baru
+            const highlightedServices = allServicesData.filter(s => s.badge);
+            highlightedServices.forEach(service => {
+                const slideHtml = generateSlideHtml(service);
+                heroSlider.insertAdjacentHTML('beforeend', slideHtml);
+            });
+
+            // Inisialisasi ulang slider untuk memperbarui jumlah slide dan dots
+            initHeroSlider();
+        }
+        // --- End of Re-render ---
+
+        // Update Switcher UI
+        const switchers = document.querySelectorAll('.lang-switcher');
+        switchers.forEach(btn => {
+            const span = btn.querySelector('span');
+            const img = btn.querySelector('img');
+            if(span) span.innerText = lang === 'id' ? 'ID' : 'EN';
+            if(img) img.src = lang === 'id' ? 'https://flagcdn.com/w20/id.png' : 'https://flagcdn.com/w20/us.png';
+        });
+    }
+
+    loadTranslations();
+
+    document.querySelectorAll('.lang-switcher').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const current = localStorage.getItem('crudworks_lang') || 'id';
+            const next = current === 'id' ? 'en' : 'id';
+            setLanguage(next);
+        });
+    });
 });
