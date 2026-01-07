@@ -6,6 +6,7 @@
     <title>Scale-Up Bisnis Tanpa Batas | CRUDWorks</title>
     <meta name="description" content="Platform manajemen bisnis #1 untuk UMKM. Otomatisasi Keuangan, HR, dan Operasional dalam satu dashboard terintegrasi.">
     <link rel="icon" href="css/favicon.png" type="image/png">
+    <link rel="canonical" href="https://www.crudworks.com/">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Open Graph Meta Tags -->
@@ -121,7 +122,22 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-2">
                         <a href="#home" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300" data-i18n="nav_home">Beranda</a>
-                        <a href="#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300" data-i18n="nav_products">Produk</a>
+                        
+                        <!-- Produk Dropdown -->
+                        <div class="relative group" id="nav-products-group">
+                            <a href="#services" class="flex items-center gap-1 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">
+                                <span data-i18n="nav_products">Produk</span>
+                                <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform duration-300 group-hover:-rotate-180"></i>
+                            </a>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-[600px] bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 translate-y-2 group-hover:translate-y-0">
+                                <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-t border-l border-slate-100 transform rotate-45"></div>
+                                <div class="relative bg-white rounded-2xl overflow-hidden p-6">
+                                    <div id="nav-products-dropdown" class="grid grid-cols-2 gap-4"></div>
+                                    <div class="mt-4 pt-4 border-t border-slate-100 text-center"><a href="produk" class="text-xs font-bold text-blue-600 hover:text-blue-700 uppercase tracking-wider">Lihat Semua Layanan</a></div>
+                                </div>
+                            </div>
+                        </div>
+
                         <a href="tentang" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300" data-i18n="nav_about">Tentang Kami</a>
                         
                         <!-- Language Switcher (Desktop) -->
@@ -756,7 +772,7 @@
                                     Kami mendengarkan setiap masukan Anda. Fitur kami berkembang seiring pertumbuhan bisnis Anda.
                                     </p>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                         <!-- Value 3 -->
                         <div class="group p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 hover:border-emerald-200 transition-all duration-300">
@@ -985,7 +1001,7 @@
                             <div class="w-5 flex justify-center text-blue-600">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
-                            <span>087759651803</span>
+                            <span>+62 877 5965 1803</span>
                         </li>
                     </ul>
                 </div>
@@ -994,8 +1010,8 @@
             <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-slate-500 text-sm text-center md:text-left">&copy; <script>document.write(new Date().getFullYear())</script> CRUDWorks Karya Anak Indonesia. All rights reserved.</p>
                 <div class="flex gap-6 text-sm text-slate-500">
-                    <a href="privacy.html" class="hover:text-blue-600 transition-all duration-300">Privacy Policy</a>
-                    <a href="tos.html" class="hover:text-blue-600 transition-all duration-300">Terms of Service</a>
+                    <a href="privacy" class="hover:text-blue-600 transition-all duration-300">Privacy Policy</a>
+                    <a href="tos" class="hover:text-blue-600 transition-all duration-300">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -1048,7 +1064,11 @@
     </a>
 
     <!-- Logic JS -->
-    <script src="js/app.js"></script>
+    <script>
+        const today = new Date();
+        const dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
+        document.write('<script src="js/app.js?d=' + dateStr + '"><\/script>');
+    </script>
     <script>
         // Load Clients from API
         const loadClients = async () => {
@@ -1076,6 +1096,98 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             loadClients();
+        });
+
+        // Fetch Products for Navbar Dropdown
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownGroup = document.getElementById('nav-products-group');
+            const dropdownContainer = document.getElementById('nav-products-dropdown');
+            let isLoaded = false;
+
+            if(!dropdownGroup || !dropdownContainer) return;
+
+            const loadDropdownData = async () => {
+                if(isLoaded) return;
+                isLoaded = true;
+
+                // Show Skeleton Loading
+                dropdownContainer.innerHTML = Array(4).fill(0).map(() => `
+                    <div class="flex items-start gap-3 p-3 rounded-xl animate-pulse">
+                        <div class="w-10 h-10 rounded-lg bg-slate-200 flex-shrink-0"></div>
+                        <div class="flex-1 space-y-2 py-1">
+                            <div class="h-3 bg-slate-200 rounded w-2/3"></div>
+                            <div class="h-2 bg-slate-200 rounded w-full"></div>
+                        </div>
+                    </div>
+                `).join('');
+
+                try {
+                    const response = await fetch('api/index.php?endpoint=services');
+                    const services = await response.json();
+                    
+                    if(services && services.length > 0) {
+                        dropdownContainer.innerHTML = services.slice(0, 4).map(service => {
+                            // Logic Badge Warna-warni
+                            let badgeHtml = '';
+                            if(service.badge) {
+                                let colorClass = 'bg-blue-100 text-blue-700'; // Default (New)
+                                const bText = service.badge.toLowerCase();
+                                if(bText.includes('best')) colorClass = 'bg-amber-100 text-amber-700';
+                                if(bText.includes('promo')) colorClass = 'bg-rose-100 text-rose-700';
+                                badgeHtml = `<span class="text-[10px] px-2 py-0.5 rounded-full ${colorClass} font-bold ml-auto whitespace-nowrap">${service.badge}</span>`;
+                            }
+
+                            // Logic Harga & Diskon (Hemat %)
+                            let priceHtml = `<div class="text-xs font-bold text-emerald-600 mt-1">${service.price || ''}</div>`;
+                            
+                            if (service.discount_price) {
+                                const parseVal = (str) => {
+                                    if(!str) return 0;
+                                    let num = parseInt(str.toString().replace(/[^0-9]/g, '')) || 0;
+                                    if (str.toString().toLowerCase().includes('rb')) num *= 1000;
+                                    return num;
+                                };
+
+                                const original = parseVal(service.price);
+                                const discounted = parseVal(service.discount_price);
+                                
+                                if (original > discounted && original > 0) {
+                                    const percent = Math.round(((original - discounted) / original) * 100);
+                                    priceHtml = `
+                                        <div class="mt-1 flex flex-wrap items-center gap-1.5">
+                                            <span class="text-xs font-bold text-emerald-600">${service.discount_price}</span>
+                                            <span class="text-[10px] text-slate-400 line-through decoration-slate-400">${service.price}</span>
+                                            <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded border border-red-100">Hemat ${percent}%</span>
+                                        </div>
+                                    `;
+                                } else {
+                                    priceHtml = `<div class="text-xs font-bold text-emerald-600 mt-1">${service.discount_price}</div>`;
+                                }
+                            }
+
+                            return `
+                                <a href="produk/${service.slug || service.id}" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
+                                    ${service.image 
+                                        ? `<img src="${service.image}" alt="${service.title}" class="w-10 h-10 rounded-lg object-cover bg-slate-100" loading="lazy">`
+                                        : `<div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors"><i class="fa-solid fa-${service.icon} text-lg"></i></div>`
+                                    }
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <h4 class="text-sm font-bold text-slate-900 group-hover/item:text-blue-600 transition-colors truncate">${service.title}</h4>
+                                            ${badgeHtml}
+                                        </div>
+                                        <p class="text-xs text-slate-500 line-clamp-1 mt-0.5">${service.description}</p>
+                                        ${priceHtml}
+                                    </div>
+                                </a>
+                            `;
+                        }).join('');
+                    }
+                } catch (error) { console.error(error); }
+            };
+
+            // Trigger load on hover (Lazy Load)
+            dropdownGroup.addEventListener('mouseenter', loadDropdownData);
         });
     </script>
 </body>

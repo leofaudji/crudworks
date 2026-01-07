@@ -18,6 +18,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
         <priority>1.0</priority>
     </url>
 
+    <!-- Halaman Statis: Produk (Listing) -->
+    <url>
+        <loc><?= $baseUrl ?>/produk</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
     <!-- Halaman Statis: Tentang Kami -->
     <url>
         <loc><?= $baseUrl ?>/tentang</loc>

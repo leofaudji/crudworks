@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang Kami | CRUDWorks</title>
     <link rel="icon" href="css/favicon.png" type="image/png">
+    <link rel="canonical" href="https://www.crudworks.com/tentang">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Tentang Kami | CRUDWorks">
@@ -15,6 +16,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CRUDWorks Karya Anak Indonesia",
+      "url": "https://www.crudworks.com",
+      "logo": "https://www.crudworks.com/css/logo.png",
+      "description": "Platform manajemen bisnis #1 untuk UMKM. Otomatisasi Keuangan, HR, dan Operasional dalam satu dashboard terintegrasi.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Perum Puri Nirwana Pandanwangi 21",
+        "addressLocality": "Malang",
+        "postalCode": "65124",
+        "addressCountry": "ID"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "087759651803",
+        "contactType": "customer service",
+        "email": "info@crudworks.com"
+      }
+    }
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -39,14 +64,14 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+                <a href="#" class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
                     <img src="css/logo.png" alt="Logo" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
                 </a>
                 
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-2">
-                        <a href="index.html" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all" data-i18n="nav_home">Beranda</a>
-                        <a href="index.html#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all" data-i18n="nav_products">Produk</a>
+                        <a href="index" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all" data-i18n="nav_home">Beranda</a>
+                        <a href="index#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all" data-i18n="nav_products">Produk</a>
                         <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50 transition-all" data-i18n="nav_about">Tentang Kami</a>
                         
                         <!-- Language Switcher (Desktop) -->
@@ -55,7 +80,7 @@
                             <span class="text-xs font-bold text-gray-600">ID</span>
                         </button>
 
-                        <a href="index.html#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all" data-i18n="nav_contact">Hubungi Kami</a>
+                        <a href="index#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all" data-i18n="nav_contact">Hubungi Kami</a>
                     </div>
                 </div>
 
@@ -69,15 +94,15 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_home">Beranda</a>
-                <a href="index.html#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_products">Produk</a>
+                <a href="index" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_home">Beranda</a>
+                <a href="index#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_products">Produk</a>
                 <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 bg-blue-50" data-i18n="nav_about">Tentang Kami</a>
                 <!-- Language Switcher (Mobile) -->
                 <button class="lang-switcher w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50 transition flex items-center gap-3">
                     <img src="https://flagcdn.com/w20/id.png" alt="ID" class="w-5 h-auto rounded-sm">
                     <span>Ganti Bahasa (ID/EN)</span>
                 </button>
-                <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_contact">Hubungi Kami</a>
+                <a href="index#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_contact">Hubungi Kami</a>
             </div>
         </div>
     </nav>
@@ -328,6 +353,25 @@
         </div>
     </section>
 
+    <!-- Map Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl" data-i18n="location_title">Lokasi Kami</h2>
+                <p class="text-slate-500 mt-4 text-lg leading-relaxed" data-i18n="location_desc">Kunjungi kantor kami untuk diskusi lebih lanjut.</p>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.428169353024!2d112.6582640748598!3d-7.954780979219896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629c1b7990c69%3A0xfe16855b73b1a833!2sPerum%20Puri%20Nirwana%20Pandanwangi%2021%2C%20Pandanwangi%2C%20Kec.%20Blimbing%2C%20Kota%20Malang%2C%20Jawa%20Timur%2065124!5e0!3m2!1sen!2sid!4v1624952345678!5m2!1sen!2sid" 
+                    class="w-full h-96 md:h-[500px]" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer (Sama dengan index.html) -->
     <footer class="bg-white text-slate-800 pt-16 pb-8 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -339,11 +383,11 @@
                 <div class="lg:col-span-2"> 
                     <h3 class="text-lg font-bold mb-6 text-slate-900" data-i18n="footer_quick_links">Tautan Cepat</h3>
                     <ul class="grid grid-cols-2 gap-4">
-                        <li><a href="index.html" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_home">Beranda</span></a></li>
-                        <li><a href="index.html#services" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_products">Produk & Layanan</span></a></li>
+                        <li><a href="index" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_home">Beranda</span></a></li>
+                        <li><a href="index#services" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_products">Produk & Layanan</span></a></li>
                         <li><a href="#" class="text-blue-600 font-bold transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_about">Tentang Kami</span></a></li>
                         <li><a href="karir" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_career">Karir</span></a></li>
-                        <li class="col-span-2"><a href="index.html#contact" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_contact">Hubungi Kami</span></a></li>
+                        <li class="col-span-2"><a href="index#contact" class="text-slate-600 hover:text-blue-600 transition-all text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> <span data-i18n="footer_link_contact">Hubungi Kami</span></a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-2">
@@ -365,6 +409,10 @@
         <span class="absolute right-16 bg-white text-gray-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat Kami</span>
     </a>
 
-    <script src="js/app.js"></script>
+    <script>
+        const today = new Date();
+        const dateStr = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
+        document.write('<script src="js/app.js?d=' + dateStr + '"><\/script>');
+    </script>
 </body>
 </html>

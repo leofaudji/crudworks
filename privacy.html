@@ -6,6 +6,7 @@
     <title>Kebijakan Privasi | CRUDWorks</title>
     <meta name="description" content="Kebijakan Privasi CRUDWorks. Bagaimana kami mengumpulkan, menggunakan, dan melindungi data Anda.">
     <link rel="icon" href="css/favicon.png" type="image/png">
+    <link rel="canonical" href="https://www.crudworks.com/privacy">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Kebijakan Privasi | CRUDWorks">
@@ -16,6 +17,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CRUDWorks Karya Anak Indonesia",
+      "url": "https://www.crudworks.com",
+      "logo": "https://www.crudworks.com/css/logo.png",
+      "description": "Platform manajemen bisnis #1 untuk UMKM. Otomatisasi Keuangan, HR, dan Operasional dalam satu dashboard terintegrasi.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Perum Puri Nirwana Pandanwangi 21",
+        "addressLocality": "Malang",
+        "postalCode": "65124",
+        "addressCountry": "ID"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "087759651803",
+        "contactType": "customer service",
+        "email": "info@crudworks.com"
+      }
+    }
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -43,14 +68,14 @@
                 </a>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-2">
-                        <a href="index.html" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Beranda</a>
-                        <a href="index.html#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Produk</a>
-                        <a href="tentang.html" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Tentang Kami</a>
-                        <a href="index.html#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all">Hubungi Kami</a>
+                        <a href="index" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Beranda</a>
+                        <a href="index#services" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Produk</a>
+                        <a href="tentang" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all">Tentang Kami</a>
+                        <a href="index#contact" class="ml-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all">Hubungi Kami</a>
                     </div>
                 </div>
                  <div class="md:hidden flex items-center">
-                    <a href="index.html" class="text-gray-600 hover:text-blue-600 p-2"><i class="fa-solid fa-home text-xl"></i></a>
+                    <a href="index" class="text-gray-600 hover:text-blue-600 p-2"><i class="fa-solid fa-home text-xl"></i></a>
                 </div>
             </div>
         </div>
@@ -69,7 +94,7 @@
     <section class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="prose prose-slate prose-lg max-w-none">
-                <p>Di CRUDWorks, privasi Anda adalah prioritas kami. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda saat menggunakan layanan kami.</p>
+                <p class="text-slate-600">Di CRUDWorks, privasi Anda adalah prioritas kami. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda saat menggunakan layanan kami.</p>
 
                 <h3 class="text-xl font-bold mt-8 mb-4 text-slate-900">1. Informasi yang Kami Kumpulkan</h3>
                 <p class="mb-4 text-slate-600 leading-relaxed">Kami mengumpulkan informasi yang Anda berikan secara langsung kepada kami, seperti saat Anda membuat akun, berlangganan layanan, atau menghubungi dukungan pelanggan. Informasi ini dapat mencakup nama, alamat email, nomor telepon, dan informasi perusahaan.</p>

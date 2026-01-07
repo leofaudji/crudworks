@@ -61,6 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const lang = localStorage.getItem('crudworks_lang') || 'id';
         const t = translations[lang] || translations.id;
 
+        // Fallback text untuk mencegah undefined jika key tidak ada di JSON
+        const txt_save = t.slider_save || (lang === 'id' ? 'Hemat' : 'Save');
+        const txt_offer = t.slider_offer || (lang === 'id' ? 'Penawaran Spesial' : 'Special Offer');
+        const txt_best_price = t.slider_best_price || (lang === 'id' ? 'Harga Terbaik' : 'Best Price');
+        const txt_view = t.slider_view_details || (lang === 'id' ? 'Lihat Detail' : 'View Details');
+        const txt_ask = t.slider_ask_admin || (lang === 'id' ? 'Tanya Admin' : 'Ask Admin');
+        const txt_avail = t.slider_available_now || (lang === 'id' ? 'Tersedia Sekarang' : 'Available Now');
+
         // Mapping gambar berdasarkan kategori (bisa disesuaikan)
         const images = {
             'finance': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -97,12 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (original > 0 && discounted > 0 && original > discounted) {
                 const percent = Math.round(((original - discounted) / original) * 100);
-                percentHtml = `<span class="ml-2 px-2 py-0.5 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wide">${t.slider_save} ${percent}%</span>`;
+                percentHtml = `<span class="ml-2 px-2 py-0.5 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wide">${txt_save} ${percent}%</span>`;
             }
 
             priceDisplayHtml = `
                 <div>
-                    <p class="text-sm font-medium text-gray-500">${t.slider_offer}</p>
+                    <p class="text-sm font-medium text-gray-500">${txt_offer}</p>
                     <div class="flex flex-wrap items-baseline gap-x-2">
                         <span class="text-sm text-gray-400 line-through">${service.price}</span>
                         <h3 class="text-2xl font-bold text-red-600">${service.discount_price}</h3>
@@ -112,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             priceDisplayHtml = `
                 <div>
-                    <p class="text-sm font-medium text-gray-500">${t.slider_best_price}</p>
+                    <p class="text-sm font-medium text-gray-500">${txt_best_price}</p>
                     <h3 class="text-2xl font-bold text-gray-900">${service.price || 'Hubungi Kami'}</h3>
                 </div>`;
         }
@@ -133,10 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                             <a href="produk/${service.slug || service.id}" class="px-8 py-3.5 border border-transparent text-base font-bold rounded-full text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-1 text-center">
-                                ${t.slider_view_details}
+                                ${txt_view}
                             </a>
                             <a href="#contact" class="px-8 py-3.5 border border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-whatsapp"></i> ${t.slider_ask_admin}
+                                <i class="fa-brands fa-whatsapp"></i> ${txt_ask}
                             </a>
                         </div>
                     </div>
@@ -151,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <div class="p-2 bg-blue-50 rounded-lg text-blue-600"><i class="fa-solid fa-tag"></i></div>
                                 </div>
                                 <div class="w-full bg-gray-100 rounded-full h-2.5 mb-1"><div class="bg-blue-500 h-2.5 rounded-full" style="width: 100%"></div></div>
-                                <p class="text-xs text-gray-400 text-right">${t.slider_available_now}</p>
+                                <p class="text-xs text-gray-400 text-right">${txt_avail}</p>
                             </div>
                         </div>
                     </div>

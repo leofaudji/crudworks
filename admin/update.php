@@ -110,10 +110,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['update_zip'])) {
 
                 $zip = new ZipArchive;
                 if ($zip->open($zipPath) === TRUE) {
-                    $extractStatus = $zip->extractTo($targetDir);
+                    // Daftar file yang akan di-ignore (tidak ditimpa) saat update
+                    $ignoredFiles = [
+                        'api/config.php',
+                        // Tambahkan file lain di sini jika diperlukan
+                    ];
+
+                    $filesToExtract = [];
+                    for ($i = 0; $i < $zip->numFiles; $i++) {
+                        $entryName = $zip->getNameIndex($i);
+                        // Normalisasi path (ubah backslash windows menjadi forward slash) untuk pengecekan
+                        $normalizedEntry = str_replace('\\', '/', $entryName);
+                        
+                        if (!in_array($normalizedEntry, $ignoredFiles)) {
+                            $filesToExtract[] = $entryName;
+                        }
+                    }
+
+                    $extractStatus = $zip->extractTo($targetDir, $filesToExtract);
                     if ($extractStatus) {
                         $zip->close();
-                        $message = "Update berhasil! Backup telah dibuat di: " . htmlspecialchars($backupFileName);
+                        $message = "Update berhasil! (File config dipertahankan). Backup telah dibuat di: " . htmlspecialchars($backupFileName);
                         $msgType = "success";
                         write_log("UPDATE SUCCESS: Extracted '$uploadedFileName' to root directory.");
                     } else {

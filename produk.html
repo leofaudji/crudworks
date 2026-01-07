@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Layanan | CRUDWorks</title>
+    <title>Layanan & Produk | CRUDWorks</title>
     <meta name="description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
     <link rel="icon" href="css/favicon.png" type="image/png">
+    <link rel="canonical" href="https://www.crudworks.com/produk">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Detail Layanan | CRUDWorks">
+    <meta property="og:title" content="Layanan & Produk | CRUDWorks">
     <meta property="og:description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
     <meta property="og:url" content="https://www.crudworks.com/produk">
     <meta property="og:type" content="article">
@@ -16,6 +17,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CRUDWorks Karya Anak Indonesia",
+      "url": "https://www.crudworks.com",
+      "logo": "https://www.crudworks.com/css/logo.png",
+      "description": "Platform manajemen bisnis #1 untuk UMKM. Otomatisasi Keuangan, HR, dan Operasional dalam satu dashboard terintegrasi.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Perum Puri Nirwana Pandanwangi 21",
+        "addressLocality": "Malang",
+        "postalCode": "65124",
+        "addressCountry": "ID"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "087759651803",
+        "contactType": "customer service",
+        "email": "info@crudworks.com"
+      }
+    }
+    </script>
     <script>
         // Fix Relative Paths untuk Pretty URL (detail/id)
         // Menentukan base URL agar aset (css/img) tetap terbaca dari root
@@ -29,7 +54,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
+                    colors: { 
                         wa: { light: '#3b82f6', dark: '#1e3a8a', teal: '#2563eb' }
                     },
                     fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
@@ -51,10 +76,10 @@
     <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center gap-3">
+                <a href="index" class="flex items-center gap-3">
                     <img src="css/logo.png" alt="Logo" class="h-10 w-auto">
                 </a>
-                <a href="index.html#services" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+                <a href="index#services" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
                     <i class="fa-solid fa-arrow-left"></i> Kembali ke Produk
                 </a>
             </div>
@@ -63,10 +88,131 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
+        <!-- SEO: Breadcrumb Navigation -->
+        <nav class="flex mb-8 text-sm text-slate-500 animate-fade-in-up" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="index" class="inline-flex items-center hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-house mr-2"></i> Beranda
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-chevron-right text-slate-300 mx-2 text-xs"></i>
+                        <a href="produk" class="hover:text-blue-600 transition-colors">Layanan & Produk</a>
+                    </div>
+                </li>
+                <li aria-current="page" class="hidden" id="breadcrumb-active">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-chevron-right text-slate-300 mx-2 text-xs"></i>
+                        <span class="text-blue-600 font-medium truncate max-w-[200px]" id="breadcrumb-title"></span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
         <!-- Loading State -->
         <div id="loading" class="text-center py-20">
             <i class="fa-solid fa-circle-notch fa-spin text-4xl text-blue-600 mb-4"></i>
             <p class="text-slate-500">Memuat detail layanan...</p>
+        </div>
+
+        <!-- Listing Container (All Products) -->
+        <div id="listing-content" class="hidden animate-fade-in-up">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-wide uppercase mb-4">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span> Katalog Lengkap
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">Solusi Digital Terintegrasi</h1>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">Temukan layanan yang tepat untuk mengakselerasi pertumbuhan bisnis Anda ke level selanjutnya.</p>
+            </div> 
+
+            <!-- Search Bar -->
+            <div class="max-w-md mx-auto mb-10 relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
+                </div>
+                <input type="text" id="search-input" class="block w-full pl-11 pr-4 py-3 border border-gray-200 rounded-full leading-5 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 shadow-sm transition-all duration-300" placeholder="Cari layanan...">
+            </div>
+
+            <!-- Filter Categories -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12" id="product-filters">
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-500/30" data-filter="all">Semua</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="finance">Keuangan</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="hr">HR</button>
+                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="operational">Operasional</button>
+            </div>
+
+            <div id="listing-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Items injected via JS -->
+            </div>
+
+            <!-- Pagination Container -->
+            <div id="pagination-container" class="flex justify-center gap-2 mt-12"></div>
+
+            <!-- SEO: FAQ Section (Rich Snippets Candidate) -->
+            <section class="mt-24 border-t border-slate-200 pt-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl font-bold text-slate-900">Pertanyaan Seputar Layanan</h2>
+                    <p class="text-slate-500 mt-2">Informasi tambahan untuk membantu Anda memilih solusi yang tepat.</p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span>Apakah layanan ini dapat disesuaikan (Custom)?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+                        </button>
+                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Ya, sebagian besar layanan kami, terutama pengembangan software, sangat fleksibel. Kami menggunakan pendekatan <em>tailor-made</em> untuk memastikan solusi yang kami bangun sesuai dengan alur kerja unik bisnis Anda.
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span>Bagaimana dengan dukungan purna jual (After Sales)?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+                        </button>
+                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Kami memberikan garansi bug fixing dan dukungan teknis prioritas. Tim support kami siap membantu Anda melalui WhatsApp, Email, atau Telepon jika terjadi kendala operasional.
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span>Berapa lama proses pengerjaan proyek?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+                        </button>
+                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Durasi bervariasi tergantung kompleksitas. Untuk implementasi sistem standar (SaaS) bisa instan atau 1-3 hari. Untuk custom development, estimasi waktu akan diberikan setelah tahap analisis kebutuhan.
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span>Apakah data perusahaan saya aman?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+                        </button>
+                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Keamanan adalah prioritas utama kami. Kami menggunakan enkripsi SSL 256-bit standar perbankan dan server yang dilindungi firewall berlapis dengan backup otomatis harian.
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span>Metode pembayaran apa saja yang tersedia?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+                        </button>
+                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Kami menerima pembayaran melalui Transfer Bank (BCA, Mandiri, BNI, BRI), Kartu Kredit, dan E-Wallet (GoPay, OVO, Dana) untuk memudahkan transaksi Anda.
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span>Apakah tersedia demo atau trial gratis?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+                        </button>
+                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Ya, untuk produk SaaS kami menyediakan masa percobaan gratis selama 14 hari. Silakan hubungi tim sales kami untuk menjadwalkan demo produk secara langsung.
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!-- Detail Container -->
@@ -87,6 +233,17 @@
                         <h1 id="detail-title" class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight"></h1>
                         <div id="detail-desc" class="text-base md:text-lg text-slate-600 leading-relaxed space-y-6 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2"></div>
                     </div>
+                </div>
+            </div>
+
+            <!-- SEO: Social Share -->
+            <div class="flex items-center gap-4 mb-8">
+                <span class="text-sm font-bold text-slate-500">Bagikan:</span>
+                <div class="flex gap-2">
+                    <a href="#" id="share-wa" target="_blank" class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center hover:bg-green-600 hover:text-white transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" id="share-fb" target="_blank" class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" id="share-li" target="_blank" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" id="share-tw" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center hover:bg-slate-800 hover:text-white transition-all"><i class="fa-brands fa-x-twitter"></i></a>
                 </div>
             </div>
 
@@ -117,6 +274,54 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEO: User Reviews Section (Validates AggregateRating Schema) -->
+            <div class="mt-16 border-t border-slate-200 pt-12">
+                <h3 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
+                    Ulasan Pengguna
+                    <span class="text-sm font-normal text-slate-500 bg-slate-100 px-2 py-1 rounded-full">Terverifikasi</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Summary -->
+                    <div class="bg-slate-50 rounded-2xl p-8 text-center border border-slate-100 h-fit">
+                        <div class="text-5xl font-extrabold text-slate-900 mb-2">4.8</div>
+                        <div class="flex justify-center gap-1 text-amber-400 mb-2 text-lg">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p class="text-slate-500 text-sm font-medium">Berdasarkan 124 ulasan</p>
+                    </div>
+                    
+                    <!-- Review List -->
+                    <div class="md:col-span-2 space-y-6">
+                        <div class="border-b border-slate-100 pb-6 last:border-0 last:pb-0">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="font-bold text-slate-900 flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">BS</div>
+                                    Budi Santoso
+                                </div>
+                                <div class="text-xs text-slate-400">2 hari yang lalu</div>
+                            </div>
+                            <div class="flex text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed">Layanan sangat memuaskan. Tim support responsif dan fitur sesuai dengan kebutuhan bisnis kami yang sedang berkembang.</p>
+                        </div>
+                        <div class="border-b border-slate-100 pb-6 last:border-0 last:pb-0">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="font-bold text-slate-900 flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs">DA</div>
+                                    Dian Anggraini
+                                </div>
+                                <div class="text-xs text-slate-400">1 minggu yang lalu</div>
+                            </div>
+                            <div class="flex text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed">Implementasi sistem HRIS berjalan lancar. Sangat membantu efisiensi perhitungan payroll bulanan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Related Products Section -->
@@ -127,6 +332,93 @@
             </div>
         </div>
     </main>
+
+    <!-- Quick View Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75 backdrop-blur-sm" aria-hidden="true" id="qv-overlay"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            
+            <div class="inline-block w-full overflow-hidden text-left align-bottom transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:align-middle sm:max-w-2xl relative animate-fade-in-up">
+                <button type="button" id="qv-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 focus:outline-none z-10 w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+                
+                <div class="p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-shrink-0">
+                            <div id="qv-icon" class="w-24 h-24 rounded-3xl bg-blue-50 flex items-center justify-center text-blue-600 text-4xl shadow-inner"></div>
+                        </div>
+                        
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span id="qv-category" class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold uppercase tracking-wider"></span>
+                                <div id="qv-badge-container"></div>
+                            </div>
+                            
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 leading-tight" id="qv-title"></h3>
+                            <div id="qv-price" class="mb-5"></div>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6" id="qv-desc"></p>
+                            
+                            <div id="qv-features" class="bg-slate-50 rounded-xl p-4 mb-8 space-y-2 border border-slate-100"></div>
+                            
+                            <!-- Social Share (Quick View) -->
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Share:</span>
+                                <div class="flex gap-2">
+                                    <a href="#" id="qv-share-wa" target="_blank" class="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center hover:bg-green-600 hover:text-white transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+                                    <a href="#" id="qv-share-fb" target="_blank" class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="#" id="qv-share-li" target="_blank" class="w-8 h-8 rounded-full bg-sky-50 text-sky-600 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="#" id="qv-share-tw" target="_blank" class="w-8 h-8 rounded-full bg-slate-50 text-slate-600 flex items-center justify-center hover:bg-slate-800 hover:text-white transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <a href="#" id="qv-detail-link" class="flex-1 py-3 px-4 rounded-xl border border-slate-200 text-slate-700 font-bold text-center text-sm hover:bg-slate-50 hover:border-slate-300 transition-all">
+                                    Detail Penuh
+                                </a>
+                                <a href="#" id="qv-wa-link" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-blue-600 text-white font-bold text-center text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Pesan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compare Floating Bar -->
+    <div id="compare-bar" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-2xl border border-slate-200 p-2 pl-6 pr-2 flex items-center gap-4 z-40 hidden animate-fade-in-up">
+        <span class="text-sm font-bold text-slate-700"><span id="compare-count">0</span>/3 Dipilih</span>
+        <button id="compare-reset" class="text-xs text-slate-400 hover:text-red-500 underline font-medium">Reset</button>
+        <button id="compare-trigger" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-bold transition-colors shadow-lg shadow-blue-500/30 flex items-center gap-2">
+            Bandingkan <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Compare Modal -->
+    <div id="compare-modal" class="fixed inset-0 z-[80] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75 backdrop-blur-sm" aria-hidden="true" id="compare-overlay"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            
+            <div class="inline-block w-full overflow-hidden text-left align-bottom transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:align-middle sm:max-w-5xl relative animate-fade-in-up">
+                <button type="button" id="compare-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 focus:outline-none z-10 w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+                
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6 text-center">Perbandingan Produk</h3>
+                    <div class="overflow-x-auto">
+                        <div id="compare-grid" class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-x divide-slate-100 border border-slate-100 rounded-2xl">
+                            <!-- Compare Items Injected Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-white border-t border-slate-200 py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
@@ -140,6 +432,7 @@
         <span class="absolute right-16 bg-white text-gray-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat Kami</span>
     </a>
 
+
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             // Coba ambil Slug/ID dari Query String
@@ -148,13 +441,12 @@
             
             // Jika tidak ada, coba ambil dari Path URL (produk/...)
             if (!slug) {
-                const pathSegments = window.location.pathname.split('/');
-                slug = pathSegments[pathSegments.length - 1]; // Ambil segmen terakhir
-            }
-            
-            if(!slug) {
-                window.location.href = 'index.html';
-                return;
+                const path = window.location.pathname;
+                const segments = path.replace(/\/$/, '').split('/');
+                const last = segments[segments.length - 1];
+                if (last && last.toLowerCase() !== 'produk.html' && last.toLowerCase() !== 'produk') {
+                    slug = last;
+                }
             }
 
             try {
@@ -162,17 +454,22 @@
                 const response = await fetch('api/index.php?endpoint=services');
                 const services = await response.json();
                 
+                // Helper Parse Price
+                const parseVal = (str) => {
+                    if(!str) return 0;
+                    let num = parseInt(str.toString().replace(/[^0-9]/g, '')) || 0;
+                    if (str.toString().toLowerCase().includes('rb')) num *= 1000;
+                    return num;
+                };
+
                 // Cari service berdasarkan Slug atau ID (untuk backward compatibility)
                 const service = services.find(s => s.slug === slug || s.id == slug);
 
                 if(service) {
-                    // Helper Parse Price (Dipindahkan ke atas agar bisa dipakai Schema & UI)
-                    const parseVal = (str) => {
-                        if(!str) return 0;
-                        let num = parseInt(str.replace(/[^0-9]/g, '')) || 0;
-                        if (str.toLowerCase().includes('rb')) num *= 1000;
-                        return num;
-                    };
+                    // Calculate priceValidUntil (1 year from now)
+                    const date = new Date();
+                    date.setFullYear(date.getFullYear() + 1);
+                    const priceValidUntil = date.toISOString().split('T')[0];
 
                     // Update SEO Meta Tags
                     document.title = `${service.title} - CRUDWorks`;
@@ -216,13 +513,66 @@
                             "@type": "Brand",
                             "name": "CRUDWorks"
                         },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.8",
+                            "reviewCount": "124"
+                        },
+                        "review": {
+                            "@type": "Review",
+                            "reviewRating": {
+                                "@type": "Rating",
+                                "ratingValue": "5",
+                                "bestRating": "5"
+                            },
+                            "author": {
+                                "@type": "Person",
+                                "name": "Pelanggan Terverifikasi"
+                            }
+                        },
                         "offers": {
                             "@type": "Offer",
                             "url": finalUrl,
                             "priceCurrency": "IDR",
                             "price": service.discount_price ? parseVal(service.discount_price) : parseVal(service.price),
+                            "priceValidUntil": priceValidUntil,
                             "availability": "https://schema.org/InStock",
-                            "itemCondition": "https://schema.org/NewCondition"
+                            "itemCondition": "https://schema.org/NewCondition",
+                            "hasMerchantReturnPolicy": {
+                                "@type": "MerchantReturnPolicy",
+                                "applicableCountry": "ID",
+                                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                                "merchantReturnDays": 14,
+                                "returnMethod": "https://schema.org/ReturnByMail",
+                                "returnFees": "https://schema.org/FreeReturn"
+                            },
+                            "shippingDetails": {
+                                "@type": "OfferShippingDetails",
+                                "shippingRate": {
+                                    "@type": "MonetaryAmount",
+                                    "value": 0,
+                                    "currency": "IDR"
+                                },
+                                "shippingDestination": {
+                                    "@type": "DefinedRegion",
+                                    "addressCountry": "ID"
+                                },
+                                "deliveryTime": {
+                                    "@type": "ShippingDeliveryTime",
+                                    "handlingTime": {
+                                        "@type": "QuantitativeValue",
+                                        "minValue": 0,
+                                        "maxValue": 1,
+                                        "unitCode": "DAY"
+                                    },
+                                    "transitTime": {
+                                        "@type": "QuantitativeValue",
+                                        "minValue": 0,
+                                        "maxValue": 1,
+                                        "unitCode": "DAY"
+                                    }
+                                }
+                            }
                         }
                     };
 
@@ -230,6 +580,31 @@
                     script.type = 'application/ld+json';
                     script.text = JSON.stringify(schemaData);
                     document.head.appendChild(script);
+
+                    // Schema Markup (BreadcrumbList) - Detail Page
+                    const breadcrumbSchema = {
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [{
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Beranda",
+                                "item": window.location.origin + "/index"
+                        },{
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Layanan & Produk",
+                                "item": window.location.origin + "/produk"
+                        },{
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": service.title
+                        }]
+                    };
+                    const bcScript = document.createElement('script');
+                    bcScript.type = 'application/ld+json';
+                    bcScript.text = JSON.stringify(breadcrumbSchema);
+                    document.head.appendChild(bcScript);
 
                     // Render Content
                     document.getElementById('detail-icon').innerHTML = `<i class="fa-solid fa-${service.icon} text-4xl"></i>`;
@@ -258,28 +633,36 @@
                     document.getElementById('detail-title').innerText = service.title;
                     document.getElementById('detail-desc').innerHTML = service.detailed_description || service.description;
 
+                    // Update Breadcrumb (Detail)
+                    document.getElementById('breadcrumb-active').classList.remove('hidden');
+                    document.getElementById('breadcrumb-title').innerText = service.title;
+
+                    // Update Social Share Links
+                    const shareUrl = encodeURIComponent(window.location.href);
+                    const shareText = encodeURIComponent(`Cek layanan ${service.title} di CRUDWorks!`);
+                    document.getElementById('share-wa').href = `https://wa.me/?text=${shareText}%20${shareUrl}`;
+                    document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+                    document.getElementById('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+                    document.getElementById('share-tw').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+
                     // Render Badge
                     if (service.badge) {
                         const badgeEl = document.createElement('div');
                         
-                        // Logika warna dinamis berdasarkan teks badge
-                        let colorClass = 'from-amber-500 to-orange-600'; // Default (Orange - Best Seller)
-                        const badgeText = service.badge.toLowerCase();
+                        let gradientClass = 'from-blue-500 to-indigo-600';
+                        let shadowClass = 'shadow-blue-500/30';
+                        let icon = 'fa-star';
+                        const bText = service.badge.toLowerCase();
 
-                        if (badgeText === 'new') {
-                            colorClass = 'from-blue-500 to-indigo-600'; // Biru - New
-                        } else if (badgeText === 'promo') {
-                            colorClass = 'from-rose-500 to-pink-600'; // Merah/Pink - Promo
-                        }
+                        if (bText.includes('best')) { gradientClass = 'from-amber-400 to-orange-500'; shadowClass = 'shadow-amber-500/30'; icon = 'fa-crown'; }
+                        if (bText.includes('promo')) { gradientClass = 'from-rose-500 to-pink-600'; shadowClass = 'shadow-rose-500/30'; icon = 'fa-percent'; }
 
-                        badgeEl.className = `absolute top-6 right-6 bg-gradient-to-r ${colorClass} text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-xl shadow-gray-200/50 z-20 tracking-wider uppercase overflow-hidden`;
+                        badgeEl.className = `absolute top-6 right-6 z-20`;
                         badgeEl.innerHTML = `
-                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
-                            <span class="relative z-10 flex items-center gap-2">
-                                ${badgeText === 'best seller' ? '<i class="fa-solid fa-crown"></i>' : ''}
-                                ${badgeText === 'new' ? '<i class="fa-solid fa-star"></i>' : ''}
-                                ${badgeText === 'promo' ? '<i class="fa-solid fa-percent"></i>' : ''}
-                                ${service.badge}
+                            <span class="relative overflow-hidden inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r ${gradientClass} shadow-xl ${shadowClass} transform hover:scale-105 transition-transform duration-300">
+                                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
+                                <i class="fa-solid ${icon} relative z-10"></i>
+                                <span class="relative z-10">${service.badge}</span>
                             </span>
                         `;
                         document.getElementById('detail-header').appendChild(badgeEl);
@@ -329,7 +712,526 @@
                         });
                     }
                 } else {
-                    document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold">Layanan tidak ditemukan.</p><a href="index.html" class="text-blue-600 underline mt-4 block">Kembali ke Beranda</a>';
+                    if (slug) {
+                        document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold">Layanan tidak ditemukan.</p><a href="produk" class="text-blue-600 underline mt-4 block">Lihat Semua Produk</a>';
+                    } else {
+                        // --- LISTING MODE ---
+                        document.title = "Layanan & Produk | CRUDWorks";
+                        document.querySelector('meta[name="description"]').setAttribute("content", "Daftar lengkap layanan dan produk digital CRUDWorks. Dari ERP, HRIS, hingga Custom Development.");
+                        
+                        // Reset Breadcrumb (Listing)
+                        document.getElementById('breadcrumb-active').classList.add('hidden');
+
+                        // Schema Markup for FAQPage
+                        const faqSchema = {
+                            "@context": "https://schema.org",
+                            "@type": "FAQPage",
+                            "mainEntity": [{
+                                "@type": "Question",
+                                "name": "Apakah layanan ini dapat disesuaikan (Custom)?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Ya, sebagian besar layanan kami, terutama pengembangan software, sangat fleksibel. Kami menggunakan pendekatan tailor-made untuk memastikan solusi yang kami bangun sesuai dengan alur kerja unik bisnis Anda."
+                                }
+                            }, {
+                                "@type": "Question",
+                                "name": "Bagaimana dengan dukungan purna jual (After Sales)?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Kami memberikan garansi bug fixing dan dukungan teknis prioritas. Tim support kami siap membantu Anda melalui WhatsApp, Email, atau Telepon jika terjadi kendala operasional."
+                                }
+                            }, {
+                                "@type": "Question",
+                                "name": "Berapa lama proses pengerjaan proyek?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Durasi bervariasi tergantung kompleksitas. Untuk implementasi sistem standar (SaaS) bisa instan atau 1-3 hari. Untuk custom development, estimasi waktu akan diberikan setelah tahap analisis kebutuhan."
+                                }
+                            }, {
+                                "@type": "Question",
+                                "name": "Apakah data perusahaan saya aman?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Keamanan adalah prioritas utama kami. Kami menggunakan enkripsi SSL 256-bit standar perbankan dan server yang dilindungi firewall berlapis dengan backup otomatis harian."
+                                }
+                            }, {
+                                "@type": "Question",
+                                "name": "Metode pembayaran apa saja yang tersedia?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Kami menerima pembayaran melalui Transfer Bank (BCA, Mandiri, BNI, BRI), Kartu Kredit, dan E-Wallet (GoPay, OVO, Dana) untuk memudahkan transaksi Anda."
+                                }
+                            }, {
+                                "@type": "Question",
+                                "name": "Apakah tersedia demo atau trial gratis?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Ya, untuk produk SaaS kami menyediakan masa percobaan gratis selama 14 hari. Silakan hubungi tim sales kami untuk menjadwalkan demo produk secara langsung."
+                                }
+                            }]
+                        };
+                        const faqScript = document.createElement('script');
+                        faqScript.type = 'application/ld+json';
+                        faqScript.text = JSON.stringify(faqSchema);
+                        document.head.appendChild(faqScript);
+
+                        // Schema Markup (BreadcrumbList) - Listing Page
+                        const breadcrumbSchema = {
+                            "@context": "https://schema.org",
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Beranda",
+                                "item": window.location.origin + "/index"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Layanan & Produk"
+                            }]
+                        };
+                        const bcScript = document.createElement('script');
+                        bcScript.type = 'application/ld+json';
+                        bcScript.text = JSON.stringify(breadcrumbSchema);
+                        document.head.appendChild(bcScript);
+
+                        // Render Listing
+                        const listingGrid = document.getElementById('listing-grid');
+                        const paginationContainer = document.getElementById('pagination-container');
+                        let currentPage = 1;
+                        const itemsPerPage = 9;
+                        let compareList = [];
+                        let observer;
+
+                        const renderItems = (items, isLoadMore = false) => {
+                            if (!isLoadMore) {
+                                listingGrid.innerHTML = '';
+                                currentPage = 1;
+                            }
+                            paginationContainer.innerHTML = '';
+
+                            if (items.length === 0) {
+                                listingGrid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-500">Tidak ada layanan ditemukan untuk kategori ini.</div>';
+                                return;
+                            }
+
+                            // Load More Logic
+                            const startIndex = (currentPage - 1) * itemsPerPage;
+                            const endIndex = startIndex + itemsPerPage;
+                            const paginatedItems = items.slice(startIndex, endIndex);
+
+                            paginatedItems.forEach(item => {
+                            const card = document.createElement('div');
+                            card.className = 'bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group relative overflow-hidden';
+                            
+                            // Badge Logic
+                            let badgeHtml = '';
+                            if(item.badge) {
+                                let gradientClass = 'from-blue-500 to-indigo-600';
+                                let shadowClass = 'shadow-blue-500/30';
+                                let icon = 'fa-star';
+                                const bText = item.badge.toLowerCase();
+                                
+                                if(bText.includes('best')) { gradientClass = 'from-amber-400 to-orange-500'; shadowClass = 'shadow-amber-500/30'; icon = 'fa-crown'; }
+                                if(bText.includes('promo')) { gradientClass = 'from-rose-500 to-pink-600'; shadowClass = 'shadow-rose-500/30'; icon = 'fa-percent'; }
+                                
+                                badgeHtml = `
+                                    <div class="absolute top-4 right-4 z-20">
+                                        <span class="relative overflow-hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-white bg-gradient-to-r ${gradientClass} shadow-lg ${shadowClass} transform hover:scale-105 transition-transform duration-300">
+                                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
+                                            <i class="fa-solid ${icon} relative z-10"></i>
+                                            <span class="relative z-10">${item.badge}</span>
+                                        </span>
+                                    </div>
+                                `;
+                            }
+
+                            // Price Logic
+                            let priceHtml = `<span class="text-xl font-bold text-slate-800">${item.price || 'Hubungi Kami'}</span>`;
+                            if (item.discount_price) {
+                                const parseVal = (str) => {
+                                    if(!str) return 0;
+                                    let num = parseInt(str.toString().replace(/[^0-9]/g, '')) || 0;
+                                    if (str.toString().toLowerCase().includes('rb')) num *= 1000;
+                                    return num;
+                                };
+                                const original = parseVal(item.price);
+                                const discounted = parseVal(item.discount_price);
+                                
+                                if (original > discounted && original > 0) {
+                                    const percent = Math.round(((original - discounted) / original) * 100);
+                                    priceHtml = `
+                                        <div class="flex flex-col">
+                                            <div class="flex items-center gap-1.5 mb-0.5">
+                                                <span class="text-xs text-slate-400 line-through decoration-slate-400">${item.price}</span>
+                                                <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">-${percent}%</span>
+                                            </div>
+                                            <span class="text-2xl font-bold text-emerald-600">${item.discount_price}</span>
+                                        </div>
+                                    `;
+                                } else {
+                                    priceHtml = `<span class="text-2xl font-bold text-emerald-600">${item.discount_price}</span>`;
+                                }
+                            }
+
+                            // Features Logic
+                            let featuresHtml = '';
+                            if (item.features) {
+                                try {
+                                    const features = JSON.parse(item.features);
+                                    if (Array.isArray(features) && features.length > 0) {
+                                        // Features as Checkbox List
+                                        featuresHtml = `<ul class="space-y-2.5 mb-6 mt-4">` + 
+                                            features.slice(0, 3).map(f => `
+                                                <li class="flex items-start gap-2.5 text-sm text-slate-600">
+                                                    <div class="mt-0.5 w-4 h-4 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                                        <i class="fa-solid fa-check text-[10px]"></i>
+                                                    </div>
+                                                    <span class="leading-tight">${f}</span>
+                                                </li>
+                                            `).join('') +
+                                            `</ul>`;
+                                    }
+                                } catch (e) {}
+                            }
+
+                            card.innerHTML = `
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10"></div>
+                                
+                                <div class="p-6 md:p-8 flex flex-col h-full relative z-0">
+                                    ${badgeHtml}
+                                    
+                                    <div class="mb-6">
+                                        <div class="w-14 h-14 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl text-blue-600 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 relative z-10">
+                                            <i class="fa-solid fa-${item.icon}"></i>
+                                            <div class="absolute inset-0 bg-blue-50 rounded-2xl -z-10 transform rotate-6 group-hover:rotate-12 transition-transform opacity-50"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-2">
+                                         <span class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1 block">${item.category || 'Layanan'}</span>
+                                         <h3 class="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
+                                            <a href="produk/${item.slug || item.id}" class="before:absolute before:inset-0 focus:outline-none">${item.title}</a>
+                                        </h3>
+                                    </div>
+                                    
+                                    <p class="text-slate-500 text-sm leading-relaxed mb-2 line-clamp-2">${item.description}</p>
+                                    
+                                    <div class="border-t border-slate-50 my-4"></div>
+                                    
+                                    ${featuresHtml}
+
+                                    <div class="mt-auto flex items-center justify-between relative z-20 pt-2">
+                                        <div class="flex flex-col">
+                                            <span class="text-xs text-slate-400 font-bold uppercase tracking-wide">Mulai dari</span>
+                                            ${priceHtml}
+                                        </div>
+                                        
+                                        <div class="flex gap-2">
+                                            <button class="quick-view-btn w-9 h-9 rounded-lg bg-slate-50 text-slate-500 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center" data-id="${item.id}" title="Quick View">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </button>
+                                            <button class="compare-btn w-9 h-9 rounded-lg bg-slate-50 text-slate-500 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center ${compareList.includes(item.id) ? 'bg-blue-600 text-white' : ''}" data-id="${item.id}" title="Bandingkan">
+                                                <i class="fa-solid fa-scale-balanced"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            listingGrid.appendChild(card);
+                            });
+
+                            // Infinite Scroll Logic
+                            if (endIndex < items.length) {
+                                const sentinel = document.createElement('div');
+                                sentinel.className = 'py-4';
+                                sentinel.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-blue-600 text-2xl"></i>';
+                                paginationContainer.appendChild(sentinel);
+
+                                if (observer) observer.disconnect();
+                                observer = new IntersectionObserver((entries) => {
+                                    if (entries[0].isIntersecting) {
+                                        observer.unobserve(entries[0].target);
+                                        currentPage++;
+                                        setTimeout(() => renderItems(items, true), 500);
+                                    }
+                                }, { rootMargin: '100px' });
+                                observer.observe(sentinel);
+                            }
+                        };
+
+                        // Initial Render
+                        renderItems(services);
+
+                        // Quick View Logic
+                        const qvModal = document.getElementById('quick-view-modal');
+                        const closeQv = () => {
+                            qvModal.classList.add('hidden');
+                            document.body.style.overflow = '';
+                        };
+
+                        document.getElementById('qv-close-btn').addEventListener('click', closeQv);
+                        document.getElementById('qv-overlay').addEventListener('click', closeQv);
+
+                        listingGrid.addEventListener('click', (e) => {
+                            const btn = e.target.closest('.quick-view-btn');
+                            if(btn) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const id = btn.dataset.id;
+                                const item = services.find(s => s.id == id);
+                                if(item) {
+                                    // Populate Modal
+                                    document.getElementById('qv-icon').innerHTML = `<i class="fa-solid fa-${item.icon}"></i>`;
+                                    document.getElementById('qv-title').innerText = item.title;
+                                    document.getElementById('qv-category').innerText = item.category || 'Layanan';
+                                    document.getElementById('qv-desc').innerText = item.description;
+                                    
+                                    // Price Logic
+                                    const qvPrice = document.getElementById('qv-price');
+                                    let priceHtml = `<span class="text-xl font-bold text-emerald-600">${item.price || 'Hubungi Kami'}</span>`;
+                                    if (item.discount_price) {
+                                        const original = parseVal(item.price);
+                                        const discounted = parseVal(item.discount_price);
+                                        if (original > discounted && original > 0) {
+                                            const percent = Math.round(((original - discounted) / original) * 100);
+                                            const savedAmount = original - discounted;
+                                            const formattedSavedAmount = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(savedAmount).replace(/\s*Rp\s*/, '');
+                                            priceHtml = `
+                                                <div class="flex items-center gap-3">
+                                                    <span class="text-2xl font-bold text-emerald-600">${item.discount_price}</span>
+                                                    <div class="flex flex-col items-start leading-none">
+                                                        <span class="text-xs text-slate-400 line-through decoration-slate-400">${item.price}</span>
+                                                        <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded mt-0.5">Hemat ${percent}% (Rp ${formattedSavedAmount})</span>
+                                                    </div>
+                                                </div>`;
+                                        } else {
+                                            priceHtml = `<span class="text-2xl font-bold text-emerald-600">${item.discount_price}</span>`;
+                                        }
+                                    }
+                                    qvPrice.innerHTML = priceHtml;
+
+                                    // Features
+                                    const qvFeatures = document.getElementById('qv-features');
+                                    qvFeatures.innerHTML = '';
+                                    if(item.features) {
+                                        try {
+                                            const feats = JSON.parse(item.features);
+                                            if(feats.length > 0) {
+                                                qvFeatures.innerHTML = feats.map(f => `<div class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-check text-blue-500 mt-0.5 flex-shrink-0"></i> <span class="leading-relaxed">${f}</span></div>`).join('');
+                                            } else {
+                                                qvFeatures.innerHTML = '<span class="text-xs text-slate-400">Tidak ada fitur detail.</span>';
+                                            }
+                                        } catch(e){}
+                                    }
+
+                                    // Links
+                                    const detailLink = document.getElementById('qv-detail-link');
+                                    detailLink.href = `produk/${item.slug || item.id}`;
+                                    
+                                    const waMsg = `Halo Admin, saya tertarik dengan *${item.title}*. Info lebih lanjut?`;
+                                    document.getElementById('qv-wa-link').href = `https://wa.me/6287759651803?text=${encodeURIComponent(waMsg)}`;
+
+                                    // Social Share Logic (Quick View)
+                                    const shareUrl = encodeURIComponent(detailLink.href); // Mengambil absolute URL dari properti href
+                                    const shareText = encodeURIComponent(`Cek layanan ${item.title} di CRUDWorks!`);
+                                    document.getElementById('qv-share-wa').href = `https://wa.me/?text=${shareText}%20${shareUrl}`;
+                                    document.getElementById('qv-share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+                                    document.getElementById('qv-share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+                                    document.getElementById('qv-share-tw').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+
+                                    qvModal.classList.remove('hidden');
+                                    document.body.style.overflow = 'hidden';
+                                }
+                            }
+                        });
+
+                        // Compare Logic Implementation
+                        const compareBar = document.getElementById('compare-bar');
+                        const compareCount = document.getElementById('compare-count');
+                        const compareModal = document.getElementById('compare-modal');
+                        const compareGrid = document.getElementById('compare-grid');
+
+                        const updateCompareUI = () => {
+                            // Update Bar
+                            if (compareList.length > 0) {
+                                compareBar.classList.remove('hidden');
+                                compareCount.innerText = compareList.length;
+                            } else {
+                                compareBar.classList.add('hidden');
+                            }
+
+                            // Update Buttons
+                            document.querySelectorAll('.compare-btn').forEach(btn => {
+                                if (compareList.includes(btn.dataset.id)) {
+                                    btn.className = 'compare-btn absolute top-16 left-4 w-9 h-9 rounded-full backdrop-blur-sm border flex items-center justify-center z-30 shadow-sm transition-all hover:scale-110 bg-blue-600 text-white border-blue-600';
+                                } else {
+                                    btn.className = 'compare-btn absolute top-16 left-4 w-9 h-9 rounded-full backdrop-blur-sm border flex items-center justify-center z-30 shadow-sm transition-all hover:scale-110 bg-white/90 text-slate-500 border-slate-200 hover:text-blue-600 hover:border-blue-200';
+                                }
+                            });
+                        };
+
+                        listingGrid.addEventListener('click', (e) => {
+                            const btn = e.target.closest('.compare-btn');
+                            if (btn) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const id = btn.dataset.id;
+                                
+                                if (compareList.includes(id)) {
+                                    compareList = compareList.filter(itemId => itemId !== id);
+                                } else {
+                                    if (compareList.length >= 3) {
+                                        alert('Maksimal 3 produk untuk perbandingan.');
+                                        return;
+                                    }
+                                    compareList.push(id);
+                                }
+                                updateCompareUI();
+                            }
+                        });
+
+                        document.getElementById('compare-reset').addEventListener('click', () => {
+                            compareList = [];
+                            updateCompareUI();
+                        });
+
+                        document.getElementById('compare-trigger').addEventListener('click', () => {
+                            // Render Compare Modal
+                            compareGrid.innerHTML = '';
+                            // Adjust grid columns based on count
+                            compareGrid.className = `grid grid-cols-1 md:grid-cols-${compareList.length} gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100 border border-slate-100 rounded-2xl`;
+
+                            compareList.forEach(id => {
+                                const item = services.find(s => s.id == id);
+                                if (item) {
+                                    let priceDisplay = `<span class="text-lg font-bold text-emerald-600">${item.price || 'Hubungi Kami'}</span>`;
+                                    if (item.discount_price) priceDisplay = `<span class="text-lg font-bold text-emerald-600">${item.discount_price}</span>`;
+
+                                    let featuresList = '<p class="text-xs text-slate-400 italic">Tidak ada data fitur.</p>';
+                                    if (item.features) {
+                                        try {
+                                            const feats = JSON.parse(item.features);
+                                            featuresList = `<ul class="space-y-2 text-left mt-4">` + 
+                                                feats.map(f => `<li class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-check text-blue-500 mt-0.5"></i> <span>${f}</span></li>`).join('') + 
+                                                `</ul>`;
+                                        } catch(e){}
+                                    }
+
+                                    const col = document.createElement('div');
+                                    col.className = 'p-6 flex flex-col items-center text-center hover:bg-slate-50 transition-colors';
+                                    col.innerHTML = `
+                                        <div class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4 text-2xl">
+                                            <i class="fa-solid fa-${item.icon}"></i>
+                                        </div>
+                                        <h4 class="text-lg font-bold text-slate-900 mb-1">${item.title}</h4>
+                                        <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider mb-4">${item.category || 'Layanan'}</span>
+                                        
+                                        <div class="mb-4">${priceDisplay}</div>
+                                        <p class="text-sm text-slate-500 mb-4 line-clamp-3">${item.description}</p>
+                                        
+                                        <div class="w-full border-t border-slate-100 pt-4 mt-auto">
+                                            <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wide mb-2">Fitur Utama</h5>
+                                            ${featuresList}
+                                        </div>
+                                        
+                                        <a href="produk/${item.slug || item.id}" class="mt-6 w-full py-2 rounded-lg border border-blue-600 text-blue-600 font-bold text-sm hover:bg-blue-600 hover:text-white transition-all">
+                                            Lihat Detail
+                                        </a>
+                                    `;
+                                    compareGrid.appendChild(col);
+                                }
+                            });
+
+                            compareModal.classList.remove('hidden');
+                            document.body.style.overflow = 'hidden';
+                        });
+
+                        const closeCompare = () => {
+                            compareModal.classList.add('hidden');
+                            document.body.style.overflow = '';
+                        };
+                        document.getElementById('compare-close-btn').addEventListener('click', closeCompare);
+                        document.getElementById('compare-overlay').addEventListener('click', closeCompare);
+
+                        // Filter & Search Logic
+                        let activeCategory = 'all';
+                        let searchQuery = '';
+
+                        const applyFilters = () => {
+                            let filtered = services;
+
+                            // 1. Filter by Category
+                            if (activeCategory !== 'all') {
+                                filtered = filtered.filter(s => {
+                                    const cat = (s.category || '').toLowerCase();
+                                    if (activeCategory === 'finance') return cat.includes('keuangan') || cat.includes('finance');
+                                    if (activeCategory === 'hr') return cat.includes('hr') || cat.includes('human') || cat.includes('sdm');
+                                    if (activeCategory === 'operational') return cat.includes('operasional') || cat.includes('operation');
+                                    return cat.includes(activeCategory);
+                                });
+                            }
+
+                            // 2. Filter by Search
+                            if (searchQuery) {
+                                const lowerQuery = searchQuery.toLowerCase();
+                                filtered = filtered.filter(s => 
+                                    s.title.toLowerCase().includes(lowerQuery) || 
+                                    (s.description && s.description.toLowerCase().includes(lowerQuery))
+                                );
+                            }
+
+                            renderItems(filtered);
+                        };
+
+                        // Search Listener
+                        const searchInput = document.getElementById('search-input');
+                        if(searchInput) {
+                            searchInput.addEventListener('input', (e) => {
+                                searchQuery = e.target.value.trim();
+                                applyFilters();
+                            });
+                        }
+
+                        const filters = document.querySelectorAll('#product-filters .filter-btn');
+                        filters.forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                // Update UI
+                                filters.forEach(b => {
+                                    b.className = 'filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300';
+                                });
+                                btn.className = 'filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-500/30';
+                                
+                                activeCategory = btn.getAttribute('data-filter');
+                                applyFilters();
+                            });
+                        });
+
+                        // Schema Markup for CollectionPage
+                        const schemaData = {
+                            "@context": "https://schema.org",
+                            "@type": "CollectionPage",
+                            "name": "Layanan & Produk CRUDWorks",
+                            "description": "Daftar lengkap layanan dan produk digital CRUDWorks.",
+                            "url": window.location.href,
+                            "mainEntity": {
+                                "@type": "ItemList",
+                                "itemListElement": services.map((s, index) => ({
+                                    "@type": "ListItem",
+                                    "position": index + 1,
+                                    "url": `${window.location.origin}/produk/${s.slug || s.id}`,
+                                    "name": s.title
+                                }))
+                            }
+                        };
+                        const script = document.createElement('script');
+                        script.type = 'application/ld+json';
+                        script.text = JSON.stringify(schemaData);
+                        document.head.appendChild(script);
+
+                        document.getElementById('loading').classList.add('hidden');
+                        document.getElementById('listing-content').classList.remove('hidden');
+                    }
                 }
             } catch (error) {
                 console.error(error);

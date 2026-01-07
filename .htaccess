@@ -3,6 +3,10 @@ RewriteEngine On
 # Mengarahkan error 404 ke halaman kustom
 ErrorDocument 404 /404.html
 
+# Handle halaman listing produk (produk/ atau produk)
+# Agar tidak dianggap folder atau 404 saat diakses tanpa slug
+RewriteRule ^produk/?$ produk.html [L]
+
 # Rewrite produk/ID menjadi produk.html?id=ID
 # Menangani format: domain.com/crudworks/produk/2
 RewriteRule ^produk/([a-zA-Z0-9-]+)/?$ produk.html?slug=$1 [L,QSA]
