@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog & Catatan Rilis Sistem | CRUDWorks</title>
+    <meta name="description" content="Riwayat pembaruan, fitur baru, penyempurnaan performa, dan catatan rilis platform CRUDWorks Business Cloud OS.">
+    <link rel="icon" href="css/favicon.png" type="image/png">
+    <link rel="canonical" href="https://www.crudworks.com/changelog">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS with Asset Versioning -->
+    <link rel="stylesheet" href="css/style.css?v=2.5.0">
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index" class="flex items-center gap-3">
+                    <img src="css/logo.png" alt="CRUDWorks Logo" class="h-9 w-auto">
+                </a>
+                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                    <a href="index" class="hover:text-blue-600 transition-colors">Beranda</a>
+                    <a href="produk" class="hover:text-blue-600 transition-colors">Layanan & Modul</a>
+                    <a href="tentang" class="hover:text-blue-600 transition-colors">Tentang Kami</a>
+                    <a href="changelog" class="text-blue-600 font-bold transition-colors">Changelog</a>
+                    <a href="karir" class="hover:text-blue-600 transition-colors">Karir</a>
+                </nav>
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="https://wa.me/6287759651803?text=Halo%20CRUDWorks%2C%20saya%20tertarik%20dengan%20sistem%20aplikasi%20bisnis%20Anda" target="_blank" class="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition-all text-xs sm:text-sm shadow-xs flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>Konsultasi Gratis</span>
+                    </a>
+                </div>
+                <button type="button" id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900 p-2" aria-label="Buka Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3">
+            <a href="index" class="block text-sm font-semibold text-slate-700 hover:text-blue-600 py-1.5">Beranda</a>
+            <a href="produk" class="block text-sm font-semibold text-slate-700 hover:text-blue-600 py-1.5">Layanan & Modul</a>
+            <a href="tentang" class="block text-sm font-semibold text-slate-700 hover:text-blue-600 py-1.5">Tentang Kami</a>
+            <a href="changelog" class="block text-sm font-bold text-blue-600 py-1.5">Changelog</a>
+            <a href="karir" class="block text-sm font-semibold text-slate-700 hover:text-blue-600 py-1.5">Karir</a>
+            <a href="https://wa.me/6287759651803" target="_blank" class="block text-center w-full py-2.5 bg-blue-600 text-white font-bold rounded-xl text-sm">
+                Hubungi Kami via WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Breadcrumb -->
+            <nav class="flex items-center gap-2 text-xs text-slate-500 mb-8" aria-label="Breadcrumb">
+                <a href="index" class="hover:text-blue-600">Beranda</a>
+                <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                <span class="text-slate-900 font-semibold">Changelog Sistem</span>
+            </nav>
+
+            <!-- Page Header -->
+            <div class="mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-4">
+                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                    <span>Transparansi Rekayasa Perangkat Lunak</span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                    Catatan Rilis & Riwayat Sistem
+                </h1>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl">
+                    Dokumentasi kronologis seluruh fitur baru, penyempurnaan performa, dan optimasi arsitektur pada platform <strong>CRUDWorks</strong>.
+                </p>
+            </div>
+
+            <!-- Active Version Telemetry Banner -->
+            <div class="mb-12 bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">Versi Rilis Stabil</span>
+                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-mono font-bold">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> PRODUCTION READY
+                            </span>
+                        </div>
+                        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-mono tracking-tight" id="active-version-display">v2.5.0</h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                            Aset CSS & JS otomatis disematkan hash versi <code class="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-blue-700 text-xs font-semibold">?v=2.5.0</code> untuk menjamin browser selalu memuat pembaruan termutakhir tanpa kendala cache.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="CHANGELOG.md" target="_blank" class="px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-colors inline-flex items-center gap-2">
+                        <i class="fa-brands fa-markdown text-sm"></i> Raw CHANGELOG.md
+                    </a>
+                </div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="space-y-12 relative before:absolute before:inset-0 before:left-4 sm:before:left-6 before:w-0.5 before:bg-slate-200 before:z-0">
+                
+                <!-- RELEASE 2.5.0 (Latest) -->
+                <div class="relative pl-10 sm:pl-16 z-10">
+                    <div class="absolute left-2 sm:left-4 top-1.5 w-5 h-5 rounded-full bg-blue-600 border-4 border-white shadow-sm -translate-x-1/2"></div>
+                    
+                    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-2xs">
+                        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl sm:text-2xl font-extrabold text-slate-900 font-mono">v2.5.0</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold font-mono">Terbaru</span>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500 flex items-center gap-1.5">
+                                <i class="fa-regular fa-calendar"></i> 03 November 2026
+                            </span>
+                        </div>
+
+                        <!-- Highlights Section -->
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-emerald-200 mb-3">
+                                    <i class="fa-solid fa-plus-circle text-xs"></i> Ditambahkan
+                                </h3>
+                                <ul class="space-y-2 text-sm text-slate-600 leading-relaxed">
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Interactive Spec Rows:</strong> Tata letak baris horizontal bergaya teknis (Apple/Stripe Specs) untuk menampilkan katalog produk dan modul secara terstruktur dengan badge chip status.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Split Interactive Console:</strong> Panel interaktif dua kolom dengan daftar modul di sisi kiri dan panggung telemetri (<em>live stage canvas</em>) di sisi kanan.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Catalog Multi-View Switcher:</strong> Toolbar pengalih mode tampilan pada katalog <code>produk.html</code> (<code>[📋 Lembar Baris]</code>, <code>[📟 Konsol Interaktif]</code>, dan <code>[▦ Grid Modern]</code>).</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Borderless Telemetry Strip:</strong> Desain bilah metrik dan jaminan kepercayaan kontinu tanpa batas kotak terpisah (<code>divide-x divide-slate-200/80</code>).</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Asymmetric Bento Showcase:</strong> Tata letak asimetris untuk arsitektur inti modul dan alur implementasi perangkat lunak.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Asset Versioning Generator (<code>scripts/generate-version.js</code>):</strong> Generator otomatis untuk menyematkan query string versi CSS dan JS (<code>?v=2.5.0</code>) langsung dari isi berkas <code>CHANGELOG.md</code>.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-blue-200 mb-3">
+                                    <i class="fa-solid fa-arrows-rotate text-xs"></i> Diubah & Dioptimalkan
+                                </h3>
+                                <ul class="space-y-2 text-sm text-slate-600 leading-relaxed">
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Hero Unified Module Switcher:</strong> Mengganti slider carousel beranda dengan tab selektor modul terpadu yang terhubung ke <em>Device Frame Switcher</em> (Laptop, Tablet POS, Smartphone).</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Streamlined Homepage:</strong> Merampingkan halaman beranda dari 19 section menjadi 11 section prioritas tinggi tanpa redundansi.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Kalkulator ROI Interaktif:</strong> Slider dinamis perhitungan penghematan cabang dan transaksi dengan tautan WhatsApp otomatis.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Asset Loading Modern:</strong> Menggantikan <code>document.write</code> runtime dengan pemuatan aset statis terversi berbasis changelog.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-amber-200 mb-3">
+                                    <i class="fa-solid fa-screwdriver-wrench text-xs"></i> Diperbaiki
+                                </h3>
+                                <ul class="space-y-2 text-sm text-slate-600 leading-relaxed">
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Inisialisasi Awal Render Katalog:</strong> Memperbaiki pemanggilan render awal pada <code>produk.html</code> sehingga daftar modul langsung tampil instan tanpa jeda kosong.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                        <span><strong>Responsivitas Perangkat Mobile:</strong> Mengoptimalkan padding, ukuran font, dan penataan kolom pada layar smartphone dan tablet.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RELEASE 2.4.0 -->
+                <div class="relative pl-10 sm:pl-16 z-10">
+                    <div class="absolute left-2 sm:left-4 top-1.5 w-5 h-5 rounded-full bg-slate-300 border-4 border-white shadow-sm -translate-x-1/2"></div>
+                    
+                    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-2xs">
+                        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl sm:text-2xl font-extrabold text-slate-900 font-mono">v2.4.0</span>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500 flex items-center gap-1.5">
+                                <i class="fa-regular fa-calendar"></i> 02 November 2026
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-600 leading-relaxed">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                <span><strong>Device Frame Switcher:</strong> Pratinjau responsif interaktif untuk melihat tampilan sistem pada 3 layar sekaligus (Laptop, Tablet POS, dan Smartphone).</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                <span><strong>Pembersihan Konten Duplikat:</strong> Menghilangkan pipeline redundan dan penyatuan modul kalkulator efisiensi.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RELEASE 2.3.0 -->
+                <div class="relative pl-10 sm:pl-16 z-10">
+                    <div class="absolute left-2 sm:left-4 top-1.5 w-5 h-5 rounded-full bg-slate-300 border-4 border-white shadow-sm -translate-x-1/2"></div>
+                    
+                    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-2xs">
+                        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl sm:text-2xl font-extrabold text-slate-900 font-mono">v2.3.0</span>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500 flex items-center gap-1.5">
+                                <i class="fa-regular fa-calendar"></i> 15 Oktober 2026
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-600 leading-relaxed">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                <span><strong>Quick View Modal:</strong> Pop-up ringkasan cepat spesifikasi modul langsung dari katalog produk.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                <span><strong>Compare Floating Bar & Modal:</strong> Fitur komparasi komprehensif hingga 3 modul sekaligus secara berdampingan.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RELEASE 2.0.0 -->
+                <div class="relative pl-10 sm:pl-16 z-10">
+                    <div class="absolute left-2 sm:left-4 top-1.5 w-5 h-5 rounded-full bg-slate-300 border-4 border-white shadow-sm -translate-x-1/2"></div>
+                    
+                    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-2xs">
+                        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl sm:text-2xl font-extrabold text-slate-900 font-mono">v2.0.0</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 text-xs font-mono">Major Release</span>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500 flex items-center gap-1.5">
+                                <i class="fa-regular fa-calendar"></i> 27 Januari 2026
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-600 leading-relaxed">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                <span><strong>Rilis Perdana CRUDWorks Business OS:</strong> Modul Laporan Keuangan, Aplikasi Retail POS, HRIS & Payroll, dan Warehouse Inventory WMS.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-blue-600 text-xs mt-1 flex-shrink-0"></i>
+                                <span>Panel API JSON terpadu dan arsitektur keamanan SSL / Role Based Access Control (RBAC).</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white text-slate-600 pt-14 pb-8 border-t border-slate-200 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-5">
+                    <div class="mb-4">
+                        <a href="index" class="inline-block">
+                            <img src="css/logo.png" alt="CRUDWorks Logo" class="h-9 w-auto">
+                        </a>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-sm mb-6">
+                        Mitra rekayasa perangkat lunak dan sistem informasi bisnis terpercaya di Indonesia. Menghadirkan solusi praktis, skalabel, dan terjangkau untuk UMKM dan Enterprise.
+                    </p>
+                    <div class="flex items-center gap-3 text-slate-600 text-xs">
+                        <span class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-slate-700">
+                            <i class="fa-solid fa-shield-halved text-emerald-600"></i> Sistem Cloud Terjamin
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-slate-700">
+                            <i class="fa-solid fa-code text-blue-600"></i> Asli Karya Indonesia
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="lg:col-span-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">Tautan Navigasi</h3>
+                    <ul class="space-y-2.5 text-sm text-slate-600">
+                        <li><a href="index" class="hover:text-blue-600 transition-colors">Beranda</a></li>
+                        <li><a href="produk" class="hover:text-blue-600 transition-colors">Layanan & Produk</a></li>
+                        <li><a href="tentang" class="hover:text-blue-600 transition-colors">Tentang Kami</a></li>
+                        <li><a href="changelog" class="text-blue-600 font-bold transition-colors">Changelog & Rilis</a></li>
+                        <li><a href="karir" class="hover:text-blue-600 transition-colors">Karir</a></li>
+                        <li><a href="index#contact" class="hover:text-blue-600 transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="lg:col-span-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">Kontak & Lokasi Kantor</h3>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-slate-400 mt-1"></i>
+                            <span>Perum Puri Nirwana Pandanwangi 21, Malang, Jawa Timur 65124</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-slate-400"></i>
+                            <a href="mailto:info@crudworks.com" class="hover:text-blue-600 transition-colors">info@crudworks.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-slate-400"></i>
+                            <a href="tel:087759651803" class="hover:text-blue-600 transition-colors">+62 877 5965 1803</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright & Legal -->
+            <div class="border-t border-slate-200 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> CRUDWorks Karya Anak Indonesia. Hak cipta dilindungi undang-undang.</p>
+                <div class="flex gap-6">
+                    <a href="privacy" class="hover:text-blue-600 transition-colors">Kebijakan Privasi</a>
+                    <a href="tos" class="hover:text-blue-600 transition-colors">Syarat & Ketentuan</a>
+                    <a href="changelog" class="text-blue-600 font-bold hover:underline transition-colors">Changelog</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6287759651803?text=Halo%20Admin%20CRUDWorks%2C%20saya%20tertarik%20dengan%20layanan%20software%20bisnis" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-12 h-12 rounded-full shadow-lg z-50 hover:bg-[#20bd5a] hover:scale-105 transition-all duration-200 flex items-center justify-center group focus:outline-none" aria-label="Chat WhatsApp">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="absolute right-14 bg-slate-900 text-white text-xs font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">Chat WhatsApp Kami</span>
+    </a>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "crudworks-web",
+  "version": "2.5.0",
+  "description": "CRUDWorks Enterprise Business OS & Modern Web Platform",
+  "scripts": {
+    "version:sync": "node scripts/generate-version.js",
+    "version": "node scripts/generate-version.js"
+  },
+  "keywords": [
+    "crudworks",
+    "erp",
+    "pos",
+    "accounting",
+    "hris"
+  ],
+  "author": "CRUDWorks Indonesia",
+  "license": "Proprietary"
+}
+

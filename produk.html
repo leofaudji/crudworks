@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layanan & Produk | CRUDWorks</title>
-    <meta name="description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
+    <title>Layanan & Produk Perangkat Lunak Bisnis | CRUDWorks</title>
+    <meta name="description" content="Katalog resmi sistem informasi dan aplikasi bisnis CRUDWorks: ERP UMKM, Sistem Kasir POS, HRIS & Payroll, Web E-Commerce, hingga Custom Software Development.">
     <link rel="icon" href="css/favicon.png" type="image/png">
     <link rel="canonical" href="https://www.crudworks.com/produk">
+    <link rel="stylesheet" href="css/style.css?v=2.5.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Layanan & Produk | CRUDWorks">
-    <meta property="og:description" content="Mitra Transformasi Digital Anda. Kami membangun jembatan antara potensi bisnis dan teknologi masa depan.">
+    <meta property="og:title" content="Layanan & Produk Perangkat Lunak Bisnis | CRUDWorks">
+    <meta property="og:description" content="Katalog resmi sistem informasi dan aplikasi bisnis CRUDWorks: ERP UMKM, POS Kasir, HRIS, dan Custom Software.">
     <meta property="og:url" content="https://www.crudworks.com/produk">
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.crudworks.com/css/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.crudworks.com/css/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Schema Markup (JSON-LD) -->
+    
+    <!-- Schema Markup (JSON-LD) Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,25 +30,25 @@
       "name": "CRUDWorks Karya Anak Indonesia",
       "url": "https://www.crudworks.com",
       "logo": "https://www.crudworks.com/css/logo.png",
-      "description": "Platform manajemen bisnis #1 untuk UMKM. Otomatisasi Keuangan, HR, dan Operasional dalam satu dashboard terintegrasi.",
+      "description": "Pengembang sistem ERP, Kasir POS, HRIS, dan Aplikasi Bisnis Kustom untuk UMKM dan Perusahaan di Indonesia.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Perum Puri Nirwana Pandanwangi 21",
         "addressLocality": "Malang",
+        "addressRegion": "Jawa Timur",
         "postalCode": "65124",
         "addressCountry": "ID"
       },
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "087759651803",
+        "telephone": "+62-877-5965-1803",
         "contactType": "customer service",
         "email": "info@crudworks.com"
       }
     }
     </script>
     <script>
-        // Fix Relative Paths untuk Pretty URL (detail/id)
-        // Menentukan base URL agar aset (css/img) tetap terbaca dari root
+        // Menentukan base URL agar aset (css/img) tetap terbaca dari root saat pretty URL aktif
         let base = window.location.origin + window.location.pathname;
         if (base.indexOf('/produk/') !== -1) {
             base = base.substring(0, base.indexOf('/produk/') + 1);
@@ -55,330 +60,574 @@
             theme: {
                 extend: {
                     colors: { 
-                        wa: { light: '#3b82f6', dark: '#1e3a8a', teal: '#2563eb' }
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' }
                     },
                     fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
                 }
             }
         }
     </script>
-    <style>
-        @keyframes shimmer {
-            0% { transform: translateX(-150%); }
-            100% { transform: translateX(150%); }
-        }
-        .animate-shimmer { animation: shimmer 2.5s infinite; }
-    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white">
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[2.5px] bg-blue-600 z-[100] transition-all duration-75 w-0"></div>
 
-    <!-- Navbar Sederhana -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="index" class="flex items-center gap-3">
-                    <img src="css/logo.png" alt="Logo" class="h-10 w-auto">
+                <!-- Brand Logo -->
+                <a href="index" class="flex items-center gap-3 group">
+                    <img src="css/logo.png" alt="CRUDWorks Logo" class="h-9 w-auto">
                 </a>
-                <a href="index#services" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
-                    <i class="fa-solid fa-arrow-left"></i> Kembali ke Produk
-                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-1">
+                    <a href="index" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Beranda</a>
+                    <a href="produk" class="px-3.5 py-2 rounded-lg text-sm font-bold text-blue-600 bg-blue-50 transition-colors">Layanan & Produk</a>
+                    <a href="tentang" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Tentang Kami</a>
+                    <a href="karir" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Karir</a>
+
+                    <a href="https://wa.me/6287759651803?text=Halo%20CRUDWorks%2C%20saya%20ingin%20konsultasi%20mengenai%20produk%20software" target="_blank" class="ml-4 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all flex items-center gap-2">
+                        <span>Konsultasi Proyek</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-700 hover:text-blue-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
-        <!-- SEO: Breadcrumb Navigation -->
-        <nav class="flex mb-8 text-sm text-slate-500 animate-fade-in-up" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <div class="px-4 py-4 space-y-2">
+                <a href="index" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Beranda</a>
+                <a href="produk" class="block px-3 py-2 rounded-lg text-sm font-bold text-blue-600 bg-blue-50">Layanan & Produk</a>
+                <a href="tentang" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Tentang Kami</a>
+                <a href="karir" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Karir</a>
+                <a href="https://wa.me/6287759651803?text=Halo%20CRUDWorks%2C%20saya%20ingin%20konsultasi%20mengenai%20produk%20software" target="_blank" class="block w-full text-center px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 mt-3">Konsultasi Proyek</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
+        
+        <!-- Breadcrumb Navigation -->
+        <nav class="flex mb-8 text-sm text-slate-500" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-2 text-xs sm:text-sm">
                 <li class="inline-flex items-center">
-                    <a href="index" class="inline-flex items-center hover:text-blue-600 transition-colors">
-                        <i class="fa-solid fa-house mr-2"></i> Beranda
+                    <a href="index" class="inline-flex items-center text-slate-500 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-house mr-1.5 text-xs text-slate-400"></i> Beranda
                     </a>
                 </li>
                 <li>
                     <div class="flex items-center">
-                        <i class="fa-solid fa-chevron-right text-slate-300 mx-2 text-xs"></i>
-                        <a href="produk" class="hover:text-blue-600 transition-colors">Layanan & Produk</a>
+                        <i class="fa-solid fa-chevron-right text-slate-300 mx-1.5 text-[10px]"></i>
+                        <a href="produk" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">Layanan & Produk</a>
                     </div>
                 </li>
                 <li aria-current="page" class="hidden" id="breadcrumb-active">
                     <div class="flex items-center">
-                        <i class="fa-solid fa-chevron-right text-slate-300 mx-2 text-xs"></i>
-                        <span class="text-blue-600 font-medium truncate max-w-[200px]" id="breadcrumb-title"></span>
+                        <i class="fa-solid fa-chevron-right text-slate-300 mx-1.5 text-[10px]"></i>
+                        <span class="text-blue-600 font-semibold truncate max-w-[240px]" id="breadcrumb-title"></span>
                     </div>
                 </li>
             </ol>
         </nav>
 
-        <!-- Loading State -->
-        <div id="loading" class="text-center py-20">
-            <i class="fa-solid fa-circle-notch fa-spin text-4xl text-blue-600 mb-4"></i>
-            <p class="text-slate-500">Memuat detail layanan...</p>
+        <!-- Skeleton Loading State -->
+        <div id="loading" class="animate-pulse space-y-8">
+            <div class="max-w-xl mx-auto text-center space-y-3">
+                <div class="h-5 bg-slate-200 rounded-full w-40 mx-auto"></div>
+                <div class="h-10 bg-slate-200 rounded-lg w-3/4 mx-auto"></div>
+                <div class="h-4 bg-slate-200 rounded w-full mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
+                <div class="h-80 bg-white rounded-xl border border-slate-200 p-6 space-y-4">
+                    <div class="w-12 h-12 bg-slate-200 rounded-lg"></div>
+                    <div class="h-6 bg-slate-200 rounded w-3/4"></div>
+                    <div class="h-4 bg-slate-200 rounded w-full"></div>
+                    <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+                </div>
+                <div class="h-80 bg-white rounded-xl border border-slate-200 p-6 space-y-4">
+                    <div class="w-12 h-12 bg-slate-200 rounded-lg"></div>
+                    <div class="h-6 bg-slate-200 rounded w-3/4"></div>
+                    <div class="h-4 bg-slate-200 rounded w-full"></div>
+                    <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+                </div>
+                <div class="h-80 bg-white rounded-xl border border-slate-200 p-6 space-y-4">
+                    <div class="w-12 h-12 bg-slate-200 rounded-lg"></div>
+                    <div class="h-6 bg-slate-200 rounded w-3/4"></div>
+                    <div class="h-4 bg-slate-200 rounded w-full"></div>
+                    <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+                </div>
+            </div>
         </div>
 
-        <!-- Listing Container (All Products) -->
-        <div id="listing-content" class="hidden animate-fade-in-up">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-wide uppercase mb-4">
-                    <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span> Katalog Lengkap
+        <!-- ========================================== -->
+        <!-- VIEW 1: CATALOG LISTING MODE               -->
+        <!-- ========================================== -->
+        <div id="listing-content" class="hidden">
+            <!-- Header Section -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                    <span>Katalog Solusi Digital</span>
                 </div>
-                <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">Solusi Digital Terintegrasi</h1>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">Temukan layanan yang tepat untuk mengakselerasi pertumbuhan bisnis Anda ke level selanjutnya.</p>
-            </div> 
-
-            <!-- Search Bar -->
-            <div class="max-w-md mx-auto mb-10 relative group">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <i class="fa-solid fa-magnifying-glass text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
-                </div>
-                <input type="text" id="search-input" class="block w-full pl-11 pr-4 py-3 border border-gray-200 rounded-full leading-5 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 shadow-sm transition-all duration-300" placeholder="Cari layanan...">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                    Sistem Perangkat Lunak Teruji untuk Akselerasi Operasional
+                </h1>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+                    Pilih modul perangkat lunak yang telah terbukti membantu ratusan UMKM, klinik, lembaga pendidikan, hingga manufaktur di Indonesia bekerja lebih efisien.
+                </p>
             </div>
 
-            <!-- Filter Categories -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12" id="product-filters">
-                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-500/30" data-filter="all">Semua</button>
-                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="finance">Keuangan</button>
-                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="hr">HR</button>
-                <button class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300" data-filter="operational">Operasional</button>
-            </div>
-
-            <div id="listing-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Items injected via JS -->
-            </div>
-
-            <!-- Pagination Container -->
-            <div id="pagination-container" class="flex justify-center gap-2 mt-12"></div>
-
-            <!-- SEO: FAQ Section (Rich Snippets Candidate) -->
-            <section class="mt-24 border-t border-slate-200 pt-16">
-                <div class="text-center mb-12">
-                    <h2 class="text-2xl font-bold text-slate-900">Pertanyaan Seputar Layanan</h2>
-                    <p class="text-slate-500 mt-2">Informasi tambahan untuk membantu Anda memilih solusi yang tepat.</p>
+            <!-- Search & Filter Controls -->
+            <div class="max-w-4xl mx-auto mb-10 space-y-5">
+                <!-- Search Box -->
+                <div class="max-w-md mx-auto relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                    </div>
+                    <input type="text" id="search-input" 
+                        class="block w-full pl-10 pr-4 py-2.5 text-sm bg-white border border-slate-300 rounded-xl placeholder-slate-400 text-slate-800 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all shadow-sm"
+                        placeholder="Cari modul (ERP, Kasir POS, HRIS, Akuntansi, Web...)"
+                        aria-label="Cari produk dan layanan">
                 </div>
-                <div class="max-w-3xl mx-auto space-y-4">
-                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
-                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
-                            <span>Apakah layanan ini dapat disesuaikan (Custom)?</span>
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap items-center justify-center gap-2" id="product-filters">
+                    <button class="filter-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-150 bg-blue-600 text-white shadow-sm border border-blue-600" data-filter="all">Semua Modul</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-150 bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50" data-filter="finance">Keuangan & Akuntansi</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-150 bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50" data-filter="hr">HR & SDM</button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-150 bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50" data-filter="operational">Operasional & POS</button>
+                </div>
+
+                <!-- Catalog Toolbar (Counter & View Switcher) -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-200/80">
+                    <div class="text-xs sm:text-sm text-slate-500 font-medium">
+                        Menampilkan <span id="catalog-count" class="font-bold text-slate-900">0</span> modul siap implementasi
+                    </div>
+
+                    <!-- View Switcher Tabs -->
+                    <div class="inline-flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-semibold" id="catalog-view-switcher">
+                        <button type="button" class="catalog-view-btn px-3 py-1.5 rounded-lg transition-all bg-white text-slate-900 shadow-xs border border-slate-200 flex items-center gap-1.5" data-view="rows" id="btn-view-rows" title="Tampilan Baris Spesifikasi Horizontal">
+                            <i class="fa-solid fa-list-check text-xs"></i>
+                            <span>Lembar Baris</span>
                         </button>
-                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
-                            Ya, sebagian besar layanan kami, terutama pengembangan software, sangat fleksibel. Kami menggunakan pendekatan <em>tailor-made</em> untuk memastikan solusi yang kami bangun sesuai dengan alur kerja unik bisnis Anda.
+                        <button type="button" class="catalog-view-btn px-3 py-1.5 rounded-lg transition-all text-slate-600 hover:text-slate-900 flex items-center gap-1.5" data-view="console" id="btn-view-console" title="Konsol Interaktif Modul">
+                            <i class="fa-solid fa-terminal text-xs text-blue-600"></i>
+                            <span>Konsol Interaktif</span>
+                        </button>
+                        <button type="button" class="catalog-view-btn px-3 py-1.5 rounded-lg transition-all text-slate-600 hover:text-slate-900 flex items-center gap-1.5" data-view="grid" id="btn-view-grid" title="Tampilan Grid Modern">
+                            <i class="fa-solid fa-table-cells-large text-xs"></i>
+                            <span>Grid Modern</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Catalog Items Container -->
+            <div id="listing-container" class="transition-all duration-200 min-h-[420px]">
+                <div id="listing-grid">
+                    <!-- Cards / Rows / Console injected via JavaScript -->
+                </div>
+            </div>
+
+            <!-- Pagination / Sentinel -->
+            <div id="pagination-container" class="flex justify-center mt-12"></div>
+
+            <!-- Borderless Trust Strip -->
+            <div class="mt-16 bg-slate-50/70 border-y sm:border border-slate-200/80 rounded-none sm:rounded-2xl overflow-hidden shadow-2xs">
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200/80 text-left">
+                    <div class="p-6 sm:p-8 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 flex-shrink-0">
+                            <i class="fa-solid fa-code text-base"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900 mb-1">Source Code & Hak Milik Penuh</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Pilihan lisensi mandiri on-premise atau SaaS Cloud siap pakai tanpa vendor lock-in tersembunyi.</p>
                         </div>
                     </div>
-                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
-                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
-                            <span>Bagaimana dengan dukungan purna jual (After Sales)?</span>
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
-                        </button>
-                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
-                            Kami memberikan garansi bug fixing dan dukungan teknis prioritas. Tim support kami siap membantu Anda melalui WhatsApp, Email, atau Telepon jika terjadi kendala operasional.
+                    <div class="p-6 sm:p-8 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                            <i class="fa-solid fa-headset text-base"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900 mb-1">Pendampingan & Training Staf</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Tim teknis siap memandu migrasi data format lama dan pelatihan hingga operator siap mandiri.</p>
                         </div>
                     </div>
-                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
-                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
-                            <span>Berapa lama proses pengerjaan proyek?</span>
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
-                        </button>
-                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
-                            Durasi bervariasi tergantung kompleksitas. Untuk implementasi sistem standar (SaaS) bisa instan atau 1-3 hari. Untuk custom development, estimasi waktu akan diberikan setelah tahap analisis kebutuhan.
+                    <div class="p-6 sm:p-8 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-600 flex-shrink-0">
+                            <i class="fa-solid fa-sliders text-base"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900 mb-1">Kustomisasi Alur SOP Bisnis</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Format nota, hak akses, dan approval dapat disesuaikan tanpa merusak reliabilitas sistem.</p>
                         </div>
                     </div>
-                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
-                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
-                            <span>Apakah data perusahaan saya aman?</span>
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="mt-20 border-t border-slate-200 pt-16">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">Pertanyaan yang Sering Diajukan</h2>
+                    <p class="text-sm text-slate-600">Ketahui bagaimana kami membantu implementasi sistem di bisnis Anda.</p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto space-y-3">
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                        <button type="button" class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-800 hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span class="text-sm sm:text-base">Apakah sistem dapat dikustomisasi (Custom Development)?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-200 text-slate-400 text-xs"></i>
                         </button>
-                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
-                            Keamanan adalah prioritas utama kami. Kami menggunakan enkripsi SSL 256-bit standar perbankan dan server yang dilindungi firewall berlapis dengan backup otomatis harian.
+                        <div class="hidden bg-slate-50/80 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Sangat bisa. Seluruh arsitektur software CRUDWorks dibangun dengan struktur modular yang fleksibel. Jika bisnis Anda memiliki format nota khusus, alur approval multi-tingkat, atau integrasi hardware timbangan/scanner barcode khusus, tim kami siap mengembangkannya.
                         </div>
                     </div>
-                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
-                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
-                            <span>Metode pembayaran apa saja yang tersedia?</span>
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                        <button type="button" class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-800 hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span class="text-sm sm:text-base">Bagaimana dengan garansi dan dukungan teknis (After Sales)?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-200 text-slate-400 text-xs"></i>
                         </button>
-                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
-                            Kami menerima pembayaran melalui Transfer Bank (BCA, Mandiri, BNI, BRI), Kartu Kredit, dan E-Wallet (GoPay, OVO, Dana) untuk memudahkan transaksi Anda.
+                        <div class="hidden bg-slate-50/80 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Kami memberikan garansi pemeliharaan dan perbaikan bug secara penuh. Tim support teknis kami berbasis di Malang dan dapat dihubungi melalui WhatsApp khusus serta sesi remote support (Google Meet / AnyDesk) pada jam operasional bisnis.
                         </div>
                     </div>
-                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
-                        <button class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-700 focus:outline-none hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
-                            <span>Apakah tersedia demo atau trial gratis?</span>
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 text-slate-400"></i>
+
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                        <button type="button" class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-800 hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span class="text-sm sm:text-base">Berapa lama waktu implementasi hingga sistem siap digunakan?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-200 text-slate-400 text-xs"></i>
                         </button>
-                        <div class="hidden bg-slate-50 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
-                            Ya, untuk produk SaaS kami menyediakan masa percobaan gratis selama 14 hari. Silakan hubungi tim sales kami untuk menjadwalkan demo produk secara langsung.
+                        <div class="hidden bg-slate-50/80 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Untuk modul standar (seperti POS Kasir, Akuntansi Dasar, atau Manajemen Absensi), setup server dan database umumnya memakan waktu 1 hingga 3 hari kerja. Untuk proyek custom berskala penuh, waktu pengerjaan berkisar antara 2 hingga 8 minggu dengan roadmap sprint mingguan yang transparan.
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                        <button type="button" class="w-full px-6 py-4 text-left flex justify-between items-center font-bold text-slate-800 hover:bg-slate-50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                            <span class="text-sm sm:text-base">Apakah data bisnis kami terjamin kerahasiaan dan keamanannya?</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-200 text-slate-400 text-xs"></i>
+                        </button>
+                        <div class="hidden bg-slate-50/80 px-6 py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200">
+                            Keamanan data klien adalah prioritas nomor satu. Database dilindungi enkripsi SSL 256-bit standar industri perbankan, firewall berbasis cloudflare/linux security, serta rutinitas auto-backup harian. Kami juga menandatangani Non-Disclosure Agreement (NDA) untuk setiap proyek enterprise.
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- Detail Container -->
-        <div id="detail-content" class="hidden animate-fade-in-up">
-            <!-- Header Section -->
-            <div id="detail-header" class="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-slate-100 mb-8 relative overflow-hidden">
-                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-                
-                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
-                    <div id="detail-icon" class="w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0 shadow-sm">
-                        <!-- Icon injected via JS -->
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex flex-wrap items-center gap-3 mb-4">
-                            <span id="detail-category" class="px-4 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider"></span>
-                            <span id="detail-price" class="px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 text-sm font-bold"></span>
-                        </div>
-                        <h1 id="detail-title" class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight"></h1>
-                        <div id="detail-desc" class="text-base md:text-lg text-slate-600 leading-relaxed space-y-6 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEO: Social Share -->
-            <div class="flex items-center gap-4 mb-8">
-                <span class="text-sm font-bold text-slate-500">Bagikan:</span>
-                <div class="flex gap-2">
-                    <a href="#" id="share-wa" target="_blank" class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center hover:bg-green-600 hover:text-white transition-all"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" id="share-fb" target="_blank" class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" id="share-li" target="_blank" class="w-8 h-8 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" id="share-tw" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center hover:bg-slate-800 hover:text-white transition-all"><i class="fa-brands fa-x-twitter"></i></a>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Features Column -->
-                <div class="lg:col-span-2 bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600"><i class="fa-solid fa-star text-sm"></i></div>
-                        Fitur & Keunggulan
-                    </h3>
-                    <div id="detail-features" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Features injected via JS -->
-                    </div>
-                </div>
-                
-                <!-- CTA Column -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white rounded-[2rem] p-8 shadow-lg shadow-blue-900/5 border border-slate-100 sticky top-24">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Tertarik dengan solusi ini?</h3>
-                        <p class="text-slate-500 text-sm mb-8 leading-relaxed">Diskusikan kebutuhan spesifik bisnis Anda dengan tim ahli kami.</p>
-                        
-                        <a href="index.html#contact" class="block w-full py-4 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-center hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transition-all duration-300 mb-4">
-                            Hubungi Kami Sekarang
-                        </a>
-                        <a href="#" target="_blank" id="wa-button" class="block w-full py-4 px-6 rounded-xl border border-slate-200 text-slate-700 font-bold text-center hover:bg-slate-50 transition-all duration-300 flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i> Beli via WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEO: User Reviews Section (Validates AggregateRating Schema) -->
-            <div class="mt-16 border-t border-slate-200 pt-12">
-                <h3 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                    Ulasan Pengguna
-                    <span class="text-sm font-normal text-slate-500 bg-slate-100 px-2 py-1 rounded-full">Terverifikasi</span>
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Summary -->
-                    <div class="bg-slate-50 rounded-2xl p-8 text-center border border-slate-100 h-fit">
-                        <div class="text-5xl font-extrabold text-slate-900 mb-2">4.8</div>
-                        <div class="flex justify-center gap-1 text-amber-400 mb-2 text-lg">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                        <p class="text-slate-500 text-sm font-medium">Berdasarkan 124 ulasan</p>
-                    </div>
+        <!-- ========================================== -->
+        <!-- VIEW 2: PRODUCT DETAIL VIEW MODE           -->
+        <!-- ========================================== -->
+        <div id="detail-content" class="hidden">
+            <!-- Hero Showcase Section -->
+            <section class="py-6 sm:py-10">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-start">
                     
-                    <!-- Review List -->
-                    <div class="md:col-span-2 space-y-6">
-                        <div class="border-b border-slate-100 pb-6 last:border-0 last:pb-0">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="font-bold text-slate-900 flex items-center gap-2">
-                                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">BS</div>
-                                    Budi Santoso
+                    <!-- Left Column: Product Information -->
+                    <div class="lg:col-span-7">
+                        <div id="detail-badge-container" class="flex flex-wrap items-center gap-2 mb-4"></div>
+                        <h1 id="detail-title" class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4"></h1>
+                        <p id="detail-short-desc" class="text-base sm:text-lg text-slate-600 leading-relaxed mb-6"></p>
+                        
+                        <!-- Borderless Telemetry Strip -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 py-4 mb-8 border-y border-slate-200/90 text-xs sm:text-sm">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                    <i class="fa-solid fa-shield-check text-xs"></i>
                                 </div>
-                                <div class="text-xs text-slate-400">2 hari yang lalu</div>
+                                <span class="font-semibold text-slate-700">Garansi Bug & Error</span>
                             </div>
-                            <div class="flex text-amber-400 text-xs mb-2">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                                    <i class="fa-solid fa-server text-xs"></i>
+                                </div>
+                                <span class="font-semibold text-slate-700">Cloud / On-Premise</span>
                             </div>
-                            <p class="text-slate-600 text-sm leading-relaxed">Layanan sangat memuaskan. Tim support responsif dan fitur sesuai dengan kebutuhan bisnis kami yang sedang berkembang.</p>
+                            <div class="flex items-center gap-2.5 col-span-2 sm:col-span-1">
+                                <div class="w-7 h-7 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
+                                    <i class="fa-solid fa-user-group text-xs"></i>
+                                </div>
+                                <span class="font-semibold text-slate-700">Termasuk Training</span>
+                            </div>
                         </div>
-                        <div class="border-b border-slate-100 pb-6 last:border-0 last:pb-0">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="font-bold text-slate-900 flex items-center gap-2">
-                                    <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs">DA</div>
-                                    Dian Anggraini
-                                </div>
-                                <div class="text-xs text-slate-400">1 minggu yang lalu</div>
-                            </div>
-                            <div class="flex text-amber-400 text-xs mb-2">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <p class="text-slate-600 text-sm leading-relaxed">Implementasi sistem HRIS berjalan lancar. Sangat membantu efisiensi perhitungan payroll bulanan.</p>
+
+                        <!-- CTA Actions -->
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="#" id="wa-button-sidebar" target="_blank" class="px-6 py-3.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all shadow-sm flex items-center justify-center gap-2 text-sm sm:text-base">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Konsultasi / Pesan via WhatsApp</span>
+                            </a>
+                            <a href="#detail-features-section" class="px-6 py-3.5 bg-white border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+                                <i class="fa-solid fa-list-check text-slate-400"></i>
+                                <span>Lihat Spesifikasi Fitur</span>
+                            </a>
                         </div>
                     </div>
+
+                    <!-- Right Column: Commercial Console Card -->
+                    <div class="lg:col-span-5 mt-8 lg:mt-0">
+                        <div class="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm">
+                            <!-- Telemetry Status Bar -->
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+                                <div class="flex items-center gap-2 text-xs font-mono font-semibold text-slate-500">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span>READY TO DEPLOY</span>
+                                </div>
+                                <span class="text-[11px] font-mono text-slate-400">SLA // 99.9% UPTIME</span>
+                            </div>
+
+                            <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
+                                <div id="detail-icon" class="w-14 h-14 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center text-2xl flex-shrink-0"></div>
+                                <div>
+                                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-0.5">Biaya Investasi Mulai</span>
+                                    <div id="detail-price-container" class="flex items-baseline gap-2"></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-start gap-3 text-xs sm:text-sm text-slate-600">
+                                    <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                    <span>Deployment cepat langsung di server/domain bisnis Anda</span>
+                                </div>
+                                <div class="flex items-start gap-3 text-xs sm:text-sm text-slate-600">
+                                    <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                    <span>Buku panduan SOP & sesi training operator terlatih</span>
+                                </div>
+                                <div class="flex items-start gap-3 text-xs sm:text-sm text-slate-600">
+                                    <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                    <span>Garansi teknis, perbaikan bug, dan backup berkala</span>
+                                </div>
+                            </div>
+
+                            <!-- Social Share -->
+                            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-slate-500">Bagikan Solusi Ini:</span>
+                                <div class="flex items-center gap-2">
+                                    <a href="#" id="share-wa" target="_blank" class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition-colors text-xs" title="Bagikan ke WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                                    <a href="#" id="share-fb" target="_blank" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-colors text-xs" title="Bagikan ke Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="#" id="share-li" target="_blank" class="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 hover:bg-sky-600 hover:text-white flex items-center justify-center transition-colors text-xs" title="Bagikan ke LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detailed Description & Flow Section -->
+            <section class="py-10 bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-10 my-8 shadow-2xs">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2.5">
+                        <i class="fa-solid fa-file-lines text-blue-600 text-lg"></i>
+                        <span>Gambaran & Alur Kerja Sistem</span>
+                    </h2>
+                    <div id="detail-long-desc" class="prose prose-slate max-w-none text-slate-600 leading-relaxed text-sm sm:text-base"></div>
+
+                    <!-- Linear Deployment Pipeline Strip -->
+                    <div class="mt-10 pt-8 border-t border-slate-100">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Tahapan Implementasi & Go-Live:</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                                <span class="text-xs font-bold text-blue-600 font-mono">01 // ANALISIS</span>
+                                <div class="text-sm font-bold text-slate-800 mt-1">Review Alur Bisnis</div>
+                                <p class="text-xs text-slate-500 mt-1">Penyesuaian form, nota, dan SOP operasional internal.</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                                <span class="text-xs font-bold text-blue-600 font-mono">02 // SETUP</span>
+                                <div class="text-sm font-bold text-slate-800 mt-1">Setup Server & DB</div>
+                                <p class="text-xs text-slate-500 mt-1">Instalasi cloud atau on-premise dengan SSL dan backup.</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                                <span class="text-xs font-bold text-blue-600 font-mono">03 // TRAINING</span>
+                                <div class="text-sm font-bold text-slate-800 mt-1">Migrasi & Pelatihan</div>
+                                <p class="text-xs text-slate-500 mt-1">Import data awal dan pendampingan staf hingga mahir.</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                                <span class="text-xs font-bold text-emerald-600 font-mono">04 // GO-LIVE</span>
+                                <div class="text-sm font-bold text-slate-800 mt-1">Operasional Penuh</div>
+                                <p class="text-xs text-slate-500 mt-1">Sistem berjalan dengan garansi teknis berkelanjutan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Bento Showcase & Spec Rows Section -->
+            <section id="detail-features-section" class="py-8 my-6">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                            <span>Spesifikasi Modul</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Katalog Fitur & Kapabilitas Terintegrasi</h2>
+                        <p class="text-sm text-slate-500 mt-1">Setiap fitur dibangun dengan standar arsitektur skalabel siap pakai.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Left Bento Architecture Card (5 cols) -->
+                    <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-xl lg:sticky lg:top-24">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+                            <span class="font-mono text-xs text-blue-400">CORE ARCHITECTURE</span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 leading-snug">Fondasi Teruji untuk Stabilitas Data Bisnis</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                            Arsitektur sistem dibangun di atas basis relational database ACID compliant, menjamin integritas pembukuan dan stok tanpa selisih.
+                        </p>
+                        
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-xs">
+                                <i class="fa-solid fa-lock text-blue-400 text-sm"></i>
+                                <div>
+                                    <div class="font-bold text-slate-200">Role-Based Access Control</div>
+                                    <div class="text-[11px] text-slate-400">Hak akses kasir, akuntan, manajer terpisah ketat.</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-xs">
+                                <i class="fa-solid fa-cloud-arrow-up text-emerald-400 text-sm"></i>
+                                <div>
+                                    <div class="font-bold text-slate-200">Auto-Backup & Audit Trail</div>
+                                    <div class="text-[11px] text-slate-400">Riwayat edit data tersimpan dengan snapshot berkala.</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-xs">
+                                <i class="fa-solid fa-file-export text-purple-400 text-sm"></i>
+                                <div>
+                                    <div class="font-bold text-slate-200">Ekspor Multi-Format Instan</div>
+                                    <div class="text-[11px] text-slate-400">Download Excel, PDF, struk thermal tanpa aplikasi pihak ketiga.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Spec Rows Container (7 cols) -->
+                    <div class="lg:col-span-7">
+                        <div id="detail-features-grid">
+                            <!-- Injected as Interactive Spec Rows via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unified User Reviews Bento Unit -->
+            <section class="mt-14 border-t border-slate-200 pt-12">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Ulasan & Bukti Implementasi</h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Testimoni nyata dari institusi dan unit usaha yang menerapkan sistem.</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i> Terverifikasi
+                    </span>
+                </div>
+
+                <!-- Single Unified Bento Review Unit -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-slate-200/80">
+                        <!-- Scorecard (4 cols) -->
+                        <div class="md:col-span-4 p-6 sm:p-8 text-center flex flex-col justify-center bg-slate-50/50">
+                            <div class="text-5xl font-black text-slate-900 mb-2">4.9<span class="text-xl font-normal text-slate-400">/5.0</span></div>
+                            <div class="flex justify-center gap-1.5 text-amber-400 mb-3 text-base">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-600 text-xs font-semibold">Tingkat Kepuasan Implementasi</p>
+                            <p class="text-slate-400 text-[11px] mt-0.5">Berdasarkan 120+ unit bisnis terdaftar</p>
+                        </div>
+
+                        <!-- Testimonial 1 (4 cols) -->
+                        <div class="md:col-span-4 p-6 sm:p-8 flex flex-col justify-between">
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                                "Proses administrasi dan pencatatan transaksi jadi jauh lebih terkontrol. Yang paling kami apresiasi adalah tim teknisnya cepat tanggap kalau ada hal yang butuh disesuaikan."
+                            </p>
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                                <div class="w-9 h-9 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center flex-shrink-0">SM</div>
+                                <div>
+                                    <h3 class="text-xs font-bold text-slate-900 leading-tight">SMKN 5 Malang</h3>
+                                    <span class="text-[11px] text-slate-500">Unit Produksi & Edukasi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 (4 cols) -->
+                        <div class="md:col-span-4 p-6 sm:p-8 flex flex-col justify-between">
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                                "Laporan stok dan rekap keuangan bulanan tidak lagi memakan waktu berhari-hari. Sangat membantu transparansi operasional tim kami."
+                            </p>
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                                <div class="w-9 h-9 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center flex-shrink-0">KP</div>
+                                <div>
+                                    <h3 class="text-xs font-bold text-slate-900 leading-tight">KPP Persada</h3>
+                                    <span class="text-[11px] text-slate-500">Koperasi & Bisnis Retail</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Products Section (Spec Rows Format) -->
+            <div id="related-section" class="mt-16 hidden border-t border-slate-200 pt-10">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Solusi Terkait Lainnya</h2>
+                        <p class="text-xs text-slate-500 mt-0.5">Modul pendukung yang sering dipadukan bersama sistem ini.</p>
+                    </div>
+                </div>
+                <div id="related-container">
+                    <!-- Injected as Spec Rows via JavaScript -->
                 </div>
             </div>
         </div>
 
-        <!-- Related Products Section -->
-        <div id="related-section" class="mt-20 hidden border-t border-slate-200 pt-12">
-            <h2 class="text-2xl font-bold text-slate-900 mb-8">Produk Terkait</h2>
-            <div id="related-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Related items injected here -->
-            </div>
-        </div>
     </main>
 
     <!-- Quick View Modal -->
     <div id="quick-view-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75 backdrop-blur-sm" aria-hidden="true" id="qv-overlay"></div>
+            <div class="fixed inset-0 transition-opacity bg-slate-900/60 backdrop-blur-xs" aria-hidden="true" id="qv-overlay"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
             
-            <div class="inline-block w-full overflow-hidden text-left align-bottom transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:align-middle sm:max-w-2xl relative animate-fade-in-up">
-                <button type="button" id="qv-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 focus:outline-none z-10 w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
-                    <i class="fa-solid fa-xmark text-xl"></i>
+            <div class="inline-block w-full overflow-hidden text-left align-bottom transition-all transform bg-white shadow-2xl rounded-2xl border border-slate-200 sm:my-8 sm:align-middle sm:max-w-2xl relative">
+                <button type="button" id="qv-close-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 focus:outline-none z-10 w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors" aria-label="Tutup popup">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
                 
-                <div class="p-6 md:p-8">
-                    <div class="flex flex-col md:flex-row gap-8">
+                <div class="p-6 sm:p-8">
+                    <div class="flex flex-col sm:flex-row gap-6">
                         <div class="flex-shrink-0">
-                            <div id="qv-icon" class="w-24 h-24 rounded-3xl bg-blue-50 flex items-center justify-center text-blue-600 text-4xl shadow-inner"></div>
+                            <div id="qv-icon" class="w-16 h-16 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 text-3xl"></div>
                         </div>
                         
                         <div class="flex-1">
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                <span id="qv-category" class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold uppercase tracking-wider"></span>
-                                <div id="qv-badge-container"></div>
+                            <div class="flex flex-wrap items-center gap-2 mb-2">
+                                <span id="qv-category" class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold"></span>
                             </div>
                             
-                            <h3 class="text-2xl font-bold text-slate-900 mb-3 leading-tight" id="qv-title"></h3>
-                            <div id="qv-price" class="mb-5"></div>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-6" id="qv-desc"></p>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight" id="qv-title"></h3>
+                            <div id="qv-price" class="mb-4"></div>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-5" id="qv-desc"></p>
                             
-                            <div id="qv-features" class="bg-slate-50 rounded-xl p-4 mb-8 space-y-2 border border-slate-100"></div>
+                            <div id="qv-features" class="bg-slate-50 rounded-xl p-4 mb-6 space-y-2 border border-slate-200/80"></div>
                             
-                            <!-- Social Share (Quick View) -->
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Share:</span>
-                                <div class="flex gap-2">
-                                    <a href="#" id="qv-share-wa" target="_blank" class="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center hover:bg-green-600 hover:text-white transition-all"><i class="fa-brands fa-whatsapp"></i></a>
-                                    <a href="#" id="qv-share-fb" target="_blank" class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-                                    <a href="#" id="qv-share-li" target="_blank" class="w-8 h-8 rounded-full bg-sky-50 text-sky-600 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#" id="qv-share-tw" target="_blank" class="w-8 h-8 rounded-full bg-slate-50 text-slate-600 flex items-center justify-center hover:bg-slate-800 hover:text-white transition-all"><i class="fa-brands fa-x-twitter"></i></a>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3">
-                                <a href="#" id="qv-detail-link" class="flex-1 py-3 px-4 rounded-xl border border-slate-200 text-slate-700 font-bold text-center text-sm hover:bg-slate-50 hover:border-slate-300 transition-all">
-                                    Detail Penuh
+                            <div class="flex gap-3 pt-2">
+                                <a href="#" id="qv-detail-link" class="flex-1 py-2.5 px-4 rounded-lg border border-slate-300 text-slate-700 font-semibold text-center text-sm hover:bg-slate-50 transition-colors">
+                                    Halaman Lengkap
                                 </a>
-                                <a href="#" id="qv-wa-link" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-blue-600 text-white font-bold text-center text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2">
-                                    <i class="fa-brands fa-whatsapp text-lg"></i> Pesan
+                                <a href="#" id="qv-wa-link" target="_blank" class="flex-1 py-2.5 px-4 rounded-lg bg-blue-600 text-white font-semibold text-center text-sm hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-base"></i> Hubungi Sales
                                 </a>
                             </div>
                         </div>
@@ -389,30 +638,30 @@
     </div>
 
     <!-- Compare Floating Bar -->
-    <div id="compare-bar" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-2xl border border-slate-200 p-2 pl-6 pr-2 flex items-center gap-4 z-40 hidden animate-fade-in-up">
-        <span class="text-sm font-bold text-slate-700"><span id="compare-count">0</span>/3 Dipilih</span>
-        <button id="compare-reset" class="text-xs text-slate-400 hover:text-red-500 underline font-medium">Reset</button>
-        <button id="compare-trigger" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-bold transition-colors shadow-lg shadow-blue-500/30 flex items-center gap-2">
-            Bandingkan <i class="fa-solid fa-arrow-right"></i>
+    <div id="compare-bar" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white rounded-xl shadow-xl px-5 py-3 flex items-center gap-4 z-40 hidden border border-slate-700">
+        <span class="text-xs sm:text-sm font-semibold"><span id="compare-count">0</span>/3 Dipilih</span>
+        <button id="compare-reset" class="text-xs text-slate-400 hover:text-red-400 underline font-medium">Batal</button>
+        <button id="compare-trigger" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors flex items-center gap-1.5">
+            Bandingkan <i class="fa-solid fa-arrow-right text-xs"></i>
         </button>
     </div>
 
     <!-- Compare Modal -->
     <div id="compare-modal" class="fixed inset-0 z-[80] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75 backdrop-blur-sm" aria-hidden="true" id="compare-overlay"></div>
+            <div class="fixed inset-0 transition-opacity bg-slate-900/60 backdrop-blur-xs" aria-hidden="true" id="compare-overlay"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
             
-            <div class="inline-block w-full overflow-hidden text-left align-bottom transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:align-middle sm:max-w-5xl relative animate-fade-in-up">
-                <button type="button" id="compare-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 focus:outline-none z-10 w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
-                    <i class="fa-solid fa-xmark text-xl"></i>
+            <div class="inline-block w-full overflow-hidden text-left align-bottom transition-all transform bg-white shadow-2xl rounded-2xl border border-slate-200 sm:my-8 sm:align-middle sm:max-w-5xl relative">
+                <button type="button" id="compare-close-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 focus:outline-none z-10 w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors" aria-label="Tutup perbandingan">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
                 
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-6 text-center">Perbandingan Produk</h3>
+                <div class="p-6 sm:p-8">
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 text-center">Perbandingan Spesifikasi Modul</h3>
                     <div class="overflow-x-auto">
-                        <div id="compare-grid" class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-x divide-slate-100 border border-slate-100 rounded-2xl">
-                            <!-- Compare Items Injected Here -->
+                        <div id="compare-grid" class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-200 border border-slate-200 rounded-xl">
+                            <!-- Injected via JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -420,26 +669,207 @@
         </div>
     </div>
 
-    <footer class="bg-white border-t border-slate-200 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-            &copy; <script>document.write(new Date().getFullYear())</script> CRUDWorks Karya Anak Indonesia. All rights reserved.
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-white text-slate-600 pt-14 pb-8 border-t border-slate-200 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+                <!-- Company Info (5 cols) -->
+                <div class="lg:col-span-5">
+                    <div class="mb-4">
+                        <a href="index" class="inline-block">
+                            <img src="css/logo.png" alt="CRUDWorks Logo" class="h-9 w-auto">
+                        </a>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-sm mb-6">
+                        Mitra rekayasa perangkat lunak dan sistem informasi bisnis terpercaya di Indonesia. Menghadirkan solusi praktis, skalabel, dan terjangkau untuk UMKM dan Enterprise.
+                    </p>
+                    <div class="flex items-center gap-3 text-slate-600 text-xs">
+                        <span class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-slate-700">
+                            <i class="fa-solid fa-shield-halved text-emerald-600"></i> Sistem Cloud Terjamin
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg text-slate-700">
+                            <i class="fa-solid fa-code text-blue-600"></i> Asli Karya Indonesia
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Navigation (3 cols) -->
+                <div class="lg:col-span-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">Tautan Navigasi</h3>
+                    <ul class="space-y-2.5 text-sm text-slate-600">
+                        <li><a href="index" class="hover:text-blue-600 transition-colors">Beranda</a></li>
+                        <li><a href="produk" class="hover:text-blue-600 transition-colors">Layanan & Produk</a></li>
+                        <li><a href="tentang" class="hover:text-blue-600 transition-colors">Tentang Kami</a></li>
+                        <li><a href="changelog" class="hover:text-blue-600 transition-colors">Changelog & Rilis</a></li>
+                        <li><a href="karir" class="hover:text-blue-600 transition-colors">Karir</a></li>
+                        <li><a href="index#faq" class="hover:text-blue-600 transition-colors">Bantuan (FAQ)</a></li>
+                        <li><a href="index#contact" class="hover:text-blue-600 transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Details (4 cols) -->
+                <div class="lg:col-span-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">Kontak & Lokasi Kantor</h3>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-slate-400 mt-1"></i>
+                            <span>Perum Puri Nirwana Pandanwangi 21, Malang, Jawa Timur 65124</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-slate-400"></i>
+                            <a href="mailto:info@crudworks.com" class="hover:text-blue-600 transition-colors cursor-pointer" data-copy="info@crudworks.com" title="Klik untuk salin email">info@crudworks.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-slate-400"></i>
+                            <a href="tel:087759651803" class="hover:text-blue-600 transition-colors cursor-pointer" data-copy="+6287759651803" title="Klik untuk salin nomor">+62 877 5965 1803</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright & Legal -->
+            <div class="border-t border-slate-200 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> CRUDWorks Karya Anak Indonesia. Hak cipta dilindungi undang-undang.</p>
+                <div class="flex gap-6">
+                    <a href="privacy" class="hover:text-blue-600 transition-colors">Kebijakan Privasi</a>
+                    <a href="tos" class="hover:text-blue-600 transition-colors">Syarat & Ketentuan</a>
+                    <a href="changelog" class="hover:text-blue-600 font-semibold transition-colors">Changelog</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/6287759651803?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20layanan%20CRUDWorks" target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-xl z-50 hover:bg-[#20bd5a] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group focus:outline-none ring-4 ring-white/30">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-        <span class="absolute right-16 bg-white text-gray-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat Kami</span>
+    <a href="https://wa.me/6287759651803?text=Halo%20Admin%20CRUDWorks%2C%20saya%20tertarik%20dengan%20layanan%20software%20bisnis" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-12 h-12 rounded-full shadow-lg z-50 hover:bg-[#20bd5a] hover:scale-105 transition-all duration-200 flex items-center justify-center group focus:outline-none" aria-label="Chat WhatsApp">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="absolute right-14 bg-slate-900 text-white text-xs font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">Chat WhatsApp Kami</span>
     </a>
 
-
+    <!-- Page Logic & Dynamic Data Handler -->
     <script>
+        // Fallback Dataset jika fetch API sedang offline atau backend belum running
+        const fallbackServices = [
+            {
+                id: 1,
+                slug: "crud-system-master",
+                title: "CRUD System Master",
+                category: "Operational",
+                price: "Rp 500.000",
+                discount_price: "Rp 350.000",
+                badge: "Terlaris",
+                icon: "database",
+                description: "Sistem manajemen database dinamis terpadu dengan hak akses berbasis peran (RBAC), export Excel/PDF instan, dan log audit transaksi otomatis.",
+                features: JSON.stringify(["Role Based Access Control", "Export Excel & PDF Otomatis", "Audit Trail & Activity Log", "RESTful API Siap Pakai"]),
+                detailed_description: '<p class="mb-3">CRUD System Master merupakan fondasi utama pengelolaan data enterprise Anda. Menggantikan proses pencatatan manual atau spreadsheet terpisah dengan sistem database terpusat yang aman.</p><p>Dilengkapi fitur pencarian cepat, filter multi-kolom, pencetakan laporan otomatis, dan pencatatan riwayat perubahan data (audit log) untuk mencegah duplikasi serta kecurangan.</p>'
+            },
+            {
+                id: 2,
+                slug: "point-of-sale-pro",
+                title: "Point of Sale (POS) Pro",
+                category: "Finance",
+                price: "Rp 750.000",
+                discount_price: "Rp 500.000",
+                badge: "Populer",
+                icon: "cash-register",
+                description: "Aplikasi kasir multi-outlet dengan barcode scanner, manajemen stok real-time, pencatatan piutang pelanggan, dan sinkronisasi cloud.",
+                features: JSON.stringify(["Multi-Outlet & Multi-Kasir", "Barcode & Struk Thermal", "Stok Minimum Alert", "Rekap Kas Harian"]),
+                detailed_description: '<p class="mb-3">POS Pro dirancang untuk toko retail, kafe, minimarket, dan jaringan waralaba. Menyajikan proses checkout cepat dalam hitungan detik dengan dukungan printer thermal Bluetooth/USB.</p><p>Sistem secara otomatis memotong stok barang secara real-time dan memberikan peringatan dini ketika kuantitas barang di gudang mendekati batas minimum.</p>'
+            },
+            {
+                id: 3,
+                slug: "hris-payroll-solution",
+                title: "HRIS & Payroll Solution",
+                category: "HR",
+                price: "Rp 1.200.000",
+                discount_price: "Rp 900.000",
+                badge: "Rekomendasi",
+                icon: "users-gear",
+                description: "Otomatisasi absensi GPS karyawan, perhitungan gaji, PPh 21, BPJS Kesehatan/Ketenagakerjaan, serta pengajuan cuti online.",
+                features: JSON.stringify(["Absensi Selfie & Geolocation", "Kalkulasi Payroll & PPh 21", "Pengajuan Cuti Digital", "Slip Gaji Otomatis"]),
+                detailed_description: '<p class="mb-3">Kelola administrasi puluhan hingga ratusan karyawan tanpa lembur hitung manual. HRIS CRUDWorks mengakomodasi sistem kerja shift, lembur, dan potongan keterlambatan secara otomatis.</p><p>Karyawan dapat mengunduh slip gaji digital langsung lewat dashboard atau email pribadi masing-masing dengan enkripsi data aman.</p>'
+            },
+            {
+                id: 4,
+                slug: "e-commerce-b2b-portal",
+                title: "E-Commerce & B2B Portal",
+                category: "Operational",
+                price: "Rp 1.500.000",
+                discount_price: null,
+                badge: null,
+                icon: "store",
+                description: "Platform toko online terintegrasi payment gateway (Midtrans/Xendit), cek ongkir otomatis se-Indonesia, dan katalog produk interaktif.",
+                features: JSON.stringify(["Payment Gateway Otomatis", "Cek Ongkos Kirim JNE/J&T/SiCepat", "Panel Reseller & Grosir", "Integrasi Notifikasi WhatsApp"]),
+                detailed_description: '<p class="mb-3">Tingkatkan jangkauan penjualan bisnis Anda 24/7 dengan platform e-commerce yang cepat dan mobile-friendly. Dilengkapi fitur checkout instan dan verifikasi pembayaran otomatis.</p><p>Mendukung tiering harga khusus distributor/reseller dengan minimal pembelian tertentu.</p>'
+            },
+            {
+                id: 5,
+                slug: "asset-tracking-iot",
+                title: "Asset Tracking & IoT",
+                category: "Operational",
+                price: "Rp 2.000.000",
+                discount_price: "Rp 1.600.000",
+                badge: "Enterprise",
+                icon: "microchip",
+                description: "Pemantauan aset bernilai tinggi, mesin pabrik, atau armada kendaraan secara langsung melalui sensor IoT dan pemindaian QR Code.",
+                features: JSON.stringify(["QR Code Asset Labeling", "Jadwal Maintenance Terjadwal", "Riwayat Lokasi & PIC", "Perhitungan Depresiasi Aset"]),
+                detailed_description: '<p class="mb-3">Solusi optimalisasi perawatan aset fisik perusahaan. Pantau riwayat servis berkala, nilai penyusutan tahunan, hingga penanggung jawab terakhir tiap perangkat.</p><p>Scan label QR Code melalui smartphone untuk memeriksa status operasional dan riwayat perbaikan mesin dalam sekejap.</p>'
+            },
+            {
+                id: 6,
+                slug: "custom-software-development",
+                title: "Custom Software Engineering",
+                category: "Custom",
+                price: "Mulai Rp 2.500.000",
+                discount_price: null,
+                badge: "Solusi Kustom",
+                icon: "laptop-code",
+                description: "Pengembangan arsitektur perangkat lunak berbasis kebutuhan spesifik bisnis Anda dengan metodologi Agile dan pendampingan penuh.",
+                features: JSON.stringify(["Analisis Kebutuhan Bisnis", "Arsitektur Skalabel & Aman", "Source Code Diserahkan", "Maintenance & Garansi Penuh"]),
+                detailed_description: '<p class="mb-3">Solusi untuk bisnis dengan model operasional unik yang tidak dapat diakomodasi oleh aplikasi template pasar. Kami membangun sistem dari tahap blueprint arsitektur hingga deployment di server Anda.</p><p>Transparansi progress pengerjaan berkala dengan sesi demo sprint mingguan.</p>'
+            },
+            {
+                id: 7,
+                slug: "sistem-akuntansi-keuangan",
+                title: "Sistem Akuntansi Keuangan",
+                category: "Finance",
+                price: "Rp 850.000",
+                discount_price: "Rp 650.000",
+                badge: null,
+                icon: "file-invoice-dollar",
+                description: "Pembukuan standar PSAK dengan bagan akun (COA) dinamis, jurnal umum, buku besar, neraca saldo, hingga laporan laba rugi real-time.",
+                features: JSON.stringify(["Chart of Accounts Fleksibel", "Jurnal Otomatis dari Transaksi", "Laporan Laba Rugi & Neraca", "Tutup Buku Bulanan/Tahunan"]),
+                detailed_description: '<p class="mb-3">Kendalikan kesehatan finansial bisnis tanpa kebingungan jurnal manual. Setiap transaksi penjualan dan pembelian langsung terposting ke pos akun yang relevan.</p><p>Cetak laporan arus kas dan neraca sewaktu-waktu untuk keperluan evaluasi pemegang saham atau perbankan.</p>'
+            },
+            {
+                id: 8,
+                slug: "manajemen-inventaris-gudang",
+                title: "Warehouse & Inventory WMS",
+                category: "Operational",
+                price: "Rp 1.100.000",
+                discount_price: "Rp 850.000",
+                badge: null,
+                icon: "boxes-stacked",
+                description: "Sistem kontrol persediaan multi-gudang dengan metode FIFO/LIFO, mutasi antar-cabang, stock opname digital, dan peringatan expired date.",
+                features: JSON.stringify(["Multi-Gudang & Rak", "Metode FIFO / Average Costing", "Stock Opname Digital", "Peringatan Kadaluarsa"]),
+                detailed_description: '<p class="mb-3">Hilangkan selisih stok fisik dan sistem dengan alur pencatatan receiving, moving, dan dispatching yang ketat.</p><p>Sangat ideal untuk bisnis distributor, farmasi, FMCG, serta manufaktur perakitan.</p>'
+            }
+        ];
+
         document.addEventListener('DOMContentLoaded', async () => {
-            // Coba ambil Slug/ID dari Query String
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Parsing URL Param (slug atau id)
             const params = new URLSearchParams(window.location.search);
             let slug = params.get('slug') || params.get('id');
             
-            // Jika tidak ada, coba ambil dari Path URL (produk/...)
             if (!slug) {
                 const path = window.location.pathname;
                 const segments = path.replace(/\/$/, '').split('/');
@@ -449,793 +879,771 @@
                 }
             }
 
+            // Helper Parse Price
+            const parseVal = (str) => {
+                if (!str) return 0;
+                let num = parseInt(str.toString().replace(/[^0-9]/g, '')) || 0;
+                if (str.toString().toLowerCase().includes('rb')) num *= 1000;
+                return num;
+            };
+
+            let services = [];
+
             try {
-                // Fetch data dari API yang sama
                 const response = await fetch('api/index.php?endpoint=services');
-                const services = await response.json();
+                if (!response.ok) throw new Error('API network response not ok');
+                const data = await response.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    services = data;
+                } else {
+                    services = fallbackServices;
+                }
+            } catch (err) {
+                console.warn('Menggunakan fallback dataset produk lokal:', err.message);
+                services = fallbackServices;
+            }
+
+            // Cari produk berdasarkan slug atau id
+            const service = services.find(s => s.slug === slug || s.id == slug);
+
+            if (service) {
+                // ==========================================
+                // DETAIL PRODUCT MODE
+                // ==========================================
+                const date = new Date();
+                date.setFullYear(date.getFullYear() + 1);
+                const priceValidUntil = date.toISOString().split('T')[0];
+
+                // Update SEO Meta Tags
+                document.title = `${service.title} - Sistem Aplikasi Bisnis | CRUDWorks`;
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.setAttribute("content", service.description);
+
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                if (ogTitle) ogTitle.setAttribute("content", `${service.title} - CRUDWorks`);
                 
-                // Helper Parse Price
-                const parseVal = (str) => {
-                    if(!str) return 0;
-                    let num = parseInt(str.toString().replace(/[^0-9]/g, '')) || 0;
-                    if (str.toString().toLowerCase().includes('rb')) num *= 1000;
-                    return num;
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                if (ogDesc) ogDesc.setAttribute("content", service.description);
+
+                // Set Canonical URL Dinamis
+                let canonicalLink = document.querySelector('link[rel="canonical"]');
+                if (!canonicalLink) {
+                    canonicalLink = document.createElement('link');
+                    canonicalLink.rel = 'canonical';
+                    document.head.appendChild(canonicalLink);
+                }
+
+                let appPath = window.location.pathname;
+                if (appPath.includes('/produk/')) {
+                    appPath = appPath.substring(0, appPath.indexOf('/produk/'));
+                } else if (appPath.includes('produk.html')) {
+                    appPath = appPath.substring(0, appPath.indexOf('produk.html'));
+                }
+                const finalUrl = `${window.location.origin}${appPath}/produk/${service.slug || service.id}`.replace(/([^:])\/\/+/g, "$1");
+                canonicalLink.href = finalUrl;
+
+                const ogUrl = document.querySelector('meta[property="og:url"]');
+                if (ogUrl) ogUrl.setAttribute("content", finalUrl);
+
+                // Breadcrumb Update
+                const bcActive = document.getElementById('breadcrumb-active');
+                if (bcActive) {
+                    bcActive.classList.remove('hidden');
+                    document.getElementById('breadcrumb-title').innerText = service.title;
+                }
+
+                // Render Icon & Info
+                document.getElementById('detail-icon').innerHTML = `<i class="fa-solid fa-${service.icon}"></i>`;
+                document.getElementById('detail-title').innerText = service.title;
+                document.getElementById('detail-short-desc').innerText = service.description;
+                document.getElementById('detail-long-desc').innerHTML = service.detailed_description || `<p>${service.description}</p>`;
+
+                // Render Badge
+                const badgeContainer = document.getElementById('detail-badge-container');
+                let badgesHtml = `<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider border border-blue-200"><i class="fa-solid fa-layer-group mr-1.5"></i> ${service.category || 'Sistem Bisnis'}</span>`;
+
+                if (service.badge) {
+                    badgesHtml += `<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-wider border border-amber-200"><i class="fa-solid fa-award mr-1.5 text-amber-600"></i> ${service.badge}</span>`;
+                }
+                badgeContainer.innerHTML = badgesHtml;
+
+                // Render Price
+                const priceContainer = document.getElementById('detail-price-container');
+                let priceHtml = '';
+                if (service.discount_price) {
+                    const original = parseVal(service.price);
+                    const discounted = parseVal(service.discount_price);
+                    let percentTag = '';
+                    if (original > 0 && discounted > 0 && original > discounted) {
+                        const percent = Math.round(((original - discounted) / original) * 100);
+                        percentTag = `<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded text-xs font-bold">Hemat ${percent}%</span>`;
+                    }
+                    priceHtml = `
+                        <div class="flex flex-col">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-slate-400 line-through">${service.price}</span>
+                                ${percentTag}
+                            </div>
+                            <span class="text-2xl sm:text-3xl font-extrabold text-slate-900">${service.discount_price}</span>
+                        </div>
+                    `;
+                } else {
+                    priceHtml = `<span class="text-2xl sm:text-3xl font-extrabold text-slate-900">${service.price || 'Hubungi Sales'}</span>`;
+                }
+                priceContainer.innerHTML = priceHtml;
+
+                // WhatsApp Sidebar Button Link
+                const waBtn = document.getElementById('wa-button-sidebar');
+                if (waBtn) {
+                    const waText = `Halo Tim CRUDWorks, saya tertarik untuk konsultasi implementasi sistem *${service.title}* (${window.location.href}). Mohon info jadwal demo dan detailnya.`;
+                    waBtn.href = `https://wa.me/6287759651803?text=${encodeURIComponent(waText)}`;
+                }
+
+                // Social Share
+                const curUrl = encodeURIComponent(window.location.href);
+                const curTxt = encodeURIComponent(`Sistem ${service.title} oleh CRUDWorks Indonesia`);
+                document.getElementById('share-wa').href = `https://wa.me/?text=${curTxt}%20${curUrl}`;
+                document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${curUrl}`;
+                document.getElementById('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${curUrl}`;
+
+                // Render Features Grid
+                let featureItems = [];
+                if (service.features) {
+                    try {
+                        featureItems = typeof service.features === 'string' ? JSON.parse(service.features) : service.features;
+                    } catch (e) {
+                        featureItems = [];
+                    }
+                }
+                if (!Array.isArray(featureItems) || featureItems.length === 0) {
+                    featureItems = ["Integrasi Database Terpusat", "Keamanan SSL & Enkripsi Data", "Multi-User & Hak Akses", "Export Laporan Excel & PDF"];
+                }
+
+                // Render Features as Interactive Spec Rows
+                document.getElementById('detail-features-grid').innerHTML = `
+                    <div class="border border-slate-200/90 rounded-2xl bg-white divide-y divide-slate-100 overflow-hidden shadow-2xs">
+                        ${featureItems.map((f, i) => `
+                            <div class="p-4 sm:p-5 flex items-start gap-4 hover:bg-slate-50/80 transition-colors group">
+                                <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0 mt-0.5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between gap-2 mb-1">
+                                        <h4 class="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">${f}</h4>
+                                        <span class="inline-flex items-center text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">TERUJI</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 leading-relaxed">Modul siap pakai yang terintegrasi langsung dengan database terpusat dan alur kerja sistem.</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                // Render Related Services as Interactive Spec Rows
+                const related = services.filter(s => s.category === service.category && s.id != service.id);
+                if (related.length > 0) {
+                    const relContainer = document.getElementById('related-container');
+                    document.getElementById('related-section').classList.remove('hidden');
+                    relContainer.innerHTML = `
+                        <div class="border border-slate-200/90 rounded-2xl bg-white divide-y divide-slate-100 overflow-hidden shadow-2xs">
+                            ${related.slice(0, 3).map(r => `
+                                <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-colors group cursor-pointer" onclick="window.location.href='produk/${r.slug || r.id}'">
+                                    <div class="flex items-start gap-3.5 min-w-0 flex-1">
+                                        <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center text-base flex-shrink-0 group-hover:scale-105 transition-transform">
+                                            <i class="fa-solid fa-${r.icon}"></i>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <div class="flex items-center gap-2 mb-0.5">
+                                                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">${r.category || 'Modul'}</span>
+                                            </div>
+                                            <h4 class="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">${r.title}</h4>
+                                            <p class="text-xs text-slate-500 line-clamp-1 mt-0.5 leading-relaxed">${r.description}</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4 flex-shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 justify-between sm:justify-end">
+                                        <div class="text-left sm:text-right">
+                                            <span class="text-[10px] uppercase font-bold text-slate-400 block">Investasi</span>
+                                            <div class="text-xs font-bold text-slate-900">${r.discount_price || r.price || 'Hubungi Kami'}</div>
+                                        </div>
+                                        <span class="px-3 py-1.5 rounded-lg border border-slate-300 text-slate-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 text-xs font-semibold transition-all inline-flex items-center gap-1.5">
+                                            Buka <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
+                // Show Detail Container
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('detail-content').classList.remove('hidden');
+
+            } else {
+                // ==========================================
+                // CATALOG LISTING MODE
+                // ==========================================
+                document.title = "Layanan & Produk Perangkat Lunak Bisnis | CRUDWorks";
+                
+                                const listingContainer = document.getElementById('listing-container');
+                const catalogCountEl = document.getElementById('catalog-count');
+                const viewButtons = document.querySelectorAll('.catalog-view-btn');
+                
+                let activeViewMode = 'rows'; // Default: 'rows' (bisa 'rows', 'console', 'grid')
+                let activeConsoleIndex = 0;
+                let currentItems = services;
+                let compareList = [];
+
+                // Helper Parse Features
+                const getFeatureList = (item) => {
+                    let feats = [];
+                    if (item.features) {
+                        try {
+                            feats = typeof item.features === 'string' ? JSON.parse(item.features) : item.features;
+                        } catch (e) {
+                            feats = [];
+                        }
+                    }
+                    if (!Array.isArray(feats) || feats.length === 0) {
+                        feats = ["Role Based Access", "Export Excel & PDF", "Audit Trail"];
+                    }
+                    return feats;
                 };
 
-                // Cari service berdasarkan Slug atau ID (untuk backward compatibility)
-                const service = services.find(s => s.slug === slug || s.id == slug);
-
-                if(service) {
-                    // Calculate priceValidUntil (1 year from now)
-                    const date = new Date();
-                    date.setFullYear(date.getFullYear() + 1);
-                    const priceValidUntil = date.toISOString().split('T')[0];
-
-                    // Update SEO Meta Tags
-                    document.title = `${service.title} - CRUDWorks`;
-                    document.querySelector('meta[name="description"]').setAttribute("content", service.description);
-                    
-                    // Update Open Graph Tags
-                    document.querySelector('meta[property="og:title"]').setAttribute("content", `${service.title} - CRUDWorks`);
-                    document.querySelector('meta[property="og:description"]').setAttribute("content", service.description);
-
-                    // Set Canonical URL Dinamis (SEO)
-                    let canonicalLink = document.querySelector('link[rel="canonical"]');
-                    if (!canonicalLink) {
-                        canonicalLink = document.createElement('link');
-                        canonicalLink.rel = 'canonical';
-                        document.head.appendChild(canonicalLink);
-                    }
-
-                    // Tentukan root path aplikasi untuk membentuk Pretty URL yang konsisten
-                    let appPath = window.location.pathname;
-                    if (appPath.includes('/produk/')) {
-                        appPath = appPath.substring(0, appPath.indexOf('/produk/'));
-                    } else if (appPath.includes('produk.html')) {
-                        appPath = appPath.substring(0, appPath.indexOf('produk.html'));
-                    }
-                    // Format URL: domain.com/path/produk/slug (Regex untuk hapus double slash)
-                    const finalUrl = `${window.location.origin}${appPath}/produk/${service.slug || service.id}`.replace(/([^:]\/)\/+/g, "$1");
-                    canonicalLink.href = finalUrl;
-
-                    // Update Open Graph URL
-                    document.querySelector('meta[property="og:url"]').setAttribute("content", finalUrl);
-
-                    // Schema Markup (JSON-LD) Product
-                    const schemaData = {
-                        "@context": "https://schema.org/",
-                        "@type": "Product",
-                        "name": service.title,
-                        "description": service.description,
-                        "sku": service.id,
-                        "image": "https://www.crudworks.com/css/logo.png", // Fallback image
-                        "brand": {
-                            "@type": "Brand",
-                            "name": "CRUDWorks"
-                        },
-                        "aggregateRating": {
-                            "@type": "AggregateRating",
-                            "ratingValue": "4.8",
-                            "reviewCount": "124"
-                        },
-                        "review": {
-                            "@type": "Review",
-                            "reviewRating": {
-                                "@type": "Rating",
-                                "ratingValue": "5",
-                                "bestRating": "5"
-                            },
-                            "author": {
-                                "@type": "Person",
-                                "name": "Pelanggan Terverifikasi"
-                            }
-                        },
-                        "offers": {
-                            "@type": "Offer",
-                            "url": finalUrl,
-                            "priceCurrency": "IDR",
-                            "price": service.discount_price ? parseVal(service.discount_price) : parseVal(service.price),
-                            "priceValidUntil": priceValidUntil,
-                            "availability": "https://schema.org/InStock",
-                            "itemCondition": "https://schema.org/NewCondition",
-                            "hasMerchantReturnPolicy": {
-                                "@type": "MerchantReturnPolicy",
-                                "applicableCountry": "ID",
-                                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                                "merchantReturnDays": 14,
-                                "returnMethod": "https://schema.org/ReturnByMail",
-                                "returnFees": "https://schema.org/FreeReturn"
-                            },
-                            "shippingDetails": {
-                                "@type": "OfferShippingDetails",
-                                "shippingRate": {
-                                    "@type": "MonetaryAmount",
-                                    "value": 0,
-                                    "currency": "IDR"
-                                },
-                                "shippingDestination": {
-                                    "@type": "DefinedRegion",
-                                    "addressCountry": "ID"
-                                },
-                                "deliveryTime": {
-                                    "@type": "ShippingDeliveryTime",
-                                    "handlingTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 1,
-                                        "unitCode": "DAY"
-                                    },
-                                    "transitTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 1,
-                                        "unitCode": "DAY"
-                                    }
-                                }
-                            }
-                        }
-                    };
-
-                    const script = document.createElement('script');
-                    script.type = 'application/ld+json';
-                    script.text = JSON.stringify(schemaData);
-                    document.head.appendChild(script);
-
-                    // Schema Markup (BreadcrumbList) - Detail Page
-                    const breadcrumbSchema = {
-                        "@context": "https://schema.org",
-                        "@type": "BreadcrumbList",
-                        "itemListElement": [{
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "Beranda",
-                                "item": window.location.origin + "/index"
-                        },{
-                            "@type": "ListItem",
-                            "position": 2,
-                            "name": "Layanan & Produk",
-                                "item": window.location.origin + "/produk"
-                        },{
-                            "@type": "ListItem",
-                            "position": 3,
-                            "name": service.title
-                        }]
-                    };
-                    const bcScript = document.createElement('script');
-                    bcScript.type = 'application/ld+json';
-                    bcScript.text = JSON.stringify(breadcrumbSchema);
-                    document.head.appendChild(bcScript);
-
-                    // Render Content
-                    document.getElementById('detail-icon').innerHTML = `<i class="fa-solid fa-${service.icon} text-4xl"></i>`;
-                    document.getElementById('detail-category').innerText = service.category;
-                    
-                    // Render Price with Discount Logic
-                    const priceEl = document.getElementById('detail-price');
-                    if (service.discount_price) {
-                        // Hitung Persentase
-                        const original = parseVal(service.price);
-                        const discounted = parseVal(service.discount_price);
+                // Helper Render Price
+                const renderPriceBadge = (item) => {
+                    if (item.discount_price) {
+                        const original = parseVal(item.price);
+                        const discounted = parseVal(item.discount_price);
                         let percentTag = '';
-                        
-                        if (original > 0 && discounted > 0 && original > discounted) {
+                        if (original > discounted && original > 0) {
                             const percent = Math.round(((original - discounted) / original) * 100);
-                            percentTag = `<span class="ml-2 bg-red-100 text-red-600 px-2 py-0.5 rounded text-[10px] font-extrabold uppercase">Hemat ${percent}%</span>`;
+                            percentTag = `<span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1 rounded border border-emerald-200">-${percent}%</span>`;
                         }
-
-                        priceEl.innerHTML = `<span class="line-through opacity-60 mr-2 text-xs text-slate-500">${service.price}</span>${service.discount_price}${percentTag}`;
-                        priceEl.className = "px-4 py-1.5 rounded-full bg-red-50 text-red-600 border border-red-100 text-sm font-bold flex items-center";
-                    } else {
-                        priceEl.innerText = service.price || 'Hubungi Kami';
-                        priceEl.className = "px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 text-sm font-bold";
-                    }
-
-                    document.getElementById('detail-title').innerText = service.title;
-                    document.getElementById('detail-desc').innerHTML = service.detailed_description || service.description;
-
-                    // Update Breadcrumb (Detail)
-                    document.getElementById('breadcrumb-active').classList.remove('hidden');
-                    document.getElementById('breadcrumb-title').innerText = service.title;
-
-                    // Update Social Share Links
-                    const shareUrl = encodeURIComponent(window.location.href);
-                    const shareText = encodeURIComponent(`Cek layanan ${service.title} di CRUDWorks!`);
-                    document.getElementById('share-wa').href = `https://wa.me/?text=${shareText}%20${shareUrl}`;
-                    document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-                    document.getElementById('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
-                    document.getElementById('share-tw').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
-
-                    // Render Badge
-                    if (service.badge) {
-                        const badgeEl = document.createElement('div');
-                        
-                        let gradientClass = 'from-blue-500 to-indigo-600';
-                        let shadowClass = 'shadow-blue-500/30';
-                        let icon = 'fa-star';
-                        const bText = service.badge.toLowerCase();
-
-                        if (bText.includes('best')) { gradientClass = 'from-amber-400 to-orange-500'; shadowClass = 'shadow-amber-500/30'; icon = 'fa-crown'; }
-                        if (bText.includes('promo')) { gradientClass = 'from-rose-500 to-pink-600'; shadowClass = 'shadow-rose-500/30'; icon = 'fa-percent'; }
-
-                        badgeEl.className = `absolute top-6 right-6 z-20`;
-                        badgeEl.innerHTML = `
-                            <span class="relative overflow-hidden inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r ${gradientClass} shadow-xl ${shadowClass} transform hover:scale-105 transition-transform duration-300">
-                                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
-                                <i class="fa-solid ${icon} relative z-10"></i>
-                                <span class="relative z-10">${service.badge}</span>
-                            </span>
-                        `;
-                        document.getElementById('detail-header').appendChild(badgeEl);
-                    }
-                    
-                    // Update WhatsApp Button dengan Pesan Template
-                    const waBtn = document.getElementById('wa-button');
-                    if (waBtn) {
-                        const phoneNumber = '6287759651803'; // Ganti dengan nomor WhatsApp Bisnis Anda
-                        const message = `Halo Admin, saya tertarik untuk membeli/berlangganan produk *${service.title}*. Mohon info lebih lanjut.`;
-                        waBtn.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-                    }
-
-                    if (service.features) {
-                        const features = JSON.parse(service.features);
-                        document.getElementById('detail-features').innerHTML = features.map(f => `
-                            <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
-                                <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
-                                <span class="text-slate-700 text-base font-medium leading-relaxed">${f}</span>
-                            </div>
-                        `).join('');
-                    }
-
-                    document.getElementById('loading').classList.add('hidden');
-                    document.getElementById('detail-content').classList.remove('hidden');
-
-                    // Logic for Related Products
-                    const relatedServices = services.filter(s => s.category === service.category && s.id != service.id);
-                    
-                    if (relatedServices.length > 0) {
-                        const relatedContainer = document.getElementById('related-container');
-                        document.getElementById('related-section').classList.remove('hidden');
-                        
-                        relatedServices.forEach(related => {
-                            const card = document.createElement('div');
-                            card.className = 'bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full group';
-                            card.innerHTML = `
-                                <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                    <i class="fa-solid fa-${related.icon} text-xl"></i>
+                        return `
+                            <div class="flex flex-col">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-[11px] text-slate-400 line-through">${item.price}</span>
+                                    ${percentTag}
                                 </div>
-                                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">${related.title}</h3>
-                                <p class="text-slate-500 text-sm line-clamp-2 mb-4 flex-1">${related.description}</p>
-                                <div class="text-blue-600 text-sm font-bold mt-auto flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></div>
+                                <span class="text-base sm:text-lg font-extrabold text-slate-900">${item.discount_price}</span>
+                            </div>
+                        `;
+                    }
+                    return `<span class="text-base sm:text-lg font-extrabold text-slate-900">${item.price || 'Hubungi Kami'}</span>`;
+                };
+
+                // Helper Badge Ribbon
+                const renderCategoryBadge = (item) => {
+                    let html = `<span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">${item.category || 'Modul'}</span>`;
+                    if (item.badge) {
+                        let style = 'bg-blue-50 text-blue-700 border-blue-200';
+                        const b = item.badge.toLowerCase();
+                        if (b.includes('terlaris') || b.includes('best')) style = 'bg-amber-50 text-amber-800 border-amber-200';
+                        if (b.includes('populer') || b.includes('rekomendasi')) style = 'bg-indigo-50 text-indigo-700 border-indigo-200';
+                        html += ` <span class="inline-flex items-center text-[10px] font-bold px-1.5 py-0.5 rounded border ${style} ml-1">${item.badge}</span>`;
+                    }
+                    return html;
+                };
+
+                // RENDER FUNCTION: 3 Modern Layouts
+                const renderCatalog = (items) => {
+                    currentItems = items;
+                    if (catalogCountEl) catalogCountEl.innerText = items.length;
+
+                    if (!items || items.length === 0) {
+                        listingContainer.innerHTML = `
+                            <div class="text-center py-16 bg-white rounded-2xl border border-slate-200">
+                                <i class="fa-solid fa-box-open text-4xl text-slate-300 mb-3"></i>
+                                <h3 class="text-base font-bold text-slate-800">Tidak ada modul ditemukan</h3>
+                                <p class="text-xs text-slate-500 mt-1">Coba gunakan kata kunci pencarian atau kategori filter lainnya.</p>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    // Pastikan indeks konsol valid
+                    if (activeConsoleIndex >= items.length) {
+                        activeConsoleIndex = 0;
+                    }
+
+                    if (activeViewMode === 'rows') {
+                        // ==========================================
+                        // ALTERNATIF 1: INTERACTIVE SPEC ROWS (Apple / Stripe Spec Sheet)
+                        // ==========================================
+                        let rowsHtml = `
+                            <div class="border border-slate-200/90 rounded-2xl bg-white divide-y divide-slate-100 overflow-hidden shadow-2xs">
+                        `;
+
+                        items.forEach((item, idx) => {
+                            const feats = getFeatureList(item);
+                            const waDirect = `https://wa.me/6287759651803?text=${encodeURIComponent('Halo Admin CRUDWorks, saya tertarik konsultasi modul *' + item.title + '*.')}`;
+                            const isCompared = compareList.includes(item.id.toString()) || compareList.includes(item.id);
+
+                            rowsHtml += `
+                                <div class="p-5 sm:p-6 hover:bg-slate-50/70 transition-colors flex flex-col lg:flex-row lg:items-center justify-between gap-5 group">
+                                    <!-- Info Column -->
+                                    <div class="flex items-start gap-4 flex-1 min-w-0">
+                                        <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
+                                            <i class="fa-solid fa-${item.icon}"></i>
+                                        </div>
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-2 mb-1">
+                                                ${renderCategoryBadge(item)}
+                                            </div>
+                                            <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                                                <a href="produk/${item.slug || item.id}">${item.title}</a>
+                                            </h3>
+                                            <p class="text-xs text-slate-500 line-clamp-1 sm:line-clamp-2 mt-1 leading-relaxed max-w-xl">
+                                                ${item.description}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Technical Specs Pills Column -->
+                                    <div class="hidden xl:flex items-center gap-2 flex-wrap max-w-xs">
+                                        ${feats.slice(0, 3).map(f => `
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100/90 text-slate-700 border border-slate-200">
+                                                <i class="fa-solid fa-check text-blue-600 text-[9px]"></i> ${f}
+                                            </span>
+                                        `).join('')}
+                                    </div>
+
+                                    <!-- Price & Action Column -->
+                                    <div class="flex items-center justify-between lg:justify-end gap-4 pt-3 lg:pt-0 border-t lg:border-t-0 border-slate-100 flex-shrink-0">
+                                        <div class="text-left lg:text-right min-w-[110px]">
+                                            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Investasi</span>
+                                            ${renderPriceBadge(item)}
+                                        </div>
+                                        <div class="flex items-center gap-1.5">
+                                            <button type="button" class="quick-view-btn w-9 h-9 rounded-lg border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-300 transition-colors flex items-center justify-center bg-white" data-id="${item.id}" title="Pratinjau Cepat">
+                                                <i class="fa-regular fa-eye text-xs"></i>
+                                            </button>
+                                            <button type="button" class="compare-btn w-9 h-9 rounded-lg border ${isCompared ? 'bg-blue-600 text-white border-blue-600' : 'border-slate-200 text-slate-500 bg-white hover:text-blue-600 hover:border-blue-300'} transition-colors flex items-center justify-center" data-id="${item.id}" title="Bandingkan Modul">
+                                                <i class="fa-solid fa-scale-balanced text-xs"></i>
+                                            </button>
+                                            <a href="produk/${item.slug || item.id}" class="px-3 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold transition-colors hidden sm:inline-flex items-center">
+                                                Detail
+                                            </a>
+                                            <a href="${waDirect}" target="_blank" class="px-3.5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-xs font-bold transition-all shadow-xs flex items-center gap-1.5">
+                                                <i class="fa-brands fa-whatsapp text-sm"></i> Pesan
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             `;
-                            card.addEventListener('click', () => window.location.href = `produk/${related.slug || related.id}`);
-                            relatedContainer.appendChild(card);
+                        });
+
+                        rowsHtml += `</div>`;
+                        listingContainer.innerHTML = rowsHtml;
+
+                    } else if (activeViewMode === 'console') {
+                        // ==========================================
+                        // ALTERNATIF 2: SPLIT INTERACTIVE CONSOLE (Left Nav + Live Stage Canvas)
+                        // ==========================================
+                        const selectedItem = items[activeConsoleIndex] || items[0];
+                        const selFeats = getFeatureList(selectedItem);
+                        const selWa = `https://wa.me/6287759651803?text=${encodeURIComponent('Halo Admin CRUDWorks, saya tertarik dengan modul *' + selectedItem.title + '* di konsol produk.')}`;
+                        const isCompared = compareList.includes(selectedItem.id.toString()) || compareList.includes(selectedItem.id);
+
+                        let consoleHtml = `
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                                <!-- Left Nav Stack -->
+                                <div class="lg:col-span-5 space-y-2.5 max-h-[640px] overflow-y-auto pr-1">
+                        `;
+
+                        items.forEach((item, idx) => {
+                            const isCurrent = idx === activeConsoleIndex;
+                            consoleHtml += `
+                                <div class="console-item cursor-pointer p-4 rounded-xl border transition-all duration-150 ${
+                                    isCurrent 
+                                    ? 'bg-blue-50/70 border-blue-500 shadow-sm ring-1 ring-blue-500/30' 
+                                    : 'bg-white border-slate-200/90 hover:border-slate-300 hover:bg-slate-50'
+                                }" data-index="${idx}">
+                                    <div class="flex items-center justify-between gap-3">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <div class="w-10 h-10 rounded-lg flex items-center justify-center text-sm flex-shrink-0 ${
+                                                isCurrent ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'
+                                            }">
+                                                <i class="fa-solid fa-${item.icon}"></i>
+                                            </div>
+                                            <div class="min-w-0">
+                                                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">${item.category || 'Modul'}</div>
+                                                <div class="text-sm font-bold text-slate-900 truncate leading-snug ${isCurrent ? 'text-blue-700' : ''}">${item.title}</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-right flex-shrink-0">
+                                            <div class="text-xs font-bold text-slate-900">${item.discount_price || item.price || 'Hubungi Kami'}</div>
+                                            <span class="text-[10px] text-emerald-600 font-semibold flex items-center gap-1 justify-end">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Siap Pakai
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        consoleHtml += `
+                                </div>
+
+                                <!-- Right Live Stage Preview Canvas -->
+                                <div class="lg:col-span-7 sticky top-24">
+                                    <div class="bg-slate-900 text-white rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                                        <!-- Top Telemetry Header -->
+                                        <div class="flex items-center justify-between pb-5 border-b border-slate-800 mb-6">
+                                            <div class="flex items-center gap-2">
+                                                <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+                                                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                                                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                                                <span class="ml-2 font-mono text-[11px] text-slate-400">STAGE // ${selectedItem.slug || 'MODULE-SPEC'}</span>
+                                            </div>
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 text-[11px] font-mono border border-blue-500/30">
+                                                <i class="fa-solid fa-server text-[9px]"></i> CLOUD / ON-PREMISE
+                                            </span>
+                                        </div>
+
+                                        <!-- Module Header -->
+                                        <div class="flex items-start gap-4 mb-4">
+                                            <div class="w-14 h-14 rounded-xl bg-blue-600/30 border border-blue-400/30 text-blue-400 flex items-center justify-center text-2xl flex-shrink-0">
+                                                <i class="fa-solid fa-${selectedItem.icon}"></i>
+                                            </div>
+                                            <div>
+                                                <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider block mb-1">${selectedItem.category || 'Enterprise Solution'}</span>
+                                                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">${selectedItem.title}</h2>
+                                            </div>
+                                        </div>
+
+                                        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                                            ${selectedItem.description}
+                                        </p>
+
+                                        <!-- Highlight Specs Badges -->
+                                        <div class="mb-6">
+                                            <div class="text-[11px] uppercase tracking-wider font-bold text-slate-400 mb-3 font-mono">Fitur Inti & Spesifikasi:</div>
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                                ${selFeats.map(f => `
+                                                    <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800/80 border border-slate-700/80 text-xs text-slate-200">
+                                                        <i class="fa-solid fa-check text-blue-400 text-xs"></i>
+                                                        <span class="truncate">${f}</span>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+
+                                        <!-- Pricing & Quick CTA -->
+                                        <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                            <div>
+                                                <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Investasi Mulai</span>
+                                                <div class="text-2xl font-extrabold text-white">${selectedItem.discount_price || selectedItem.price || 'Hubungi Kami'}</div>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <button type="button" class="quick-view-btn px-3 py-2.5 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 text-xs font-semibold transition-colors flex items-center gap-1.5" data-id="${selectedItem.id}">
+                                                    <i class="fa-regular fa-eye text-xs"></i> Pratinjau
+                                                </button>
+                                                <button type="button" class="compare-btn px-3 py-2.5 rounded-xl border ${isCompared ? 'bg-blue-600 text-white border-blue-600' : 'border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800'} text-xs font-semibold transition-colors flex items-center gap-1.5" data-id="${selectedItem.id}">
+                                                    <i class="fa-solid fa-scale-balanced text-xs"></i>
+                                                </button>
+                                                <a href="produk/${selectedItem.slug || selectedItem.id}" class="px-3.5 py-2.5 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 text-xs font-semibold transition-colors">
+                                                    Detail
+                                                </a>
+                                                <a href="${selWa}" target="_blank" class="px-4 py-2.5 rounded-xl bg-blue-600 text-white hover:bg-blue-500 text-xs font-bold transition-all shadow-md flex items-center gap-1.5">
+                                                    <i class="fa-brands fa-whatsapp text-sm"></i> Pesan
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        listingContainer.innerHTML = consoleHtml;
+
+                        // Tambahkan event listener untuk list item konsol
+                        document.querySelectorAll('.console-item').forEach(el => {
+                            el.addEventListener('click', () => {
+                                activeConsoleIndex = parseInt(el.getAttribute('data-index'), 10) || 0;
+                                renderCatalog(currentItems);
+                            });
+                        });
+
+                    } else {
+                        // ==========================================
+                        // ALTERNATIF 3: MODERN BENTO / GRID CARD
+                        // ==========================================
+                        let gridHtml = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">`;
+
+                        items.forEach(item => {
+                            const feats = getFeatureList(item);
+                            const waDirect = `https://wa.me/6287759651803?text=${encodeURIComponent('Halo Admin CRUDWorks, saya tertarik memesan modul *' + item.title + '*.')}`;
+                            const isCompared = compareList.includes(item.id.toString()) || compareList.includes(item.id);
+
+                            gridHtml += `
+                                <div class="bg-white rounded-2xl border border-slate-200/90 hover:border-blue-500 hover:shadow-xl transition-all duration-200 flex flex-col h-full group p-6">
+                                    <div class="flex items-start justify-between gap-2 mb-4">
+                                        <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-xl text-blue-600 group-hover:scale-105 transition-transform">
+                                            <i class="fa-solid fa-${item.icon}"></i>
+                                        </div>
+                                        <div class="flex flex-col items-end gap-1">
+                                            ${renderCategoryBadge(item)}
+                                        </div>
+                                    </div>
+
+                                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2 leading-snug">
+                                        <a href="produk/${item.slug || item.id}">${item.title}</a>
+                                    </h3>
+
+                                    <p class="text-xs sm:text-sm text-slate-500 line-clamp-2 leading-relaxed flex-1 mb-4">${item.description}</p>
+
+                                    <!-- Specs -->
+                                    <div class="space-y-1.5 py-3 border-y border-slate-100 mb-4">
+                                        ${feats.slice(0, 3).map(f => `
+                                            <div class="flex items-center gap-2 text-xs text-slate-600 truncate">
+                                                <i class="fa-solid fa-check text-blue-600 text-[10px]"></i>
+                                                <span class="truncate">${f}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+
+                                    <div class="pt-2 mt-auto flex items-end justify-between">
+                                        <div>
+                                            <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block">Mulai Dari</span>
+                                            ${renderPriceBadge(item)}
+                                        </div>
+                                        <div class="flex items-center gap-1.5">
+                                            <button type="button" class="quick-view-btn w-8 h-8 rounded-lg border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-300 transition-colors flex items-center justify-center bg-white" data-id="${item.id}" title="Pratinjau Cepat">
+                                                <i class="fa-regular fa-eye text-xs"></i>
+                                            </button>
+                                            <button type="button" class="compare-btn w-8 h-8 rounded-lg border ${isCompared ? 'bg-blue-600 text-white border-blue-600' : 'border-slate-200 text-slate-500 bg-white hover:text-blue-600 hover:border-blue-300'} transition-colors flex items-center justify-center" data-id="${item.id}" title="Bandingkan Modul">
+                                                <i class="fa-solid fa-scale-balanced text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-slate-100">
+                                        <a href="produk/${item.slug || item.id}" class="py-2 px-3 text-center text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 transition-colors">
+                                            Detail Fitur
+                                        </a>
+                                        <a href="${waDirect}" target="_blank" class="py-2 px-3 text-center text-xs font-bold rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors flex items-center justify-center gap-1.5">
+                                            <i class="fa-brands fa-whatsapp text-sm"></i> Pesan
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        gridHtml += `</div>`;
+                        listingContainer.innerHTML = gridHtml;
+                    }
+                };
+
+                // View Switcher Event Handlers
+                viewButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const targetView = btn.getAttribute('data-view');
+                        if (targetView === activeViewMode) return;
+                        activeViewMode = targetView;
+
+                        // Update Tab Button Styles
+                        viewButtons.forEach(b => {
+                            b.className = 'catalog-view-btn px-3 py-1.5 rounded-lg transition-all text-slate-600 hover:text-slate-900 flex items-center gap-1.5';
+                        });
+                        btn.className = 'catalog-view-btn px-3 py-1.5 rounded-lg transition-all bg-white text-slate-900 shadow-xs border border-slate-200 flex items-center gap-1.5';
+
+                        renderCatalog(currentItems);
+                    });
+                });
+
+                // Initial Render Katalog Langsung
+                renderCatalog(services);
+
+                let activeCategory = 'all';
+                let searchQuery = '';
+
+                const applyFilters = () => {
+                    let filtered = services;
+                    if (activeCategory !== 'all') {
+                        filtered = filtered.filter(s => {
+                            const cat = (s.category || '').toLowerCase();
+                            if (activeCategory === 'finance') return cat.includes('keuangan') || cat.includes('finance') || cat.includes('akuntansi');
+                            if (activeCategory === 'hr') return cat.includes('hr') || cat.includes('human') || cat.includes('sdm');
+                            if (activeCategory === 'operational') return cat.includes('operasional') || cat.includes('operation') || cat.includes('pos');
+                            return cat.includes(activeCategory);
                         });
                     }
-                } else {
-                    if (slug) {
-                        document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold">Layanan tidak ditemukan.</p><a href="produk" class="text-blue-600 underline mt-4 block">Lihat Semua Produk</a>';
-                    } else {
-                        // --- LISTING MODE ---
-                        document.title = "Layanan & Produk | CRUDWorks";
-                        document.querySelector('meta[name="description"]').setAttribute("content", "Daftar lengkap layanan dan produk digital CRUDWorks. Dari ERP, HRIS, hingga Custom Development.");
-                        
-                        // Reset Breadcrumb (Listing)
-                        document.getElementById('breadcrumb-active').classList.add('hidden');
 
-                        // Schema Markup for FAQPage
-                        const faqSchema = {
-                            "@context": "https://schema.org",
-                            "@type": "FAQPage",
-                            "mainEntity": [{
-                                "@type": "Question",
-                                "name": "Apakah layanan ini dapat disesuaikan (Custom)?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Ya, sebagian besar layanan kami, terutama pengembangan software, sangat fleksibel. Kami menggunakan pendekatan tailor-made untuk memastikan solusi yang kami bangun sesuai dengan alur kerja unik bisnis Anda."
-                                }
-                            }, {
-                                "@type": "Question",
-                                "name": "Bagaimana dengan dukungan purna jual (After Sales)?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Kami memberikan garansi bug fixing dan dukungan teknis prioritas. Tim support kami siap membantu Anda melalui WhatsApp, Email, atau Telepon jika terjadi kendala operasional."
-                                }
-                            }, {
-                                "@type": "Question",
-                                "name": "Berapa lama proses pengerjaan proyek?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Durasi bervariasi tergantung kompleksitas. Untuk implementasi sistem standar (SaaS) bisa instan atau 1-3 hari. Untuk custom development, estimasi waktu akan diberikan setelah tahap analisis kebutuhan."
-                                }
-                            }, {
-                                "@type": "Question",
-                                "name": "Apakah data perusahaan saya aman?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Keamanan adalah prioritas utama kami. Kami menggunakan enkripsi SSL 256-bit standar perbankan dan server yang dilindungi firewall berlapis dengan backup otomatis harian."
-                                }
-                            }, {
-                                "@type": "Question",
-                                "name": "Metode pembayaran apa saja yang tersedia?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Kami menerima pembayaran melalui Transfer Bank (BCA, Mandiri, BNI, BRI), Kartu Kredit, dan E-Wallet (GoPay, OVO, Dana) untuk memudahkan transaksi Anda."
-                                }
-                            }, {
-                                "@type": "Question",
-                                "name": "Apakah tersedia demo atau trial gratis?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Ya, untuk produk SaaS kami menyediakan masa percobaan gratis selama 14 hari. Silakan hubungi tim sales kami untuk menjadwalkan demo produk secara langsung."
-                                }
-                            }]
-                        };
-                        const faqScript = document.createElement('script');
-                        faqScript.type = 'application/ld+json';
-                        faqScript.text = JSON.stringify(faqSchema);
-                        document.head.appendChild(faqScript);
+                    if (searchQuery) {
+                        const q = searchQuery.toLowerCase();
+                        filtered = filtered.filter(s =>
+                            s.title.toLowerCase().includes(q) ||
+                            (s.description && s.description.toLowerCase().includes(q))
+                        );
+                    }
+                    renderCatalog(filtered);
+                };
 
-                        // Schema Markup (BreadcrumbList) - Listing Page
-                        const breadcrumbSchema = {
-                            "@context": "https://schema.org",
-                            "@type": "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "Beranda",
-                                "item": window.location.origin + "/index"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Layanan & Produk"
-                            }]
-                        };
-                        const bcScript = document.createElement('script');
-                        bcScript.type = 'application/ld+json';
-                        bcScript.text = JSON.stringify(breadcrumbSchema);
-                        document.head.appendChild(bcScript);
+                const searchInput = document.getElementById('search-input');
+                if (searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        searchQuery = e.target.value.trim();
+                        applyFilters();
+                    });
+                }
 
-                        // Render Listing
-                        const listingGrid = document.getElementById('listing-grid');
-                        const paginationContainer = document.getElementById('pagination-container');
-                        let currentPage = 1;
-                        const itemsPerPage = 9;
-                        let compareList = [];
-                        let observer;
+                const filterButtons = document.querySelectorAll('#product-filters .filter-btn');
+                filterButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        filterButtons.forEach(b => {
+                            b.className = 'filter-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-150 bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50';
+                        });
+                        btn.className = 'filter-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-150 bg-blue-600 text-white shadow-sm border border-blue-600';
+                        activeCategory = btn.getAttribute('data-filter');
+                        applyFilters();
+                    });
+                });
 
-                        const renderItems = (items, isLoadMore = false) => {
-                            if (!isLoadMore) {
-                                listingGrid.innerHTML = '';
-                                currentPage = 1;
-                            }
-                            paginationContainer.innerHTML = '';
+                // Quick View Modal Logic
+                const qvModal = document.getElementById('quick-view-modal');
+                const closeQv = () => {
+                    qvModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+                document.getElementById('qv-close-btn').addEventListener('click', closeQv);
+                document.getElementById('qv-overlay').addEventListener('click', closeQv);
 
-                            if (items.length === 0) {
-                                listingGrid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-500">Tidak ada layanan ditemukan untuk kategori ini.</div>';
-                                return;
-                            }
+                listingContainer.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.quick-view-btn');
+                    if (btn) {
+                        e.preventDefault();
+                        const id = btn.dataset.id;
+                        const item = services.find(s => s.id == id);
+                        if (item) {
+                            document.getElementById('qv-icon').innerHTML = `<i class="fa-solid fa-${item.icon}"></i>`;
+                            document.getElementById('qv-title').innerText = item.title;
+                            document.getElementById('qv-category').innerText = item.category || 'Sistem Bisnis';
+                            document.getElementById('qv-desc').innerText = item.description;
 
-                            // Load More Logic
-                            const startIndex = (currentPage - 1) * itemsPerPage;
-                            const endIndex = startIndex + itemsPerPage;
-                            const paginatedItems = items.slice(startIndex, endIndex);
-
-                            paginatedItems.forEach(item => {
-                            const card = document.createElement('div');
-                            card.className = 'bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group relative overflow-hidden';
-                            
-                            // Badge Logic
-                            let badgeHtml = '';
-                            if(item.badge) {
-                                let gradientClass = 'from-blue-500 to-indigo-600';
-                                let shadowClass = 'shadow-blue-500/30';
-                                let icon = 'fa-star';
-                                const bText = item.badge.toLowerCase();
-                                
-                                if(bText.includes('best')) { gradientClass = 'from-amber-400 to-orange-500'; shadowClass = 'shadow-amber-500/30'; icon = 'fa-crown'; }
-                                if(bText.includes('promo')) { gradientClass = 'from-rose-500 to-pink-600'; shadowClass = 'shadow-rose-500/30'; icon = 'fa-percent'; }
-                                
-                                badgeHtml = `
-                                    <div class="absolute top-4 right-4 z-20">
-                                        <span class="relative overflow-hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-white bg-gradient-to-r ${gradientClass} shadow-lg ${shadowClass} transform hover:scale-105 transition-transform duration-300">
-                                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
-                                            <i class="fa-solid ${icon} relative z-10"></i>
-                                            <span class="relative z-10">${item.badge}</span>
-                                        </span>
+                            let qPrice = `<span class="text-xl font-bold text-slate-900">${item.price || 'Hubungi Kami'}</span>`;
+                            if (item.discount_price) {
+                                qPrice = `
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-400 line-through">${item.price}</span>
+                                        <span class="text-xl font-bold text-slate-900">${item.discount_price}</span>
                                     </div>
                                 `;
                             }
+                            document.getElementById('qv-price').innerHTML = qPrice;
 
-                            // Price Logic
-                            let priceHtml = `<span class="text-xl font-bold text-slate-800">${item.price || 'Hubungi Kami'}</span>`;
-                            if (item.discount_price) {
-                                const parseVal = (str) => {
-                                    if(!str) return 0;
-                                    let num = parseInt(str.toString().replace(/[^0-9]/g, '')) || 0;
-                                    if (str.toString().toLowerCase().includes('rb')) num *= 1000;
-                                    return num;
-                                };
-                                const original = parseVal(item.price);
-                                const discounted = parseVal(item.discount_price);
-                                
-                                if (original > discounted && original > 0) {
-                                    const percent = Math.round(((original - discounted) / original) * 100);
-                                    priceHtml = `
-                                        <div class="flex flex-col">
-                                            <div class="flex items-center gap-1.5 mb-0.5">
-                                                <span class="text-xs text-slate-400 line-through decoration-slate-400">${item.price}</span>
-                                                <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">-${percent}%</span>
-                                            </div>
-                                            <span class="text-2xl font-bold text-emerald-600">${item.discount_price}</span>
-                                        </div>
-                                    `;
-                                } else {
-                                    priceHtml = `<span class="text-2xl font-bold text-emerald-600">${item.discount_price}</span>`;
-                                }
-                            }
+                            let feats = [];
+                            try {
+                                feats = typeof item.features === 'string' ? JSON.parse(item.features) : item.features;
+                            } catch(e) {}
+                            if (!feats || feats.length === 0) feats = ["Integrasi database stabil", "Export data mudah", "Garansi teknis"];
 
-                            // Features Logic
-                            let featuresHtml = '';
-                            if (item.features) {
-                                try {
-                                    const features = JSON.parse(item.features);
-                                    if (Array.isArray(features) && features.length > 0) {
-                                        // Features as Checkbox List
-                                        featuresHtml = `<ul class="space-y-2.5 mb-6 mt-4">` + 
-                                            features.slice(0, 3).map(f => `
-                                                <li class="flex items-start gap-2.5 text-sm text-slate-600">
-                                                    <div class="mt-0.5 w-4 h-4 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                                        <i class="fa-solid fa-check text-[10px]"></i>
-                                                    </div>
-                                                    <span class="leading-tight">${f}</span>
-                                                </li>
-                                            `).join('') +
-                                            `</ul>`;
-                                    }
-                                } catch (e) {}
-                            }
-
-                            card.innerHTML = `
-                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10"></div>
-                                
-                                <div class="p-6 md:p-8 flex flex-col h-full relative z-0">
-                                    ${badgeHtml}
-                                    
-                                    <div class="mb-6">
-                                        <div class="w-14 h-14 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-2xl text-blue-600 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 relative z-10">
-                                            <i class="fa-solid fa-${item.icon}"></i>
-                                            <div class="absolute inset-0 bg-blue-50 rounded-2xl -z-10 transform rotate-6 group-hover:rotate-12 transition-transform opacity-50"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-2">
-                                         <span class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1 block">${item.category || 'Layanan'}</span>
-                                         <h3 class="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
-                                            <a href="produk/${item.slug || item.id}" class="before:absolute before:inset-0 focus:outline-none">${item.title}</a>
-                                        </h3>
-                                    </div>
-                                    
-                                    <p class="text-slate-500 text-sm leading-relaxed mb-2 line-clamp-2">${item.description}</p>
-                                    
-                                    <div class="border-t border-slate-50 my-4"></div>
-                                    
-                                    ${featuresHtml}
-
-                                    <div class="mt-auto flex items-center justify-between relative z-20 pt-2">
-                                        <div class="flex flex-col">
-                                            <span class="text-xs text-slate-400 font-bold uppercase tracking-wide">Mulai dari</span>
-                                            ${priceHtml}
-                                        </div>
-                                        
-                                        <div class="flex gap-2">
-                                            <button class="quick-view-btn w-9 h-9 rounded-lg bg-slate-50 text-slate-500 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center" data-id="${item.id}" title="Quick View">
-                                                <i class="fa-regular fa-eye"></i>
-                                            </button>
-                                            <button class="compare-btn w-9 h-9 rounded-lg bg-slate-50 text-slate-500 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center ${compareList.includes(item.id) ? 'bg-blue-600 text-white' : ''}" data-id="${item.id}" title="Bandingkan">
-                                                <i class="fa-solid fa-scale-balanced"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                            document.getElementById('qv-features').innerHTML = feats.map(f => `
+                                <div class="flex items-center gap-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-check text-blue-600"></i>
+                                    <span>${f}</span>
                                 </div>
-                            `;
-                            listingGrid.appendChild(card);
-                            });
+                            `).join('');
 
-                            // Infinite Scroll Logic
-                            if (endIndex < items.length) {
-                                const sentinel = document.createElement('div');
-                                sentinel.className = 'py-4';
-                                sentinel.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-blue-600 text-2xl"></i>';
-                                paginationContainer.appendChild(sentinel);
+                            document.getElementById('qv-detail-link').href = `produk/${item.slug || item.id}`;
+                            document.getElementById('qv-wa-link').href = `https://wa.me/6287759651803?text=${encodeURIComponent('Halo Admin CRUDWorks, saya tertarik dengan modul ' + item.title)}`;
 
-                                if (observer) observer.disconnect();
-                                observer = new IntersectionObserver((entries) => {
-                                    if (entries[0].isIntersecting) {
-                                        observer.unobserve(entries[0].target);
-                                        currentPage++;
-                                        setTimeout(() => renderItems(items, true), 500);
-                                    }
-                                }, { rootMargin: '100px' });
-                                observer.observe(sentinel);
-                            }
-                        };
-
-                        // Initial Render
-                        renderItems(services);
-
-                        // Quick View Logic
-                        const qvModal = document.getElementById('quick-view-modal');
-                        const closeQv = () => {
-                            qvModal.classList.add('hidden');
-                            document.body.style.overflow = '';
-                        };
-
-                        document.getElementById('qv-close-btn').addEventListener('click', closeQv);
-                        document.getElementById('qv-overlay').addEventListener('click', closeQv);
-
-                        listingGrid.addEventListener('click', (e) => {
-                            const btn = e.target.closest('.quick-view-btn');
-                            if(btn) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                const id = btn.dataset.id;
-                                const item = services.find(s => s.id == id);
-                                if(item) {
-                                    // Populate Modal
-                                    document.getElementById('qv-icon').innerHTML = `<i class="fa-solid fa-${item.icon}"></i>`;
-                                    document.getElementById('qv-title').innerText = item.title;
-                                    document.getElementById('qv-category').innerText = item.category || 'Layanan';
-                                    document.getElementById('qv-desc').innerText = item.description;
-                                    
-                                    // Price Logic
-                                    const qvPrice = document.getElementById('qv-price');
-                                    let priceHtml = `<span class="text-xl font-bold text-emerald-600">${item.price || 'Hubungi Kami'}</span>`;
-                                    if (item.discount_price) {
-                                        const original = parseVal(item.price);
-                                        const discounted = parseVal(item.discount_price);
-                                        if (original > discounted && original > 0) {
-                                            const percent = Math.round(((original - discounted) / original) * 100);
-                                            const savedAmount = original - discounted;
-                                            const formattedSavedAmount = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(savedAmount).replace(/\s*Rp\s*/, '');
-                                            priceHtml = `
-                                                <div class="flex items-center gap-3">
-                                                    <span class="text-2xl font-bold text-emerald-600">${item.discount_price}</span>
-                                                    <div class="flex flex-col items-start leading-none">
-                                                        <span class="text-xs text-slate-400 line-through decoration-slate-400">${item.price}</span>
-                                                        <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded mt-0.5">Hemat ${percent}% (Rp ${formattedSavedAmount})</span>
-                                                    </div>
-                                                </div>`;
-                                        } else {
-                                            priceHtml = `<span class="text-2xl font-bold text-emerald-600">${item.discount_price}</span>`;
-                                        }
-                                    }
-                                    qvPrice.innerHTML = priceHtml;
-
-                                    // Features
-                                    const qvFeatures = document.getElementById('qv-features');
-                                    qvFeatures.innerHTML = '';
-                                    if(item.features) {
-                                        try {
-                                            const feats = JSON.parse(item.features);
-                                            if(feats.length > 0) {
-                                                qvFeatures.innerHTML = feats.map(f => `<div class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-check text-blue-500 mt-0.5 flex-shrink-0"></i> <span class="leading-relaxed">${f}</span></div>`).join('');
-                                            } else {
-                                                qvFeatures.innerHTML = '<span class="text-xs text-slate-400">Tidak ada fitur detail.</span>';
-                                            }
-                                        } catch(e){}
-                                    }
-
-                                    // Links
-                                    const detailLink = document.getElementById('qv-detail-link');
-                                    detailLink.href = `produk/${item.slug || item.id}`;
-                                    
-                                    const waMsg = `Halo Admin, saya tertarik dengan *${item.title}*. Info lebih lanjut?`;
-                                    document.getElementById('qv-wa-link').href = `https://wa.me/6287759651803?text=${encodeURIComponent(waMsg)}`;
-
-                                    // Social Share Logic (Quick View)
-                                    const shareUrl = encodeURIComponent(detailLink.href); // Mengambil absolute URL dari properti href
-                                    const shareText = encodeURIComponent(`Cek layanan ${item.title} di CRUDWorks!`);
-                                    document.getElementById('qv-share-wa').href = `https://wa.me/?text=${shareText}%20${shareUrl}`;
-                                    document.getElementById('qv-share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-                                    document.getElementById('qv-share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
-                                    document.getElementById('qv-share-tw').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
-
-                                    qvModal.classList.remove('hidden');
-                                    document.body.style.overflow = 'hidden';
-                                }
-                            }
-                        });
-
-                        // Compare Logic Implementation
-                        const compareBar = document.getElementById('compare-bar');
-                        const compareCount = document.getElementById('compare-count');
-                        const compareModal = document.getElementById('compare-modal');
-                        const compareGrid = document.getElementById('compare-grid');
-
-                        const updateCompareUI = () => {
-                            // Update Bar
-                            if (compareList.length > 0) {
-                                compareBar.classList.remove('hidden');
-                                compareCount.innerText = compareList.length;
-                            } else {
-                                compareBar.classList.add('hidden');
-                            }
-
-                            // Update Buttons
-                            document.querySelectorAll('.compare-btn').forEach(btn => {
-                                if (compareList.includes(btn.dataset.id)) {
-                                    btn.className = 'compare-btn absolute top-16 left-4 w-9 h-9 rounded-full backdrop-blur-sm border flex items-center justify-center z-30 shadow-sm transition-all hover:scale-110 bg-blue-600 text-white border-blue-600';
-                                } else {
-                                    btn.className = 'compare-btn absolute top-16 left-4 w-9 h-9 rounded-full backdrop-blur-sm border flex items-center justify-center z-30 shadow-sm transition-all hover:scale-110 bg-white/90 text-slate-500 border-slate-200 hover:text-blue-600 hover:border-blue-200';
-                                }
-                            });
-                        };
-
-                        listingGrid.addEventListener('click', (e) => {
-                            const btn = e.target.closest('.compare-btn');
-                            if (btn) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                const id = btn.dataset.id;
-                                
-                                if (compareList.includes(id)) {
-                                    compareList = compareList.filter(itemId => itemId !== id);
-                                } else {
-                                    if (compareList.length >= 3) {
-                                        alert('Maksimal 3 produk untuk perbandingan.');
-                                        return;
-                                    }
-                                    compareList.push(id);
-                                }
-                                updateCompareUI();
-                            }
-                        });
-
-                        document.getElementById('compare-reset').addEventListener('click', () => {
-                            compareList = [];
-                            updateCompareUI();
-                        });
-
-                        document.getElementById('compare-trigger').addEventListener('click', () => {
-                            // Render Compare Modal
-                            compareGrid.innerHTML = '';
-                            // Adjust grid columns based on count
-                            compareGrid.className = `grid grid-cols-1 md:grid-cols-${compareList.length} gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100 border border-slate-100 rounded-2xl`;
-
-                            compareList.forEach(id => {
-                                const item = services.find(s => s.id == id);
-                                if (item) {
-                                    let priceDisplay = `<span class="text-lg font-bold text-emerald-600">${item.price || 'Hubungi Kami'}</span>`;
-                                    if (item.discount_price) priceDisplay = `<span class="text-lg font-bold text-emerald-600">${item.discount_price}</span>`;
-
-                                    let featuresList = '<p class="text-xs text-slate-400 italic">Tidak ada data fitur.</p>';
-                                    if (item.features) {
-                                        try {
-                                            const feats = JSON.parse(item.features);
-                                            featuresList = `<ul class="space-y-2 text-left mt-4">` + 
-                                                feats.map(f => `<li class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-check text-blue-500 mt-0.5"></i> <span>${f}</span></li>`).join('') + 
-                                                `</ul>`;
-                                        } catch(e){}
-                                    }
-
-                                    const col = document.createElement('div');
-                                    col.className = 'p-6 flex flex-col items-center text-center hover:bg-slate-50 transition-colors';
-                                    col.innerHTML = `
-                                        <div class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4 text-2xl">
-                                            <i class="fa-solid fa-${item.icon}"></i>
-                                        </div>
-                                        <h4 class="text-lg font-bold text-slate-900 mb-1">${item.title}</h4>
-                                        <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider mb-4">${item.category || 'Layanan'}</span>
-                                        
-                                        <div class="mb-4">${priceDisplay}</div>
-                                        <p class="text-sm text-slate-500 mb-4 line-clamp-3">${item.description}</p>
-                                        
-                                        <div class="w-full border-t border-slate-100 pt-4 mt-auto">
-                                            <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wide mb-2">Fitur Utama</h5>
-                                            ${featuresList}
-                                        </div>
-                                        
-                                        <a href="produk/${item.slug || item.id}" class="mt-6 w-full py-2 rounded-lg border border-blue-600 text-blue-600 font-bold text-sm hover:bg-blue-600 hover:text-white transition-all">
-                                            Lihat Detail
-                                        </a>
-                                    `;
-                                    compareGrid.appendChild(col);
-                                }
-                            });
-
-                            compareModal.classList.remove('hidden');
+                            qvModal.classList.remove('hidden');
                             document.body.style.overflow = 'hidden';
-                        });
-
-                        const closeCompare = () => {
-                            compareModal.classList.add('hidden');
-                            document.body.style.overflow = '';
-                        };
-                        document.getElementById('compare-close-btn').addEventListener('click', closeCompare);
-                        document.getElementById('compare-overlay').addEventListener('click', closeCompare);
-
-                        // Filter & Search Logic
-                        let activeCategory = 'all';
-                        let searchQuery = '';
-
-                        const applyFilters = () => {
-                            let filtered = services;
-
-                            // 1. Filter by Category
-                            if (activeCategory !== 'all') {
-                                filtered = filtered.filter(s => {
-                                    const cat = (s.category || '').toLowerCase();
-                                    if (activeCategory === 'finance') return cat.includes('keuangan') || cat.includes('finance');
-                                    if (activeCategory === 'hr') return cat.includes('hr') || cat.includes('human') || cat.includes('sdm');
-                                    if (activeCategory === 'operational') return cat.includes('operasional') || cat.includes('operation');
-                                    return cat.includes(activeCategory);
-                                });
-                            }
-
-                            // 2. Filter by Search
-                            if (searchQuery) {
-                                const lowerQuery = searchQuery.toLowerCase();
-                                filtered = filtered.filter(s => 
-                                    s.title.toLowerCase().includes(lowerQuery) || 
-                                    (s.description && s.description.toLowerCase().includes(lowerQuery))
-                                );
-                            }
-
-                            renderItems(filtered);
-                        };
-
-                        // Search Listener
-                        const searchInput = document.getElementById('search-input');
-                        if(searchInput) {
-                            searchInput.addEventListener('input', (e) => {
-                                searchQuery = e.target.value.trim();
-                                applyFilters();
-                            });
                         }
-
-                        const filters = document.querySelectorAll('#product-filters .filter-btn');
-                        filters.forEach(btn => {
-                            btn.addEventListener('click', () => {
-                                // Update UI
-                                filters.forEach(b => {
-                                    b.className = 'filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300';
-                                });
-                                btn.className = 'filter-btn px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-blue-600 text-white shadow-lg shadow-blue-500/30';
-                                
-                                activeCategory = btn.getAttribute('data-filter');
-                                applyFilters();
-                            });
-                        });
-
-                        // Schema Markup for CollectionPage
-                        const schemaData = {
-                            "@context": "https://schema.org",
-                            "@type": "CollectionPage",
-                            "name": "Layanan & Produk CRUDWorks",
-                            "description": "Daftar lengkap layanan dan produk digital CRUDWorks.",
-                            "url": window.location.href,
-                            "mainEntity": {
-                                "@type": "ItemList",
-                                "itemListElement": services.map((s, index) => ({
-                                    "@type": "ListItem",
-                                    "position": index + 1,
-                                    "url": `${window.location.origin}/produk/${s.slug || s.id}`,
-                                    "name": s.title
-                                }))
-                            }
-                        };
-                        const script = document.createElement('script');
-                        script.type = 'application/ld+json';
-                        script.text = JSON.stringify(schemaData);
-                        document.head.appendChild(script);
-
-                        document.getElementById('loading').classList.add('hidden');
-                        document.getElementById('listing-content').classList.remove('hidden');
                     }
-                }
-            } catch (error) {
-                console.error(error);
-                document.getElementById('loading').innerHTML = '<p class="text-red-500">Gagal memuat data.</p>';
+                });
+
+                // Compare Logic
+                const compareBar = document.getElementById('compare-bar');
+                const compareCount = document.getElementById('compare-count');
+                const compareModal = document.getElementById('compare-modal');
+                const compareGrid = document.getElementById('compare-grid');
+
+                const updateCompareUI = () => {
+                    if (compareList.length > 0) {
+                        compareBar.classList.remove('hidden');
+                        compareCount.innerText = compareList.length;
+                    } else {
+                        compareBar.classList.add('hidden');
+                    }
+                };
+
+                listingContainer.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.compare-btn');
+                    if (btn) {
+                        e.preventDefault();
+                        const id = btn.dataset.id;
+                        if (compareList.includes(id)) {
+                            compareList = compareList.filter(i => i !== id);
+                            btn.classList.remove('bg-blue-600', 'text-white');
+                        } else {
+                            if (compareList.length >= 3) {
+                                alert('Maksimal membandingkan 3 produk sekaligus.');
+                                return;
+                            }
+                            compareList.push(id);
+                            btn.classList.add('bg-blue-600', 'text-white');
+                        }
+                        updateCompareUI();
+                    }
+                });
+
+                document.getElementById('compare-reset').addEventListener('click', () => {
+                    compareList = [];
+                    document.querySelectorAll('.compare-btn').forEach(b => b.classList.remove('bg-blue-600', 'text-white'));
+                    updateCompareUI();
+                });
+
+                document.getElementById('compare-trigger').addEventListener('click', () => {
+                    compareGrid.innerHTML = '';
+                    compareGrid.className = `grid grid-cols-1 md:grid-cols-${compareList.length} gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-200 border border-slate-200 rounded-xl`;
+
+                    compareList.forEach(id => {
+                        const itm = services.find(s => s.id == id);
+                        if (itm) {
+                            let fList = '';
+                            try {
+                                const arr = typeof itm.features === 'string' ? JSON.parse(itm.features) : itm.features;
+                                fList = arr.map(f => `<li class="flex items-center gap-2 text-xs text-slate-600"><i class="fa-solid fa-check text-blue-600"></i> ${f}</li>`).join('');
+                            } catch(e){}
+
+                            const col = document.createElement('div');
+                            col.className = 'p-6 flex flex-col items-center text-center';
+                            col.innerHTML = `
+                                <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-3">
+                                    <i class="fa-solid fa-${itm.icon}"></i>
+                                </div>
+                                <h4 class="text-base font-bold text-slate-900 mb-1">${itm.title}</h4>
+                                <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">${itm.category || 'Modul'}</span>
+                                <div class="text-base font-bold text-slate-900 mb-3">${itm.discount_price || itm.price || 'Hubungi Kami'}</div>
+                                <p class="text-xs text-slate-500 line-clamp-3 mb-4 leading-relaxed">${itm.description}</p>
+                                <div class="w-full pt-4 border-t border-slate-100 text-left mt-auto">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">Spesifikasi</span>
+                                    <ul class="space-y-1.5">${fList}</ul>
+                                </div>
+                                <a href="produk/${itm.slug || itm.id}" class="mt-6 w-full py-2 rounded-lg border border-slate-300 text-slate-700 font-semibold text-xs hover:bg-slate-50 transition-colors">
+                                    Buka Halaman
+                                </a>
+                            `;
+                            compareGrid.appendChild(col);
+                        }
+                    });
+
+                    compareModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                const closeCompare = () => {
+                    compareModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+                document.getElementById('compare-close-btn').addEventListener('click', closeCompare);
+                document.getElementById('compare-overlay').addEventListener('click', closeCompare);
+
+                // Show Listing Container
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('listing-content').classList.remove('hidden');
             }
         });
     </script>

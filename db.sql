@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS web_crudworks;
 USE web_crudworks;
 
 CREATE TABLE services (
@@ -101,8 +102,8 @@ INSERT INTO services (title, slug, category, description, detailed_description, 
     'New'
 ),
 (
-    'Custom By Requirement', 
-    'custom-by-requirement',
+    'Custom Development', 
+    'custom-development',
     'operational', 
     'Solusi software tailor-made yang dirancang khusus mengikuti alur bisnis unik perusahaan Anda. Fleksibel dan scalable.', 
     '<p>Setiap bisnis memiliki keunikan tersendiri, dan terkadang solusi "siap pakai" tidak cukup. Layanan <strong>Custom Software Development</strong> kami hadir untuk menerjemahkan proses bisnis spesifik Anda menjadi solusi digital yang presisi.</p><p>Kami menggunakan pendekatan <em>Agile Development</em> yang melibatkan Anda dalam setiap tahap, memastikan hasil akhir benar-benar sesuai ekspektasi dan kebutuhan operasional Anda.</p>', 
@@ -111,6 +112,30 @@ INSERT INTO services (title, slug, category, description, detailed_description, 
     NULL,
     '["Analisis Bisnis Mendalam", "Desain UI/UX Custom", "Pengembangan Full Stack", "Integrasi API Pihak Ketiga", "Garansi & Maintenance"]',
     NULL
+),
+(
+    'AI Credit Scoring', 
+    'ai-credit-scoring',
+    'finance', 
+    'Platform skoring kredit cerdas berbasis AI untuk analisis risiko nasabah yang cepat dan akurat.', 
+    '<p>Revolusi proses analisis kredit Anda dengan <strong>AI Credit Scoring</strong>. Menggunakan algoritma <em>Machine Learning</em> canggih, sistem kami mampu memproses ribuan titik data nasabah untuk menghasilkan skor kredit yang presisi dalam hitungan detik.</p><p>Fitur ini dirancang untuk lembaga keuangan modern yang ingin menekan angka NPL (Non-Performing Loan) sekaligus mempercepat SLA persetujuan kredit. Dilengkapi dengan deteksi anomali untuk pencegahan fraud sejak dini.</p>', 
+    'brain', 
+    'Mulai Rp 3rb/nasabah', 
+    NULL,
+    '["Analisis Risiko AI", "Prediksi Gagal Bayar", "Deteksi Fraud Cerdas", "Integrasi Big Data", "Keputusan Real-time", "Skoring Alternatif", "Dashboard Monitoring", "API Integrasi"]',
+    'New'
+),
+(
+    'Pemantauan Marketing', 
+    'pemantauan-marketing',
+    'operational', 
+    'Pantau kinerja kampanye marketing dan aktivitas tim sales lapangan secara real-time untuk maksimalkan konversi.', 
+    '<p>Maksimalkan ROI pemasaran Anda dengan <strong>Sistem Pemantauan Marketing</strong> yang komprehensif. Lacak perjalanan leads dari klik pertama hingga closing penjualan.</p><p>Dilengkapi dengan fitur <em>Sales Force Automation</em> untuk memantau aktivitas tim sales di lapangan berbasis GPS. Analisis efektivitas setiap channel pemasaran (IG, FB, Google Ads) dalam satu dashboard terpusat.</p>', 
+    'bullseye', 
+    'Rp 299rb/bln', 
+    'Rp 199rb/bln',
+    '["Lead Management", "Sales Tracking GPS", "Analisis ROI Kampanye", "Integrasi CRM", "Laporan Harian Sales", "Funnel Conversion", "Target KPI"]',
+    'New'
 );
 
 CREATE TABLE IF NOT EXISTS `blogs` (
