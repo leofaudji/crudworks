@@ -658,8 +658,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const openModal = (e) => {
             if (e) e.preventDefault();
-            if (window.currentQuotationState) {
-                syncQuotationToContactAndModal(window.currentQuotationState);
+            if (window.currentQuotationState && typeof window.syncQuotationToContactAndModal === 'function') {
+                window.syncQuotationToContactAndModal(window.currentQuotationState);
             }
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -690,7 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const q = window.currentQuotationState;
                 const mList = q.modules.map(m => m.name).join(', ');
                 const hList = q.hardware.map(h => h.name).join(', ') || 'Tanpa Hardware';
-                extraDetails = `\n- Rincian Paket Estimasi: ${mList}\n- Hardware Kasir: ${hList}\n- Estimasi Total: ${q.formattedTotal} (${q.mode === 'lifetime' ? 'Hak Milik' : 'SaaS/bln'})`;
+                extraDetails = `\n- Rincian Paket Estimasi: ${mList}\n- Hardware Kasir: ${hList}\n- Estimasi Total: ${q.formattedTotal} (${q.mode === 'saas_yearly' ? 'SaaS/thn' : 'SaaS/bln'})`;
             }
 
             const message = `Halo Tim CRUDWorks, saya tertarik untuk konsultasi implementasi software:\n` +
