@@ -1,72 +1,198 @@
-/* CRUDWorks Custom Professional UI Styles */
+/* CRUDWorks Google-Clean Light Design System (Sleek + Premium + Vercel Web Guidelines) */
 :root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --slate-900: #0f172a;
+    --cw-bg: #FFFFFF;
+    --cw-surface: #F8F9FA;
+    --cw-surface-card: #FFFFFF;
+    --cw-surface-elevated: #F1F3F4;
+    --cw-ink: #202124;
+    --cw-ink-muted: #5F6368;
+    --cw-ink-subtle: #80868B;
+    --cw-border: #DADCE0;
+    --cw-border-strong: #BDC1C6;
+    --cw-cobalt: #D97757;
+    --cw-cobalt-dark: #C25E3D;
+    --cw-teal: #1E8E3E;
+    --primary: #D97757;
+    --primary-dark: #C25E3D;
+    --slate-900: #202124;
 }
 
-/* Smooth Scrolling */
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY, ACCESSIBILITY & INTERACTION AFFORDANCES
+   ========================================================================== */
 html {
     scroll-behavior: smooth;
+    background-color: #FFFFFF;
+    color: #202124;
+    color-scheme: light;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(217, 119, 87, 0.14);
 }
 
-/* Custom Scrollbar */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    color: #5F6368;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .font-display {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #202124;
+    text-wrap: balance;
+}
+
+h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: #202124;
+}
+
+.font-mono, .tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+strong, b {
+    font-weight: 700;
+    color: #202124;
+}
+
+/* Accessible interactive cursors & focus states */
+a[href],
+button:not(:disabled),
+summary,
+select:not(:disabled),
+label[for],
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+[role="tab"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+}
+
+button:disabled,
+select:disabled,
+input:disabled,
+[aria-disabled="true"] {
+    cursor: not-allowed;
+}
+
+:focus-visible {
+    outline: 2px solid #D97757;
+    outline-offset: 2px;
+}
+
+/* Modals overscroll containment (Vercel Web Interface Guidelines) */
+[role="dialog"] {
+    overscroll-behavior: contain;
+}
+
+/* Subtle light custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #f8fafc;
+    background: #F8F9FA;
 }
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #DADCE0;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+    background: #BDC1C6;
 }
 
 /* Range Slider Styling */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    background: #e2e8f0;
+    background: #E8EAED;
     height: 6px;
-    border-radius: 3px;
+    border-radius: 9999px;
     outline: none;
 }
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: #2563eb;
+    background: #D97757;
     cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    transition: transform 0.1s ease;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 1px 4px rgba(217, 119, 87, 0.45);
+    transition: transform 0.15s ease, background-color 0.15s ease;
 }
 input[type="range"]::-webkit-slider-thumb:hover {
     transform: scale(1.15);
+    background: #C25E3D;
 }
 input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: #2563eb;
+    background: #D97757;
     cursor: pointer;
-    border: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 1px 4px rgba(217, 119, 87, 0.45);
 }
 
-/* Clean animation utilities */
+/* Bespoke interaction transitions (compositor-friendly) */
+.cw-card-lift {
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease, box-shadow 0.22s ease;
+}
+.cw-card-lift:hover {
+    transform: translateY(-2px);
+    border-color: #F0B6A2;
+    box-shadow: 0 4px 16px rgba(60, 64, 67, 0.12), 0 1px 3px rgba(60, 64, 67, 0.08);
+}
+
+.cw-btn-press {
+    transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.cw-btn-press:active {
+    transform: translateY(1px);
+}
+
+/* Architectural Ambient Grid Background */
+.bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(60, 64, 67, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(60, 64, 67, 0.04) 1px, transparent 1px);
+}
+
+/* Glass & Glow utilities */
+.cw-glass {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid #DADCE0;
+}
+
+.cw-glow-blue {
+    box-shadow: 0 8px 30px -6px rgba(26, 115, 232, 0.14);
+}
+
+/* Load entrance */
 .fade-in-up {
-    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(14px);
     }
     to {
         opacity: 1;
@@ -74,3 +200,294 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 
+/* 3D Animations & Perspective Utilities */
+.hero-3d-stage {
+    perspective: 1100px;
+}
+
+@keyframes hero3DFloat {
+    0%, 100% {
+        transform: rotateY(-10deg) rotateX(4deg) translateY(0px);
+    }
+    50% {
+        transform: rotateY(-4deg) rotateX(7deg) translateY(-10px);
+    }
+}
+
+@keyframes badge3DBob {
+    0%, 100% {
+        transform: translateZ(65px) translateY(0px);
+    }
+    50% {
+        transform: translateZ(85px) translateY(-7px);
+    }
+}
+
+@keyframes spin3DCube {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg);
+    }
+}
+
+@keyframes orbit3DRing {
+    0% {
+        transform: rotateX(68deg) rotateY(-15deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(68deg) rotateY(-15deg) rotateZ(360deg);
+    }
+}
+
+.cube-3d-wrapper {
+    perspective: 800px;
+    pointer-events: none;
+}
+
+.cube-3d {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin3DCube 16s linear infinite;
+}
+
+.cube-3d-sm {
+    width: 42px;
+    height: 42px;
+    animation-duration: 12s;
+    animation-direction: reverse;
+}
+
+.cube-3d-face {
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid rgba(217, 119, 87, 0.35);
+    background: rgba(253, 242, 238, 0.35);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+}
+
+.cube-3d .face-front  { transform: translateZ(32px); }
+.cube-3d .face-back   { transform: rotateY(180deg) translateZ(32px); }
+.cube-3d .face-right  { transform: rotateY(90deg) translateZ(32px); }
+.cube-3d .face-left   { transform: rotateY(-90deg) translateZ(32px); }
+.cube-3d .face-top    { transform: rotateX(90deg) translateZ(32px); }
+.cube-3d .face-bottom { transform: rotateX(-90deg) translateZ(32px); }
+
+.cube-3d-sm .face-front  { transform: translateZ(21px); border-color: rgba(60, 64, 67, 0.22); background: rgba(248, 249, 250, 0.45); border-radius: 8px; }
+.cube-3d-sm .face-back   { transform: rotateY(180deg) translateZ(21px); border-color: rgba(60, 64, 67, 0.22); background: rgba(248, 249, 250, 0.45); border-radius: 8px; }
+.cube-3d-sm .face-right  { transform: rotateY(90deg) translateZ(21px); border-color: rgba(60, 64, 67, 0.22); background: rgba(248, 249, 250, 0.45); border-radius: 8px; }
+.cube-3d-sm .face-left   { transform: rotateY(-90deg) translateZ(21px); border-color: rgba(60, 64, 67, 0.22); background: rgba(248, 249, 250, 0.45); border-radius: 8px; }
+.cube-3d-sm .face-top    { transform: rotateX(90deg) translateZ(21px); border-color: rgba(60, 64, 67, 0.22); background: rgba(248, 249, 250, 0.45); border-radius: 8px; }
+.cube-3d-sm .face-bottom { transform: rotateX(-90deg) translateZ(21px); border-color: rgba(60, 64, 67, 0.22); background: rgba(248, 249, 250, 0.45); border-radius: 8px; }
+
+.orbit-3d-ring {
+    transform-style: preserve-3d;
+    animation: orbit3DRing 18s linear infinite;
+}
+
+.hero-3d-card {
+    transform-style: preserve-3d;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+    will-change: transform;
+    cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+    .hero-3d-card {
+        animation: hero3DFloat 6s ease-in-out infinite;
+        box-shadow: 0 32px 68px -18px rgba(32, 33, 36, 0.18), 0 14px 32px -12px rgba(217, 119, 87, 0.18);
+    }
+    .hero-3d-stage:hover .hero-3d-card,
+    .hero-3d-card.is-flipping {
+        animation: none;
+    }
+}
+
+.hero-3d-float {
+    transform: translateZ(34px);
+    transform-style: preserve-3d;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-3d-float-deep {
+    transform: translateZ(65px);
+    transform-style: preserve-3d;
+    animation: badge3DBob 4.5s ease-in-out infinite;
+}
+
+@media (min-width: 1024px) {
+    .hero-3d-stage:hover .hero-3d-float {
+        transform: translateZ(52px);
+    }
+}
+
+.hero-3d-sheen {
+    background: radial-gradient(circle at var(--mouse-x, 70%) var(--mouse-y, 20%), rgba(255, 255, 255, 0.65), transparent 60%);
+    transition: opacity 0.25s ease;
+}
+
+.cw-btn-press {
+    transform-style: preserve-3d;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.cw-btn-press:hover {
+    transform: perspective(600px) translateZ(6px) translateY(-2px);
+}
+
+.cw-btn-press:active {
+    transform: perspective(600px) translateZ(-6px) translateY(1px) scale(0.975);
+}
+
+.card-3d-tilt,
+#services-container .grid > div {
+    transform-style: preserve-3d;
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.24s ease, border-color 0.24s ease;
+    will-change: transform;
+}
+
+/* 3D Flip Cards (Opsi 3) */
+.flip-card {
+    perspective: 1200px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.flip-card:hover .flip-card-inner:not(.is-flipped) {
+    transform: rotateY(4deg) rotateX(2deg) translateY(-4px);
+}
+
+.flip-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-face {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(180deg);
+}
+
+/* Scroll Reveal Animation */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-3d-card,
+    .hero-3d-float,
+    .hero-3d-float-deep,
+    .card-3d-tilt,
+    .flip-card-inner,
+    .reveal-section {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Screen-only vs Print-only helpers */
+.print-only,
+.print-only-flex {
+    display: none !important;
+}
+
+#print-mount {
+    display: none !important;
+}
+
+/* ==========================================================================
+   PRINT STYLES FOR OFFICIAL QUOTATION DRAFT
+   Isolasi cetak / PDF via #print-mount (Halaman 1 instan, tanpa halaman kosong)
+   ========================================================================== */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 10mm 14mm 10mm 14mm;
+    }
+
+    /* Saat mencetak draft penawaran: sembunyikan semua elemen tubuh kecuali #print-mount */
+    body.is-printing-quotation > *:not(#print-mount) {
+        display: none !important;
+    }
+
+    body.is-printing-quotation > #print-mount {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+    }
+
+    #print-mount .print-card {
+        background: #ffffff !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 8px !important;
+        padding: 24px 28px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        color: #0f172a !important;
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+    }
+
+    #print-mount .print-only {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    #print-mount .print-only-flex {
+        display: flex !important;
+        visibility: visible !important;
+    }
+
+    #print-mount #btn-quote-send-wa,
+    #print-mount #btn-quote-print,
+    #print-mount .no-print {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    #print-mount #quote-summary-items {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    /* Pastikan warna teks & border tercetak jelas */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}

@@ -16,21 +16,29 @@ RewriteCond %{SCRIPT_FILENAME} -d [OR]
 RewriteCond %{SCRIPT_FILENAME} -f
 RewriteRule "(^|/)\." - [F]
 
-# 2. Mengarahkan error 404 ke halaman kustom
-ErrorDocument 404 /404.html
+# 2. Mengarahkan error 404 ke halaman kustom (via minifier)
+ErrorDocument 404 /crudworks/minify.php?file=404.html
+
+# 2b. Root / ke index.html via Dynamic Minifier
+RewriteRule ^$ minify.php?file=index.html [L,QSA]
 
 # 3. Handle halaman listing produk (produk/ atau produk)
-RewriteRule ^produk/?$ produk.html [L]
+RewriteRule ^produk/?$ minify.php?file=produk.html [L,QSA]
 
 # 4. Rewrite produk/SLUG menjadi produk.html?slug=SLUG
-RewriteRule ^produk/([a-zA-Z0-9-]+)/?$ produk.html?slug=$1 [L,QSA]
+RewriteRule ^produk/([a-zA-Z0-9-]+)/?$ minify.php?file=produk.html&slug=$1 [L,QSA]
 
 # 5. Menghilangkan ekstensi .php (Pretty URL)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-# 6. Menghilangkan ekstensi .html (Pretty URL)
+# 6. Menghilangkan ekstensi .html (Pretty URL) via Dynamic Minifier
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteRule ^([^\.]+)$ minify.php?file=$1.html [NC,L,QSA]
+
+# 7. Request langsung ke file .html (kecuali google verification) via Dynamic Minifier
+RewriteCond %{REQUEST_URI} !google[a-zA-Z0-9]+\.html$ [NC]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^([a-zA-Z0-9_/-]+\.html)$ minify.php?file=$1 [NC,L,QSA]

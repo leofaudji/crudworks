@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "skills": {
+    "dev": {
+      "source": "microsoft/playwright-cli",
+      "commit": "c872a33cec77fa03c28fa7c6d1ad99d15d04ce42",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/dev/SKILL.md",
+      "computedHash": "c3841c205df161cd03481590ed0839849e5a7cb0886ccf603c4ecea25c775fed"
+    },
+    "enterprise": {
+      "source": "bergside/awesome-design-skills",
+      "commit": "f631a09b4fcc0166f2e2c1a8c81906ef680c57e8",
+      "sourceType": "github",
+      "skillPath": "skills/enterprise/SKILL.md",
+      "computedHash": "e2e65a245a3c664e0363838bf98bbffa77a06ee0668ea0faeec3a4c2eb203300"
+    },
+    "playwright-cli": {
+      "source": "microsoft/playwright-cli",
+      "commit": "c872a33cec77fa03c28fa7c6d1ad99d15d04ce42",
+      "sourceType": "github",
+      "skillPath": "skills/playwright-cli/SKILL.md",
+      "computedHash": "54c3f1e47b2566ecc3a2c1515823f77f4609edfe8029351924311dafc0d2ba66"
+    },
+    "premium": {
+      "source": "bergside/awesome-design-skills",
+      "commit": "f631a09b4fcc0166f2e2c1a8c81906ef680c57e8",
+      "sourceType": "github",
+      "skillPath": "skills/premium/SKILL.md",
+      "computedHash": "2cf0dd3c4fe971403393d835cf3fb96e4fc346370232b7d395c277b86c5c691d"
+    },
+    "sleek": {
+      "source": "bergside/awesome-design-skills",
+      "commit": "f631a09b4fcc0166f2e2c1a8c81906ef680c57e8",
+      "sourceType": "github",
+      "skillPath": "skills/sleek/SKILL.md",
+      "computedHash": "0a3ff10626b467e1ece47a5599db42d654c3b17e76536398abac14237fa3901c"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "commit": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "5994e4cfd86144903d2ba750f862b9e36af15e3297aac983679e347b99f6cb71"
+    }
+  }
+}

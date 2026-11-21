@@ -135,7 +135,18 @@ INSERT INTO services (title, slug, category, description, detailed_description, 
     'Rp 299rb/bln', 
     'Rp 199rb/bln',
     '["Lead Management", "Sales Tracking GPS", "Analisis ROI Kampanye", "Integrasi CRM", "Laporan Harian Sales", "Funnel Conversion", "Target KPI"]',
-    'New'
+    ),
+(
+    'Aplikasi Keuangan Bagi Hasil', 
+    'keuangan-bagi-hasil',
+    'finance', 
+    'Sistem keuangan & akuntansi kemitraan untuk pencatatan modal, hitung bagi hasil proporsional otomatis, prive mitra, double-entry COA, neraca, dan laporan laba rugi 12 bulan.', 
+    '<p class="mb-3">Kelola transparansi keuangan usaha patungan, CV, atau kemitraan bisnis Anda dengan <strong>Aplikasi Keuangan Bagi Hasil</strong>. Dirancang khusus untuk mencatat pergerakan modal mitra, transaksi operasional harian, hingga distribusi laba bersih secara adil, presisi, dan bebas selisih.</p><p class="mb-3">Sistem dilengkapi dengan mesin kalkulasi bagi hasil otomatis berdasarkan porsi kepemilikan modal riil, pemotongan cadangan laba ditahan, <em>Management Fee</em> pengelola, serta pemotongan saldo prive/kasbon mitra secara FIFO. Didukung pembukuan <strong>Double-Entry COA</strong>, multi kas/bank, dan pelaporan keuangan lengkap siap audit.</p><ul class="list-disc pl-5 space-y-2 mb-3"><li><strong>Manajemen Modal & Porsi Kepemilikan:</strong> Pantau mutasi setoran dan penarikan ekuitas tiap mitra beserta pergeseran persentase porsi modal secara otomatis dan <em>real-time</em>.</li><li><strong>Distribusi Bagi Hasil & Slip PDF/WhatsApp:</strong> Hitung pembagian keuntungan beserta penyesuaian selisih pembulatan 100% presisi, lengkap dengan penguncian periode dan kirim slip bagi hasil via WhatsApp atau PDF.</li><li><strong>Akuntansi Lengkap & Tutup Buku Tahunan:</strong> Tersedia Bagan Akun (COA), Jurnal Umum, Buku Besar, Neraca, Laba Rugi (Matriks 12 Bulan), Arus Kas, Aging Piutang/Utang, Aset Tetap & Penyusutan, hingga Rekonsiliasi Bank CSV.</li><li><strong>Keamanan RBAC & Audit Trail:</strong> Kontrol hak akses terpisah untuk Administrator, Operator Keuangan, dan Mitra Bisnis (<em>Viewer</em>) serta pencatatan riwayat perubahan data yang transparan.</li></ul>', 
+    'chart-pie', 
+    'Mulai Rp 299rb/bln', 
+    'Rp 199rb/bln',
+    '["Pencatatan Modal & Porsi Mitra (%)", "Mesin Hitung Bagi Hasil Otomatis", "Prive/Kasbon & Management Fee", "Double-Entry COA & Jurnal Umum", "Laporan Neraca, Laba Rugi & Arus Kas", "Rekonsiliasi Bank & Tutup Buku", "Slip Bagi Hasil PDF & Tagihan WA", "RBAC Granular & Audit Trail Log"]',
+    'Trending'
 );
 
 CREATE TABLE IF NOT EXISTS `blogs` (

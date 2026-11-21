@@ -7,11 +7,11 @@
     <meta name="description" content="Maaf, halaman atau tautan modul yang Anda tuju tidak ditemukan atau telah dipindahkan.">
     <link rel="icon" href="css/favicon.png" type="image/png">
     <link rel="canonical" href="https://www.crudworks.com/404">
-    <link rel="stylesheet" href="css/style.css?v=2.5.0">
+    <link rel="stylesheet" href="css/style.css?v=2.10.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -19,29 +19,35 @@
             theme: {
                 extend: {
                     colors: {
+                        obsidian: '#08090C',
+                        titanium: '#0E1218',
                         brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' }
                     },
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+                    fontFamily: {
+                        display: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen selection:bg-blue-600 selection:text-white">
+<body class="bg-white text-[#5F6368] font-sans antialiased flex flex-col min-h-screen selection:bg-[#D97757] selection:text-white">
 
     <!-- Header & Navigation -->
-    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+    <header class="bg-white/95 backdrop-blur-xl border-b border-[#DADCE0] sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="index" class="flex items-center gap-3">
-                    <img src="css/logo.png" alt="CRUDWorks Logo" class="h-9 w-auto">
+                    <img src="css/logo.png" alt="CRUDWorks Logo" class="h-8 w-auto">
                 </a>
                 <nav class="hidden md:flex items-center gap-1">
-                    <a href="index" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Beranda</a>
-                    <a href="produk" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Layanan & Produk</a>
-                    <a href="tentang" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Tentang Kami</a>
-                    <a href="karir" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Karir</a>
-                    <a href="index#contact" class="ml-4 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all flex items-center gap-2">
+                    <a href="index" class="px-3.5 py-2 rounded-lg text-sm font-medium text-[#3C4043] hover:text-[#D97757] hover:bg-[#F1F3F4] transition-colors">Beranda</a>
+                    <a href="produk" class="px-3.5 py-2 rounded-lg text-sm font-medium text-[#3C4043] hover:text-[#D97757] hover:bg-[#F1F3F4] transition-colors">Layanan &amp; Produk</a>
+                    <a href="tentang" class="px-3.5 py-2 rounded-lg text-sm font-medium text-[#3C4043] hover:text-[#D97757] hover:bg-[#F1F3F4] transition-colors">Tentang Kami</a>
+                    <a href="karir" class="px-3.5 py-2 rounded-lg text-sm font-medium text-[#3C4043] hover:text-[#D97757] hover:bg-[#F1F3F4] transition-colors">Karir</a>
+                    <a href="index#contact" class="cw-btn-press ml-4 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-[#D97757] hover:bg-[#C25E3D] shadow-sm hover:shadow-md transition-all flex items-center gap-2">
                         <span>Hubungi Bantuan</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
@@ -54,39 +60,39 @@
     <main class="flex-1 flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-xl w-full text-center">
             <!-- Status Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white text-slate-600 text-xs font-semibold uppercase tracking-wider mb-6 shadow-2xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FAD2CF] bg-[#FCE8E6] text-[#D93025] text-xs font-mono font-semibold uppercase tracking-wider mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
                 <span>Error Code: 404 Not Found</span>
             </div>
 
             <!-- Big Number & Message -->
-            <h1 class="text-6xl sm:text-7xl font-extrabold text-slate-900 tracking-tight mb-4">404</h1>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-800 mb-3">Halaman yang Anda Tuju Tidak Ditemukan</h2>
-            <p class="text-sm sm:text-base text-slate-500 leading-relaxed max-w-md mx-auto mb-8">
+            <h1 class="font-display text-7xl sm:text-8xl font-extrabold text-[#202124] tracking-tight mb-4">404</h1>
+            <h2 class="font-display text-xl sm:text-2xl font-bold text-[#202124] mb-3">Halaman yang Anda Tuju Tidak Ditemukan</h2>
+            <p class="text-sm sm:text-base text-[#5F6368] leading-relaxed max-w-md mx-auto mb-8">
                 Tautan mungkin telah kadaluarsa, dipindahkan ke alamat baru, atau salah ketik. Mari temukan solusi yang Anda cari.
             </p>
 
             <!-- Quick Navigation Shortcuts -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 text-left">
-                <a href="index" class="p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-xs transition-all group">
-                    <i class="fa-solid fa-house text-blue-600 text-base mb-2 block"></i>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Beranda Utama</h3>
-                    <p class="text-[11px] text-slate-500 mt-0.5">Kembali ke halaman depan.</p>
+                <a href="index" class="p-4 bg-white rounded-xl border border-[#DADCE0] hover:border-[#D97757]/50 transition-all group">
+                    <i class="fa-solid fa-house text-[#D97757] text-base mb-2 block"></i>
+                    <h3 class="text-xs font-bold text-[#202124] group-hover:text-[#D97757] transition-colors">Beranda Utama</h3>
+                    <p class="text-[11px] text-[#5F6368] mt-0.5">Kembali ke halaman depan.</p>
                 </a>
-                <a href="produk" class="p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-xs transition-all group">
-                    <i class="fa-solid fa-layer-group text-emerald-600 text-base mb-2 block"></i>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Katalog Modul</h3>
-                    <p class="text-[11px] text-slate-500 mt-0.5">Lihat seluruh software bisnis.</p>
+                <a href="produk" class="p-4 bg-white rounded-xl border border-[#DADCE0] hover:border-[#1E8E3E]/50 transition-all group">
+                    <i class="fa-solid fa-layer-group text-[#1E8E3E] text-base mb-2 block"></i>
+                    <h3 class="text-xs font-bold text-[#202124] group-hover:text-[#1E8E3E] transition-colors">Katalog Modul</h3>
+                    <p class="text-[11px] text-[#5F6368] mt-0.5">Lihat seluruh software bisnis.</p>
                 </a>
-                <a href="https://wa.me/6287759651803?text=Halo%20Admin%20CRUDWorks%2C%20saya%20mengalami%20halaman%20tidak%20ditemukan%20(404)" target="_blank" class="p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-xs transition-all group">
-                    <i class="fa-brands fa-whatsapp text-emerald-500 text-base mb-2 block"></i>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Bantuan Cepat</h3>
-                    <p class="text-[11px] text-slate-500 mt-0.5">Hubungi support WhatsApp.</p>
+                <a href="https://wa.me/6287759651803?text=Halo%20Admin%20CRUDWorks%2C%20saya%20mengalami%20halaman%20tidak%20ditemukan%20(404)" target="_blank" class="p-4 bg-white rounded-xl border border-[#DADCE0] hover:border-[#1E8E3E]/50 transition-all group">
+                    <i class="fa-brands fa-whatsapp text-[#1E8E3E] text-base mb-2 block"></i>
+                    <h3 class="text-xs font-bold text-[#202124] group-hover:text-[#1E8E3E] transition-colors">Bantuan Cepat</h3>
+                    <p class="text-[11px] text-[#5F6368] mt-0.5">Hubungi support WhatsApp.</p>
                 </a>
             </div>
 
             <div>
-                <a href="index" class="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors inline-flex items-center gap-2 shadow-xs">
+                <a href="index" class="cw-btn-press px-6 py-3 rounded-xl bg-[#D97757] text-white font-semibold text-sm hover:bg-[#C25E3D] transition-all inline-flex items-center gap-2 shadow-sm hover:shadow-md">
                     <i class="fa-solid fa-arrow-left text-xs"></i>
                     <span>Kembali ke Beranda CRUDWorks</span>
                 </a>
@@ -95,7 +101,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+    <footer class="bg-[#F8F9FA] border-t border-[#DADCE0] py-6 text-center text-xs text-[#5F6368]">
         <div class="max-w-7xl mx-auto px-4">
             &copy; <script>document.write(new Date().getFullYear())</script> CRUDWorks Karya Anak Indonesia. All rights reserved.
         </div>

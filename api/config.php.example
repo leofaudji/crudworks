@@ -1,0 +1,9 @@
+<?php
+// File Konfigurasi Database (Template Contoh)
+// Salin berkas ini ke api/config.php dan sesuaikan kredensial server Anda
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'web_crudworks');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+
