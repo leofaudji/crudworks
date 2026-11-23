@@ -33,6 +33,30 @@ if ($html === false) {
 }
 
 /**
+ * Resolve latest semantic version dynamically from CHANGELOG.md (fallback: version.json).
+ */
+function getLatestChangelogVersion(string $baseDir): string {
+    $changelogPath = $baseDir . DIRECTORY_SEPARATOR . 'CHANGELOG.md';
+    if (is_file($changelogPath)) {
+        $md = @file_get_contents($changelogPath);
+        if ($md !== false && preg_match('/^##\s*\[([0-9]+\.[0-9]+\.[0-9]+)\]/m', $md, $m)) {
+            return $m[1];
+        }
+    }
+    $versionJsonPath = $baseDir . DIRECTORY_SEPARATOR . 'version.json';
+    if (is_file($versionJsonPath)) {
+        $json = json_decode((string)@file_get_contents($versionJsonPath), true);
+        if (is_array($json) && !empty($json['assetVersion'])) {
+            return preg_replace('/[^0-9A-Za-z._-]/', '', (string)$json['assetVersion']);
+        }
+    }
+    return '2.10.0';
+}
+
+$assetVersion = getLatestChangelogVersion($baseDir);
+$html = preg_replace('/(\.(?:js|css)\?v=)[0-9]+\.[0-9]+\.[0-9]+/', '${1}' . $assetVersion, $html);
+
+/**
  * Strip JS line/block comments safely without touching URLs inside string literals.
  */
 function minifyInlineJs(string $js): string {

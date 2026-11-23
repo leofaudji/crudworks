@@ -169,6 +169,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const waDirect = `https://wa.me/6287759651803?text=${encodeURIComponent('Halo Admin CRUDWorks, saya tertarik dengan modul ' + service.title + '.')}`;
 
+            const lblStartFrom = 'Investasi Mulai';
+            const lblCloudTag = 'Cloud SaaS • Server & Backup Terkelola';
+            const lblDetail = 'Detail Fitur';
+            const lblOrder = 'Pesan';
+            const lblPreview = 'Lihat Tampilan Layar (UI)';
+
             const card = document.createElement('div');
             card.className = 'bg-white rounded-2xl border border-[#DADCE0] p-6 flex flex-col justify-between hover:border-[#D97757] cw-card-lift group';
             card.innerHTML = `
@@ -192,24 +198,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div>
                     <div class="mb-4">
-                        <span class="text-[10px] font-semibold uppercase text-slate-400 block tracking-wider">Investasi Mulai</span>
+                        <span class="text-[10px] font-semibold uppercase text-slate-400 block tracking-wider">${lblStartFrom}</span>
                         ${priceHtml}
                         <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-[#F8F9FA] border border-[#DADCE0] text-[#5F6368] text-[10px] font-mono font-semibold mt-1.5">
                             <i class="fa-solid fa-tag text-[#D97757] text-[9px]"></i>
-                            <span>Cloud SaaS • Server & Backup Terkelola</span>
+                            <span>${lblCloudTag}</span>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-2">
                         <a href="produk/${service.slug || service.id}" class="py-2.5 px-3 rounded-xl border border-[#DADCE0] bg-white hover:bg-[#F8F9FA] text-[#3C4043] text-xs font-semibold text-center transition-colors">
-                            Detail Fitur
+                            ${lblDetail}
                         </a>
                         <a href="${waDirect}" target="_blank" class="py-2.5 px-3 rounded-xl bg-[#D97757] hover:bg-[#C25E3D] text-white text-xs font-semibold text-center transition-colors flex items-center justify-center gap-1.5 shadow-xs">
-                            <i class="fa-brands fa-whatsapp text-sm"></i> Pesan
+                            <i class="fa-brands fa-whatsapp text-sm"></i> ${lblOrder}
                         </a>
                     </div>
                     <button type="button" class="btn-preview-ui w-full mt-2 py-2.5 px-3 rounded-xl border border-[#DADCE0] bg-[#F8F9FA] hover:border-[#D97757] hover:bg-[#FDF2EE]/50 text-[#3C4043] hover:text-[#D97757] text-xs font-semibold transition-all flex items-center justify-center gap-1.5" data-title="${service.title}" data-category="${service.category || 'retail'}">
                         <i class="fa-solid fa-desktop text-[#D97757] text-xs"></i>
-                        <span>Lihat Tampilan Layar (UI)</span>
+                        <span>${lblPreview}</span>
                     </button>
                 </div>
             `;
@@ -571,62 +577,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    let translations = {
-        id: {},
-        en: {}
-    };
-    function loadTranslations() {
-        const savedLang = localStorage.getItem('crudworks_lang') || 'id';
-        if (savedLang && savedLang !== 'id') setLanguage(savedLang);
-    }
-
-    function setLanguage(lang) {
-        if (!translations[lang]) return;
-
-        localStorage.setItem('crudworks_lang', lang);
-        document.documentElement.lang = lang;
-        
-        // Update Text
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
-                el.innerText = translations[lang][key];
-            }
-        });
-
-        // Update Placeholders (Input & Textarea)
-        const inputs = document.querySelectorAll('[data-i18n-placeholder]');
-        inputs.forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if (translations[lang][key]) {
-                el.placeholder = translations[lang][key];
-            }
-        });
-
-
-        // Update Switcher UI
-        const switchers = document.querySelectorAll('.lang-switcher');
-        switchers.forEach(btn => {
-            const span = btn.querySelector('span');
-            const img = btn.querySelector('img');
-            if(span) span.innerText = lang === 'id' ? 'ID' : 'EN';
-            if(img) img.src = lang === 'id' ? 'https://flagcdn.com/w20/id.png' : 'https://flagcdn.com/w20/us.png';
-        });
-    }
-
     loadServices();
     initFaqAndCounters();
-    loadTranslations();
-
-    document.querySelectorAll('.lang-switcher').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const current = localStorage.getItem('crudworks_lang') || 'id';
-            const next = current === 'id' ? 'en' : 'id';
-            setLanguage(next);
-        });
-    });
+    localStorage.removeItem('crudworks_lang');
+    document.documentElement.lang = 'id';
 
     // ----------------------------------------------------
     // Micro-Interaction: Scroll Reading Progress Bar
